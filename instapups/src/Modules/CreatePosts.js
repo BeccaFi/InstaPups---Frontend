@@ -9,7 +9,7 @@ const CreatePosts = () => {
 
     const postingBarks = async (e) => {
         e.preventDefault()
-        const response = await fetch('http://localhost:5050/posts/post', {
+        const response = await fetch('http://localhost:5050/posts/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
