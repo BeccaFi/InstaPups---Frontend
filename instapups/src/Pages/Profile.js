@@ -9,7 +9,15 @@ const Profile = () => {
 
   useEffect(() => {
     const getPosts = async () => {
-      const response = await fetch('http://localhost:5050/posts')
+      const response = await fetch('http://localhost:5050/posts'
+      , {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        Credentials: 'include'
+      })
+
       const res = await response.json()
       setPosts(res)
     }
