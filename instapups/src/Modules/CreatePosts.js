@@ -9,6 +9,7 @@ const CreatePosts = () => {
 
     const postingBarks = async (e) => {
         e.preventDefault()
+        const date = new Date();
         const response = await fetch('http://localhost:5050/posts/create', {
             method: 'POST',
             headers: {
@@ -16,7 +17,8 @@ const CreatePosts = () => {
             },
             body: JSON.stringify({
                 bark,
-                image
+                image,
+                date
             })
         })
         const res = await response.json()
