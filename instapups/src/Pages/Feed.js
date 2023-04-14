@@ -16,7 +16,7 @@ const Feed = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        Credentials: 'include'
+        credentials: 'include'
       })
 
       const res = await response.json()
