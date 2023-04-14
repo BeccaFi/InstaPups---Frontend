@@ -24,6 +24,10 @@ const Feed = () => {
         console.log(res)
         return
       }
+
+      if (res === 'You are not following anyone') {
+      return
+    }
       else {
       setPosts(res)   
       setFetched(true)
@@ -34,7 +38,6 @@ const Feed = () => {
     
   }, [])
 
-  console.log(posts)
   return (
     <div className= 'profileWrapper'>
       <Sidemenu />
@@ -42,7 +45,7 @@ const Feed = () => {
     <CreatePosts />
     {fetched ? posts.map((post) => (
   <Post key={post._id} {...post} />
-)) : <p>Loading...</p>}
+)) : <p>You are not following anyone...yet</p>}
     
     </div>
     <div className='Profile-filler'>
