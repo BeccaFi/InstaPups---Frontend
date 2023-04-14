@@ -49,7 +49,7 @@ const CreatePosts = () => {
         {popup && (
             <div className='Your-bark-popup'>
                 <button onClick={(e) => setPopup(false)}>X</button>
-                <input className='Your-bark-popup-input' type='text' placeholder='Add an image url' onChange={(e) => setImage(e.target.value)} />
+                <input className='Your-bark-popup-input' type='text' placeholder='Add an image url' onChange={(e) => setImage([e.target.value])} />
             </div>
         )}
         
