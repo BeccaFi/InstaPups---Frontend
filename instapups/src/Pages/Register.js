@@ -1,21 +1,46 @@
 import React, { useState } from "react";
 
 const Register = () => {
-  const [usernameValue, setUsernameValue] = useState("");
-  const [passwordValue, setPasswordValue] = useState("");
-  const [repeatPasswordValue, setRepeatPasswordValue] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const onChangeUsername = (event) => {
-    setUsernameValue(event.target.value);
+    setUsername(event.target.value);
   };
 
   const onChangePassword = (event) => {
-    setPasswordValue(event.target.value);
+    setPassword(event.target.value);
   };
 
-  const onChangeRepeatPassword = (event) => {
-    setRepeatPasswordValue(event.target.value);
+  const onChangeConfirmPassword = (event) => {
+    setConfirmPassword(event.target.value);
   };
+
+  async function goToLogin() {
+    try {
+      const response = await fetch("http://127.0.0.1:5051/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password, confirmPassword }),
+      });
+
+      const data = await response.text();
+
+      if (response.status !== 201) {
+        console.log(data);
+        return;
+      }
+
+      if (response.status === 201) {
+        window.location = "/";
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div>
@@ -24,21 +49,21 @@ const Register = () => {
         placeholder="Username"
         className="register-username"
         onChange={onChangeUsername}
-        value={usernameValue}
+        value={username}
       />
       <input
         type="password"
         placeholder="Password"
         className="register-password"
         onChange={onChangePassword}
-        value={passwordValue}
+        value={password}
       />
       <input
         type="password"
         placeholder="Repeat password"
         className="register-repeat-password"
-        onChange={onChangeRepeatPassword}
-        value={repeatPasswordValue}
+        onChange={onChangeConfirmPassword}
+        value={confirmPassword}
       />
       <button className="register-button" onClick={goToLogin}>
         Register
@@ -49,13 +74,3 @@ const Register = () => {
 };
 
 export default Register;
-
-async function goToLogin() {
-  const response = await fetch("https://fakestoreapi.com/products/1");
-  const data = await response.json();
-  console.log(data);
-  //TODO: Gör en fetch till backend med POST, lägg till användaren i databasen
-  // if (response.status === 200) {
-  // window.location = "/";
-  // }
-}
