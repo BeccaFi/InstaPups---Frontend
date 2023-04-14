@@ -5,22 +5,26 @@ import '../sass/Modules/CreatePosts.modules.scss'
 const CreatePosts = () => {
     const [bark, setBark] = useState('')
     const [popup, setPopup] = useState(false)
-    const [image, setImage] = useState('')
+    const [image, setImage] = useState([])
 
     const postingBarks = async (e) => {
         e.preventDefault()
-        const datePosted = new Date();
+        const text = bark
+        const photos = image
+        var date = new Date();
+        var datePosted = date.toISOString().slice(0, 16).replace('T', ' ');
+        console.log(datePosted)
         const response = await fetch('http://localhost:5051/posts/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                text: bark,
-                photos: image,
+               text,
+               photos,
                 datePosted
             }),
-            Credentials: 'include'
+            credentials: 'include'
         })
         const res = await response.json()
         console.log(res)
