@@ -1,16 +1,41 @@
 import React, { useState } from "react";
 
 const Login = () => {
-  const [usernameValue, setUsernameValue] = useState("");
-  const [passwordValue, setPasswordValue] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const onChangeUsername = (event) => {
-    setUsernameValue(event.target.value);
+    setUsername(event.target.value);
   };
 
   const onChangePassword = (event) => {
-    setPasswordValue(event.target.value);
+    setPassword(event.target.value);
   };
+
+  async function goToProfile() {
+    try {
+      const response = await fetch("http://localhost:5051/auth/login", {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
+      const data = await response.text();
+
+      if (response.status !== 200) {
+        console.log(data);
+        return;
+      }
+
+      if (response.status === 200) {
+        window.location = "/profile";
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div>
@@ -19,14 +44,14 @@ const Login = () => {
         placeholder="Username"
         className="login-username"
         onChange={onChangeUsername}
-        value={usernameValue}
+        value={username}
       />
       <input
         type="password"
         placeholder="Password"
         className="login-password"
         onChange={onChangePassword}
-        value={passwordValue}
+        value={password}
       />
       <button className="login-button" onClick={goToProfile}>
         Login
@@ -36,14 +61,3 @@ const Login = () => {
 };
 
 export default Login;
-
-async function goToProfile() {
-  // Test for fetching
-  const response = await fetch("https://fakestoreapi.com/products/1");
-  const data = await response.json();
-  console.log(data);
-
-  // TODO: if (response.status === 200) {
-  // window.location = "/profile";
-  // }
-}
