@@ -1,8 +1,9 @@
 import bone from '../Media/Icons/bone.png'
 import { useState} from 'react'
+import '../sass/Modules/Post.modules.scss'
 
 const Post = ({ username, comments, likes, _id, content }) => {
-    
+
   const [postLikes, setPostLikes] = useState(likes)
   const [showComments, setShowComments] = useState(false)
   const [bark, setBark] = useState('')
@@ -41,18 +42,17 @@ const Post = ({ username, comments, likes, _id, content }) => {
         // Här behövs det göras saker
 
     }
-
   return (
     <div>
       <div>
-        { content.image ? <img src={content.image} alt={username}/> : null }
+         {content.photos ? <img src={content.photos} alt={username}/>: null}
         <p>{content.text}</p>
         <h2>{username}</h2>
       </div>
       {/* <p>{comments}</p> */}
       <div>
         <div>
-          <img src={bone} alt='likes' onClick={(e)=> likePost(_id)} /> {amountOfLikes}
+          <img className='likeButton' src={bone} alt='likes' onClick={(e)=> likePost(_id)} /> {amountOfLikes}
         </div>
         <button onClick={() => setShowComments(true)}>Barks</button>
       </div>
