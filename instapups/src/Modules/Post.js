@@ -24,7 +24,7 @@ const Post = ({ username, comments, likes, _id, content }) => {
       credentials: 'include'
     })
     const res = await response.json()
-    setAmountOfLikes(res.likes.length)
+    
     // Här behövs det göras saker
 
   }
@@ -39,6 +39,8 @@ const Post = ({ username, comments, likes, _id, content }) => {
         })
         const res = await response.json()
         console.log(res)
+        
+        setAmountOfLikes()
         // Här behövs det göras saker
 
     }
