@@ -45,7 +45,7 @@ const Post = ({ username, comments, likes, _id, content }) => {
   return (
     <div>
       <div>
-         {content.photos ? <img src={content.photos} alt={username}/>: null}
+         {content.photos ? <img src={content.photos} alt={username} />: null}
         <p>{content.text}</p>
         <h2>{username}</h2>
       </div>
