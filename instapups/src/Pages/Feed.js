@@ -4,12 +4,13 @@ import '../sass/Pages/Profile.pages.scss'
 import { useState, useEffect } from "react"
 import Post from "../Modules/Post"
 
-const Profile = () => {
-  const [posts, setPosts] = useState([])
+const Feed = () => {
+  const [posts, setPosts] = useState({})
+  const [fetched, setFetched] = useState(false)
 
   useEffect(() => {
     const getPosts = async () => {
-      const response = await fetch('http://localhost:5050/posts'
+      const response = await fetch('http://localhost:5051/feed'
       , {
         method: 'GET',
         headers: {
@@ -20,8 +21,10 @@ const Profile = () => {
 
       const res = await response.json()
       setPosts(res)
+      setFetched(true)
     }
     getPosts()
+    console.log(posts)
   }, [])
 
   return (
@@ -29,9 +32,9 @@ const Profile = () => {
       <Sidemenu />
       <div>
     <CreatePosts />
-    {posts.map((post) => (
-      <Post key={post._id} post={post} />
-    ))}
+    {/* {fetched ? posts.findPosts.map((post) => (
+      <Post key={post._id} props={post} />
+    )): <p>Loading...</p>} */}
     
     </div>
     <div className='Profile-filler'>
@@ -41,4 +44,4 @@ const Profile = () => {
   )
 }
 
-export default Profile
+export default Feed

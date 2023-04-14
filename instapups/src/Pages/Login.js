@@ -30,7 +30,7 @@ const Login = () => {
       }
 
       if (response.status === 200) {
-        window.location = "/profile";
+        window.location = "/home";
       }
     } catch (error) {
       console.log(error);
