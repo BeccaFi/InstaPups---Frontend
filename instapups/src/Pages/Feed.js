@@ -1,6 +1,6 @@
 import CreatePosts from "../Modules/CreatePosts"
 import Sidemenu from "../Modules/Sidemenu"
-import '../sass/Pages/Profile.pages.scss'
+import '../sass/Pages/Feed.pages.scss'
 import { useState, useEffect } from "react"
 import Post from "../Modules/Post"
 
