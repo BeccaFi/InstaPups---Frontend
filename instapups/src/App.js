@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Nav from "./Modules/Nav";
 import Register from "./Pages/Register";
 import Login from "./Pages/Login";
-import Feed from "./Pages/Profile";
+import Feed from "./Pages/Feed";
 import Members from "./Pages/Members";
 import Member from "./Pages/Member";
 
