@@ -1,15 +1,17 @@
 import bone from '../Media/Icons/bone.png'
 import { useState} from 'react'
 
-const Post = ({ url, username, comments, likes }) => {
+const Post = ({ username, comments, likes, _id, content }) => {
+    
   const [postLikes, setPostLikes] = useState(likes)
   const [showComments, setShowComments] = useState(false)
   const [bark, setBark] = useState('')
+  const [amountOfLikes, setAmountOfLikes] = useState(likes.length)
 
   const postYourBark = async (e) => {
     e.preventDefault()
     const datePosted = new Date();
-    const response = await fetch('http://localhost:5050/comments/comment', {
+    const response = await fetch('http://localhost:5051/comments/comment', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -18,24 +20,39 @@ const Post = ({ url, username, comments, likes }) => {
         bark,
         datePosted
       }),
-      Credentials: 'include'
+      credentials: 'include'
     })
     const res = await response.json()
-    console.log(res)
+    setAmountOfLikes(res.likes.length)
     // Här behövs det göras saker
 
   }
 
+    const likePost = async (_id) => {
+        const response = await fetch(`http://localhost:5051/posts/like/${_id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include'
+        })
+        const res = await response.json()
+        console.log(res)
+        // Här behövs det göras saker
+
+    }
+
   return (
     <div>
       <div>
-        <img src={url} alt={username} /> 
+        { content.image ? <img src={content.image} alt={username}/> : null }
+        <p>{content.text}</p>
         <h2>{username}</h2>
       </div>
       {/* <p>{comments}</p> */}
       <div>
         <div>
-          <img src={bone} alt='likes' /> {postLikes.length}
+          <img src={bone} alt='likes' onClick={(e)=> likePost(_id)} /> {amountOfLikes}
         </div>
         <button onClick={() => setShowComments(true)}>Barks</button>
       </div>
