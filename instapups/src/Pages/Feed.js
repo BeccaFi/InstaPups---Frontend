@@ -20,9 +20,16 @@ const Feed = () => {
       })
 
       const res = await response.json()
-      setPosts(res)      
+      if (response.status !== 200) {
+        console.log(res)
+        return
+      }
+      else {
+      setPosts(res)   
       setFetched(true)
+      
     }
+  }
     getPosts()
     
   }, [])
