@@ -10,14 +10,14 @@ const CreatePosts = () => {
     const postingBarks = async (e) => {
         e.preventDefault()
         const datePosted = new Date();
-        const response = await fetch('http://localhost:5050/posts/create', {
+        const response = await fetch('http://localhost:5051/posts/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                bark,
-                image,
+                text: bark,
+                photos: image,
                 datePosted
             }),
             Credentials: 'include'
