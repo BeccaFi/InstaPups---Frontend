@@ -1,13 +1,11 @@
 import bone from '../Media/Icons/bone.png'
-import { useState} from 'react'
+import { useState, useEffect} from 'react'
 import '../sass/Modules/Post.modules.scss'
 
 const Post = ({ username, comments, likes, _id, content }) => {
 
-  const [postLikes, setPostLikes] = useState(likes)
   const [showComments, setShowComments] = useState(false)
   const [bark, setBark] = useState('')
-  const [amountOfLikes, setAmountOfLikes] = useState(likes.length)
 
   const postYourBark = async (e) => {
     e.preventDefault()
@@ -24,8 +22,6 @@ const Post = ({ username, comments, likes, _id, content }) => {
       credentials: 'include'
     })
     const res = await response.json()
-    
-    // Här behövs det göras saker
 
   }
 
@@ -40,8 +36,8 @@ const Post = ({ username, comments, likes, _id, content }) => {
         const res = await response.json()
         console.log(res)
         
-        setAmountOfLikes()
-        // Här behövs det göras saker
+        window.location.reload()
+        // Ingen snygg lösning men....
 
     }
   return (
@@ -54,7 +50,7 @@ const Post = ({ username, comments, likes, _id, content }) => {
       {/* <p>{comments}</p> */}
       <div>
         <div>
-          <img className='likeButton' src={bone} alt='likes' onClick={(e)=> likePost(_id)} /> {amountOfLikes}
+          <img className='likeButton' src={bone} alt='likes' onClick={(e)=> likePost(_id)} /> {likes.length}
         </div>
         <button onClick={() => setShowComments(true)}>Barks</button>
       </div>
