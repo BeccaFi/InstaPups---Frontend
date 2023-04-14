@@ -5,7 +5,7 @@ import { useState, useEffect } from "react"
 import Post from "../Modules/Post"
 
 const Feed = () => {
-  const [posts, setPosts] = useState({})
+  const [posts, setPosts] = useState([])
   const [fetched, setFetched] = useState(false)
 
   useEffect(() => {
@@ -20,21 +20,22 @@ const Feed = () => {
       })
 
       const res = await response.json()
-      setPosts(res)
+      setPosts(res)      
       setFetched(true)
     }
     getPosts()
-    console.log(posts)
+    
   }, [])
 
+  console.log(posts)
   return (
     <div className= 'profileWrapper'>
       <Sidemenu />
       <div>
     <CreatePosts />
-    {/* {fetched ? posts.findPosts.map((post) => (
-      <Post key={post._id} props={post} />
-    )): <p>Loading...</p>} */}
+    {fetched ? posts.map((post) => (
+  <Post key={post._id} {...post} />
+)) : <p>Loading...</p>}
     
     </div>
     <div className='Profile-filler'>
