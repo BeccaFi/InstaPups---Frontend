@@ -66,8 +66,8 @@ const Post = ({ username, comments, likes, _id, content }) => {
       </div>
       {showComments && (
         <div>
-          {comments.map(comment => (
-            <div key={comment._id}>
+          {comments.map((comment, index) => (
+            <div key={index}>
               {/* <img src={} alt= {username}/> */}
               <p>{comment.username}: {comment.comment}</p>
             </div>
