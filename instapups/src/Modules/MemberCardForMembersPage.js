@@ -1,14 +1,17 @@
 import React from 'react'
 import {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 //First draft of MemberCardForMembersPage
 // Need to update the parameters to match the data from the database
 // Need to update the onClick function to follow the user
 // Need to update the onClick function to unfollow the user
 const MemberCardForMembersPage = ({username, usersprofilepic, _id }) => {
+    const { id } = useParams();    
     const [isFollowing, setIsFollowing] = useState(false)
     const [follows, setFollows] = useState([]);
+
 
     useEffect(() => {
         const getFollows = async () => {
@@ -73,7 +76,7 @@ const MemberCardForMembersPage = ({username, usersprofilepic, _id }) => {
     <div>
         <img src={usersprofilepic} alt={username}/> 
         <button onClick={() => followOrNotFollow()}>{isFollowing ? "-" : "+"}</button>
-        <Link to={`/members:${_id}}`}>{username}</Link>
+        <Link to={`/members/${_id}`}>{username}</Link>
     </div>
 
   )
