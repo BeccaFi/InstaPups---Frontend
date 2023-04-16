@@ -7,7 +7,7 @@ import React from 'react'
 const MemberCardForMembersPage = ({username, usersprofilepic, userid }) => {
   return (
     <div>
-        <img src={usersprofilepic} alt={username}/>
+        <img src={usersprofilepic} alt={username}/> 
         <button onClick={() => console.log(userid)}>Follow</button>
         <h2>{username}</h2>
     </div>
