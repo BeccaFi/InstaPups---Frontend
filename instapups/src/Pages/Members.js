@@ -1,97 +1,97 @@
-import { useEffect, useState } from 'react'
-import MemberCardForMembersPage from '../Modules/MemberCardForMembersPage'
-import Sidemenu from '../Modules/Sidemenu'
-import '../sass/Pages/Members.pages.scss'
+import { useEffect, useState } from 'react';
+import MemberCardForMembersPage from '../Modules/MemberCardForMembersPage';
+import Sidemenu from '../Modules/Sidemenu';
+import '../sass/Pages/Members.pages.scss';
 
-//First draft, need to update the parameters to match the data from the database
 const Members = () => {
-  const [members, setMembers] = useState([])
-  const [follows, setFollows] = useState([])
-  const [fetched, setFetched] = useState(false)
+  const [members, setMembers] = useState([]);
+  const [follows, setFollows] = useState([]);
+  const [filteredMembers, setFilteredMembers] = useState([]);
+  const [fetched, setFetched] = useState(false);
 
   useEffect(() => {
     const getMembers = async () => {
-      const response = await fetch('http://localhost:5051/members'
-      , {
+      const response = await fetch('http://localhost:5051/members', {
         method: 'GET',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        credentials: 'include'
-      })
+        credentials: 'include',
+      });
 
-      const res = await response.json()
+      const res = await response.json();
       if (response.status !== 200) {
-        console.log(res)
-        return
+        console.log(res);
+        return;
       }
-      setMembers(res)
-      setFetched(true)
-    }
+      setMembers(res);
+      setFilteredMembers(res);
+      setFetched(true);
+    };
 
     const getFollows = async () => {
-      const response = await fetch('http://localhost:5051/follows'
-      , {
+      const response = await fetch('http://localhost:5051/members/follows', {
         method: 'GET',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        credentials: 'include'
-      })
+        credentials: 'include',
+      });
 
-      const res = await response.json()
+      const res = await response.json();
       if (response.status !== 200) {
-        console.log(res)
-        return
+        if (response.status === 401) {
+          return (window.location.href = '/');
+        }
+        console.log(res);
+        return;
       }
-      setFollows(res)
+
+      setFollows(res);
+    };
+    getFollows();
+    getMembers();
+  }, []);
+
+  const filterMembers = (e) => {
+    const filter = e.target.value;
+    if (filter === 'all') {
+      setFilteredMembers(members);
+    } else if (filter === 'following') {
+      const filteredMembers = members.filter((member) =>
+        follows.map((follow) => follow).includes(member.username)
+      );
+      setFilteredMembers(filteredMembers);
+    } else if (filter === 'nonfollowing') {
+      const filteredMembers = members.filter(
+        (member) => !follows.map((follow) => follow).includes(member.username)
+      );
+      setFilteredMembers(filteredMembers);
     }
-    getFollows()
-    getMembers()
-  }, [])
-
-  //Do you think this is the best way to filter the members?
-
-const filterMembers = (e) => {
-  const filter = e.target.value
-  if (filter === 'all') {
-    setMembers(members)
-  }
-  else if (filter === 'following') {
-    const filteredMembers = members.filter((member) => {
-      return follows.includes(member._id)
-    })
-    setMembers(filteredMembers)
-  }
-  else if (filter === 'nonfollowing') {
-    const filteredMembers = members.filter((member) => {
-      return !follows.includes(member._id)
-    })
-    setMembers(filteredMembers)
-  }
-}
+  };
 
   return (
     <div className='membersWrapper'>
-    
       <Sidemenu />
       <div>
-      <select onChange={(e)=> filterMembers(e)}>
-        <option value="all">All</option>
-        <option value="Following">Following</option>
-        <option value="nonfollowing">NOt following</option>
-      </select>
-      <div>
-        {fetched ? members.map((member) => (
-          <MemberCardForMembersPage key={member._id} {...member} />
-        )): <p>Loading</p>}
+        <select onChange={(e) => filterMembers(e)}>
+          <option value='all'>All</option>
+          <option value='following'>Following</option>
+          <option value='nonfollowing'>Not following</option>
+        </select>
+        <div>
+          {fetched ? (
+            filteredMembers.map((member) => (
+              <MemberCardForMembersPage key={member._id} {...member} />
+            ))
+          ) : (
+            <p>Loading</p>
+          )}
+        </div>
       </div>
-      </div>
-      <div>
-
-      </div>
+      <div></div>
     </div>
-  )
-}
+  );
+};
 
-export default Members
+export default Members;
