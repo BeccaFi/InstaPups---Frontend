@@ -50,7 +50,7 @@ const Members = () => {
     getMembers()
   }, [])
 
-  //need a function that will filter the members based on the select option
+  //Do you think this is the best way to filter the members?
 
 const filterMembers = (e) => {
   const filter = e.target.value
