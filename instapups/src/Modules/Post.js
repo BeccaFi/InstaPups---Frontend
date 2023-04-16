@@ -43,12 +43,7 @@ const Post = ({ username, comments, likes, _id, content }) => {
 
 
     const toggleBarkButton = () => {
-        if(showComments === false) {
-            setShowComments(true)
-        }
-        else {
-            setShowComments(false)
-        }
+        showComments ? setShowComments(false) : setShowComments(true);
     }
 
   return (
