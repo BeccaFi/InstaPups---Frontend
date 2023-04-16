@@ -6,6 +6,7 @@ import '../sass/Pages/Members.pages.scss'
 //First draft, need to update the parameters to match the data from the database
 const Members = () => {
   const [members, setMembers] = useState([])
+  const [follows, setFollows] = useState([])
   const [fetched, setFetched] = useState(false)
 
   useEffect(() => {
@@ -27,15 +28,55 @@ const Members = () => {
       setMembers(res)
       setFetched(true)
     }
+
+    const getFollows = async () => {
+      const response = await fetch('http://localhost:5051/follows'
+      , {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include'
+      })
+
+      const res = await response.json()
+      if (response.status !== 200) {
+        console.log(res)
+        return
+      }
+      setFollows(res)
+    }
+    getFollows()
     getMembers()
   }, [])
+
+  //need a function that will filter the members based on the select option
+
+const filterMembers = (e) => {
+  const filter = e.target.value
+  if (filter === 'all') {
+    setMembers(members)
+  }
+  else if (filter === 'following') {
+    const filteredMembers = members.filter((member) => {
+      return follows.includes(member._id)
+    })
+    setMembers(filteredMembers)
+  }
+  else if (filter === 'nonfollowing') {
+    const filteredMembers = members.filter((member) => {
+      return !follows.includes(member._id)
+    })
+    setMembers(filteredMembers)
+  }
+}
 
   return (
     <div className='membersWrapper'>
     
       <Sidemenu />
       <div>
-      <select>
+      <select onChange={(e)=> filterMembers(e)}>
         <option value="all">All</option>
         <option value="Following">Following</option>
         <option value="nonfollowing">NOt following</option>
