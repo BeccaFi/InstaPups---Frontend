@@ -2,21 +2,22 @@ import bone from "../Media/Icons/bone.png";
 import { useState, useEffect } from "react";
 import "../sass/Modules/Post.modules.scss";
 
-const Post = ({ username, comments, likes, _id, content }) => {
+const Post = ({ username, comments, likes, _id, content}) => {
   const [showComments, setShowComments] = useState(false);
   const [bark, setBark] = useState("");
-
   const postYourBark = async (e) => {
     e.preventDefault();
     const datePosted = new Date();
-    const response = await fetch("http://localhost:5051/comments/comment", {
-      method: "POST",
+    const id = _id;
+    const comment = bark;
+    const response = await fetch(`http://localhost:5051/posts/comment/${_id}`, {
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        bark,
-        datePosted,
+        comment,
+        id
       }),
       credentials: "include",
     });
@@ -45,7 +46,7 @@ const Post = ({ username, comments, likes, _id, content }) => {
   return (
     <div>
       <div>
-        {content.photos ? <img src={content.photos} alt={username} /> : null}
+        {content.photos ? <img src={content.photos.map(photo => photo)} alt={username} /> : null}
         <p>{content.text}</p>
         <h2>{username}</h2>
       </div>
@@ -59,7 +60,6 @@ const Post = ({ username, comments, likes, _id, content }) => {
         <div>
           {comments.map((comment, index) => (
             <div key={index}>
-              {/* <img src={} alt= {username}/> */}
               <p>
                 {comment.username}: {comment.comment}
               </p>
