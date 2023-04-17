@@ -7,10 +7,10 @@ import { useParams } from 'react-router-dom'
 // Need to update the parameters to match the data from the database
 // Need to update the onClick function to follow the user
 // Need to update the onClick function to unfollow the user
-const MemberCardForMembersPage = ({username, usersprofilepic, _id }) => {
+const MemberCardForMembersPage = ({username, profilePic, _id }) => {
     const { id } = useParams();    
     const [isFollowing, setIsFollowing] = useState(false)
-    const [follows, setFollows] = useState([]);
+    const [follows, setFollows] = useState(0);
 
 
     useEffect(() => {
@@ -46,12 +46,12 @@ const MemberCardForMembersPage = ({username, usersprofilepic, _id }) => {
             }
 
         getFollows();
-    }, []);
+    }, [follows]);
 
     const followOrNotFollow = async () => {
-        //måste kolla url:en till endpointen
-        const response = await fetch('http://localhost:5051/members/follows', {
-            method: 'POST',
+
+        const response = await fetch('http://localhost:5051/members/follow', {
+            method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -68,13 +68,21 @@ const MemberCardForMembersPage = ({username, usersprofilepic, _id }) => {
             return;
         }
         console.log(res)
-        setIsFollowing(!isFollowing)
+        if (res === "followed") {
+            setIsFollowing(true)
+            setFollows(+1)
+        } else {
+            setIsFollowing(false)
+            setFollows(+1)
+        }
+        
     }
+
 
    
   return (
     <div>
-        <img src={usersprofilepic} alt={username}/> 
+        <img src={profilePic} alt={username}/> 
         <button onClick={() => followOrNotFollow()}>{isFollowing ? "-" : "+"}</button>
         <Link to={`/members/${_id}`}>{username}</Link>
     </div>
