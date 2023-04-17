@@ -40,6 +40,12 @@ const Post = ({ username, comments, likes, _id, content }) => {
         // Ingen snygg lösning men....
 
     }
+
+
+    const toggleBarkButton = () => {
+        showComments ? setShowComments(false) : setShowComments(true);
+    }
+
   return (
     <div>
       <div>
@@ -47,21 +53,20 @@ const Post = ({ username, comments, likes, _id, content }) => {
         <p>{content.text}</p>
         <h2>{username}</h2>
       </div>
-      {/* <p>{comments}</p> */}
       <div>
         <div>
           <img className='likeButton' src={bone} alt='likes' onClick={(e)=> likePost(_id)} /> {likes.length}
         </div>
-        <button onClick={() => setShowComments(true)}>Barks</button>
+        <button onClick={() => toggleBarkButton()}>Barks ({comments.length})</button>
       </div>
       {showComments && (
         <div>
-          {/* {comments.map((comment, index) => (
+          {comments.map((comment, index) => (
             <div key={index}>
-              <img src={comment.url} alt={comment.username} />
-              <p>{comment.username}: {comment.text}</p>
+              {/* <img src={} alt= {username}/> */}
+              <p>{comment.username}: {comment.comment}</p>
             </div>
-          ))} */}
+          ))}
           <div>
             <input type='text' placeholder='Bark here...' onChange={(e) => setBark(e.target.value)} />
             <button onClick={(e) => postYourBark(e)}>Bark</button>
