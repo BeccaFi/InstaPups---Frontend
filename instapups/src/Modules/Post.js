@@ -1,13 +1,37 @@
 import bone from "../Media/Icons/bone.png";
 import { useState, useEffect } from "react";
 import "../sass/Modules/Post.modules.scss";
+import { Link } from "react-router-dom";
 
 const Post = ({ username, comments, likes, _id, content}) => {
   const [showComments, setShowComments] = useState(false);
   const [bark, setBark] = useState("");
+    const [member, setMember] = useState([]);
+    const [loaded, setLoaded] = useState(false);
+
+  useEffect (() => {
+    const getMember = async () => {
+        const response = await fetch(`http://localhost:5051/members/memberinfo?username=${username}`, {
+            method: "GET",
+            headers: {
+            "Content-Type": "application/json",
+            },
+            credentials: "include",
+        });
+    
+        const res = await response.json();
+        if (response.status !== 200) {
+            console.log(res);
+            return;
+        }
+        setMember(res);
+        setLoaded(true);
+    }
+    getMember();
+    }, [comments])
+
   const postYourBark = async (e) => {
     e.preventDefault();
-    const datePosted = new Date();
     const id = _id;
     const comment = bark;
     const response = await fetch(`http://localhost:5051/posts/comment/${_id}`, {
@@ -45,10 +69,17 @@ const Post = ({ username, comments, likes, _id, content}) => {
 
   return (
     <div>
+        {loaded ?
+            <div key={member._id}>
+                <img src={member.profilePic} alt={username} />
+        <Link to={`/members/${member._id}`}>{username}</Link>
+            </div>
+         : null}
       <div>
+        
         {content.photos ? <img src={content.photos.map(photo => photo)} alt={username} /> : null}
         <p>{content.text}</p>
-        <h2>{username}</h2>
+        
       </div>
       <div>
         <div>
