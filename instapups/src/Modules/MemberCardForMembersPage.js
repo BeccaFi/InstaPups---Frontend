@@ -49,8 +49,32 @@ const MemberCardForMembersPage = ({username, usersprofilepic, _id }) => {
     }, []);
 
     const followOrNotFollow = async () => {
-        //måste kolla url:en till endpointen
-        const response = await fetch('http://localhost:5051/members/follows', {
+        if (isFollowing) {
+            const response = await fetch('http://localhost:5051/members/unfollow', {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                credentials: 'include',
+                body: JSON.stringify({ username: username }),
+            });
+
+            const res = await response.json();
+            if (response.status !== 200) {
+                if (response.status === 401) {
+                    return (window.location.href = '/');
+                }
+                console.log(res);
+                return;
+            }
+            console.log(res)
+            setIsFollowing(!isFollowing)
+            
+            return;
+        }
+
+        else {
+        const response = await fetch('http://localhost:5051/members/follow', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -69,7 +93,9 @@ const MemberCardForMembersPage = ({username, usersprofilepic, _id }) => {
         }
         console.log(res)
         setIsFollowing(!isFollowing)
+        
     }
+}
 
    
   return (
