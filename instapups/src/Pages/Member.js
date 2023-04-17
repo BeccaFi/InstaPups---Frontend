@@ -28,9 +28,9 @@ const Member = () => {
             }
             const valuesArray = Object.values(res)
             const postArray = valuesArray[1]
-            setPosts(postArray)
+            setPosts(postArray);
             const memberArray = valuesArray[0]
-            setMember(memberArray)
+            setMember(memberArray);
 
             
             setLoaded(true)
@@ -52,7 +52,7 @@ const Member = () => {
       ))) : ( "Loading...")}
       </div>
       <div className='memberPage-filler'>
-        <img src= {member.profilePicture} alt='profilePicture' />
+        <img src= {member.profilePic} alt='profilePicture' />
         <h1>{member.username}</h1>
         </div>
     </div>
