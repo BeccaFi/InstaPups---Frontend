@@ -77,7 +77,7 @@ const Post = ({ username, comments, likes, _id, content}) => {
          : null}
       <div>
         
-        {content.photos ? <img src={content.photos.map(photo => photo)} alt={username} /> : null}
+        {content.photos.length > 0 ? <img src={content.photos.map(photo => photo)} alt={username} /> : null}
         <p>{content.text}</p>
         
       </div>
