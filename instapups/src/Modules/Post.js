@@ -71,7 +71,7 @@ const Post = ({ username, comments, likes, _id, content}) => {
     <div>
         {loaded ?
             <div key={member._id}>
-                <img src={member.profilePic} alt={username} />
+                <img className="MembersProfilePic" src={member.profilePic} alt={username} />
         <Link to={`/members/${member._id}`}>{username}</Link>
             </div>
          : null}
