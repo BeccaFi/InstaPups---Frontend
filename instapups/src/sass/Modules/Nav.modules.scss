@@ -1,0 +1,13 @@
+@import "../abstracts/colors";
+@import "../abstracts/mixins";
+
+.navbar {
+  margin: 15px;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  background-color: $nav-background;
+
+  @include nav-button;
+}
