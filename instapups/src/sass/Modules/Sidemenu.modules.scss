@@ -1,6 +1,19 @@
+@import "../abstracts/colors";
+@import "../abstracts/mixins";
+
 .sideMenuWrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+  width: 150px;
+  margin-left: 15px;
+  border-radius: 5px;
+  background-color: $nav-background;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  @include nav-button;
+
+  button {
+    width: 150px;
+  }
 }

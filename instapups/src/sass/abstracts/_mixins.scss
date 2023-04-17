@@ -1,0 +1,18 @@
+@import "../abstracts/colors";
+
+@mixin nav-button {
+  button {
+    font-weight: bold;
+    font-size: 18px;
+    color: white;
+    background-color: $transparent;
+    padding: 15px;
+    border-radius: 5px;
+    border: none;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $nav-background-hover;
+    }
+  }
+} ;

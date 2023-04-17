@@ -1,58 +1,49 @@
-import CreatePosts from "../Modules/CreatePosts"
-import Sidemenu from "../Modules/Sidemenu"
-import '../sass/Pages/Feed.pages.scss'
-import { useState, useEffect } from "react"
-import Post from "../Modules/Post"
+import CreatePosts from "../Modules/CreatePosts";
+import Sidemenu from "../Modules/Sidemenu";
+import "../sass/Pages/Feed.pages.scss";
+import { useState, useEffect } from "react";
+import Post from "../Modules/Post";
 
 const Feed = () => {
-  const [posts, setPosts] = useState([])
-  const [fetched, setFetched] = useState(false)
+  const [posts, setPosts] = useState([]);
+  const [fetched, setFetched] = useState(false);
 
   useEffect(() => {
     const getPosts = async () => {
-      const response = await fetch('http://localhost:5051/feed'
-      , {
-        method: 'GET',
+      const response = await fetch("http://localhost:5051/feed", {
+        method: "GET",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        credentials: 'include'
-      })
+        credentials: "include",
+      });
 
-      const res = await response.json()
+      const res = await response.json();
       if (response.status !== 200) {
-        console.log(res)
-        return
+        console.log(res);
+        return;
       }
 
-      if (res === 'You are not following anyone') {
-      return
-    }
-      else {
-      setPosts(res)   
-      setFetched(true)
-      
-    }
-  }
-    getPosts()
-    
-  }, [])
+      if (res === "You are not following anyone") {
+        return;
+      } else {
+        setPosts(res);
+        setFetched(true);
+      }
+    };
+    getPosts();
+  }, []);
 
   return (
-    <div className= 'profileWrapper'>
+    <div className="profileWrapper">
       <Sidemenu />
-      <div>
-    <CreatePosts />
-    {fetched ? posts.map((post) => (
-  <Post key={post._id} {...post} />
-)) : <p>You are not following anyone...yet</p>}
-    
+      <div className="bark-wrapper">
+        <CreatePosts />
+        {fetched ? posts.map((post) => <Post key={post._id} {...post} />) : <p>You are not following anyone...yet</p>}
+      </div>
+      <div className="Profile-filler"></div>
     </div>
-    <div className='Profile-filler'>
+  );
+};
 
-    </div>
-    </div>
-  )
-}
-
-export default Feed
+export default Feed;

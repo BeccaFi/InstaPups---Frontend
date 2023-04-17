@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../sass/Pages/Register.modules.scss";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -43,7 +44,7 @@ const Register = () => {
   }
 
   return (
-    <div>
+    <div className="register-wrapper">
       <input
         type="text"
         placeholder="Username"

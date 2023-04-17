@@ -1,7 +1,53 @@
- .profileWrapper 
-{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+@import "../abstracts/colors";
+@import "../abstracts/mixins";
+
+.profileWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  .bark-wrapper {
+    border-radius: 5px;
+    padding: 15px;
+    color: #fff;
+    background-color: $nav-background-hover;
+
+    .Your-bark-input,
+    .Your-bark-popup-input {
+      padding: 5px;
+    }
+
+    .imageIcon {
+      width: 40px;
+      height: 40px;
+      padding: 3px;
+      border: solid 3px $transparent;
+      background-color: $outline-blue;
+
+      &:hover {
+        cursor: pointer;
+        color: #fff;
+        border: solid 3px $outline-green;
+      }
+    }
+
+    .Your-bark-button,
+    .Your-bark-popup-button {
+      padding: 5px;
+      margin: 5px;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      border: solid 3px $transparent;
+      font-weight: bold;
+
+      &:hover {
+        cursor: pointer;
+        background-color: $nav-background-hover;
+        border: solid 3px $outline-blue;
+        color: white;
+      }
+    }
+  }
 }
