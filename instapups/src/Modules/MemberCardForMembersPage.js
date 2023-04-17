@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom'
 // Need to update the parameters to match the data from the database
 // Need to update the onClick function to follow the user
 // Need to update the onClick function to unfollow the user
-const MemberCardForMembersPage = ({username, ProfilePic, _id }) => {
+const MemberCardForMembersPage = ({username, profilePic, _id }) => {
     const { id } = useParams();    
     const [isFollowing, setIsFollowing] = useState(false)
     const [follows, setFollows] = useState(0);
@@ -82,7 +82,7 @@ const MemberCardForMembersPage = ({username, ProfilePic, _id }) => {
    
   return (
     <div>
-        <img src={ProfilePic} alt={username}/> 
+        <img src={profilePic} alt={username}/> 
         <button onClick={() => followOrNotFollow()}>{isFollowing ? "-" : "+"}</button>
         <Link to={`/members/${_id}`}>{username}</Link>
     </div>
