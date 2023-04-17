@@ -10,7 +10,7 @@ import { useParams } from 'react-router-dom'
 const MemberCardForMembersPage = ({username, usersprofilepic, _id }) => {
     const { id } = useParams();    
     const [isFollowing, setIsFollowing] = useState(false)
-    const [follows, setFollows] = useState([]);
+    const [follows, setFollows] = useState(0);
 
 
     useEffect(() => {
@@ -46,36 +46,12 @@ const MemberCardForMembersPage = ({username, usersprofilepic, _id }) => {
             }
 
         getFollows();
-    }, []);
+    }, [follows]);
 
     const followOrNotFollow = async () => {
-        if (isFollowing) {
-            const response = await fetch('http://localhost:5051/members/unfollow', {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                credentials: 'include',
-                body: JSON.stringify({ username: username }),
-            });
 
-            const res = await response.json();
-            if (response.status !== 200) {
-                if (response.status === 401) {
-                    return (window.location.href = '/');
-                }
-                console.log(res);
-                return;
-            }
-            console.log(res)
-            setIsFollowing(!isFollowing)
-            
-            return;
-        }
-
-        else {
         const response = await fetch('http://localhost:5051/members/follow', {
-            method: 'POST',
+            method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -92,10 +68,16 @@ const MemberCardForMembersPage = ({username, usersprofilepic, _id }) => {
             return;
         }
         console.log(res)
-        setIsFollowing(!isFollowing)
+        if (res === "followed") {
+            setIsFollowing(true)
+            setFollows(+1)
+        } else {
+            setIsFollowing(false)
+            setFollows(+1)
+        }
         
     }
-}
+
 
    
   return (
