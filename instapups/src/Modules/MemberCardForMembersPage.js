@@ -2,11 +2,8 @@ import React from 'react'
 import {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
+import '../sass/Modules/MemberCardForMembersPage.modules.scss'
 
-//First draft of MemberCardForMembersPage
-// Need to update the parameters to match the data from the database
-// Need to update the onClick function to follow the user
-// Need to update the onClick function to unfollow the user
 const MemberCardForMembersPage = ({username, profilePic, _id }) => {
     const { id } = useParams();    
     const [isFollowing, setIsFollowing] = useState(false)
@@ -82,7 +79,7 @@ const MemberCardForMembersPage = ({username, profilePic, _id }) => {
    
   return (
     <div>
-        <img src={profilePic} alt={username}/> 
+        <img className='memberCardProfilePic' src={profilePic} alt={username}/> 
         <button onClick={() => followOrNotFollow()}>{isFollowing ? "-" : "+"}</button>
         <Link to={`/members/${_id}`}>{username}</Link>
     </div>
