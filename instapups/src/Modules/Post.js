@@ -8,6 +8,8 @@ const Post = ({ username, comments, likes, _id, content}) => {
   const [bark, setBark] = useState("");
     const [member, setMember] = useState([]);
     const [loaded, setLoaded] = useState(false);
+    const [response, setResponse] = useState("");
+    const [comments2, setComments2] = useState(comments);
 
   useEffect (() => {
     const getMember = async () => {
@@ -21,14 +23,17 @@ const Post = ({ username, comments, likes, _id, content}) => {
     
         const res = await response.json();
         if (response.status !== 200) {
-            console.log(res);
+            if (response.status === 401) {
+                window.location.href = "/";
+            }
+            console.log(res)
             return;
         }
         setMember(res);
         setLoaded(true);
     }
     getMember();
-    }, [comments])
+    }, [comments2])
 
   const postYourBark = async (e) => {
     e.preventDefault();
@@ -46,6 +51,21 @@ const Post = ({ username, comments, likes, _id, content}) => {
       credentials: "include",
     });
     const res = await response.json();
+    if (response.status !== 200) {
+      if (response.status === 401) {
+        window.location.href = "/";
+      }
+      console.log(res)
+      return;
+    }
+    setComments2([...comments, res.comment]);
+    setResponse("Bark posted!")
+    setTimeout(() => {
+        setResponse("")
+    }, 3000)
+    setBark("");
+    
+
   };
 
   const likePost = async (_id) => {
@@ -89,7 +109,7 @@ const Post = ({ username, comments, likes, _id, content}) => {
       </div>
       {showComments && (
         <div>
-          {comments.map((comment, index) => (
+          {comments2.map((comment, index) => (
             <div key={index}>
               <p>
                 {comment.username}: {comment.comment}
@@ -100,6 +120,7 @@ const Post = ({ username, comments, likes, _id, content}) => {
             <input type="text" placeholder="Bark here..." onChange={(e) => setBark(e.target.value)} />
             <button onClick={(e) => postYourBark(e)}>Bark</button>
           </div>
+            <p>{response}</p>
         </div>
       )}
     </div>

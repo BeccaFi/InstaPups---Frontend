@@ -20,6 +20,10 @@ const Feed = () => {
 
       const res = await response.json();
       if (response.status !== 200) {
+
+        if (response.status === 401) {
+          return (window.location.href = "/");
+        }
         console.log(res);
         return;
       }

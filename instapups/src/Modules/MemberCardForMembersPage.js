@@ -1,14 +1,9 @@
 import React from 'react'
 import {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
-import { useParams } from 'react-router-dom'
+import '../sass/Modules/MemberCardForMembersPage.modules.scss'
 
-//First draft of MemberCardForMembersPage
-// Need to update the parameters to match the data from the database
-// Need to update the onClick function to follow the user
-// Need to update the onClick function to unfollow the user
-const MemberCardForMembersPage = ({username, profilePic, _id }) => {
-    const { id } = useParams();    
+const MemberCardForMembersPage = ({username, profilePic, _id }) => { 
     const [isFollowing, setIsFollowing] = useState(false)
     const [follows, setFollows] = useState(0);
 
@@ -31,7 +26,7 @@ const MemberCardForMembersPage = ({username, profilePic, _id }) => {
                 if (response.status === 401) {
                     return (window.location.href = '/');
                 }
-
+                // Need an answer to this error here
                 return;
             }
            const follows = res.find((follow) => follow === username)
@@ -64,10 +59,9 @@ const MemberCardForMembersPage = ({username, profilePic, _id }) => {
             if (response.status === 401) {
                 return (window.location.href = '/');
             }
-            console.log(res);
+            console.log(res)
             return;
         }
-        console.log(res)
         if (res === "followed") {
             setIsFollowing(true)
             setFollows(+1)
@@ -82,7 +76,7 @@ const MemberCardForMembersPage = ({username, profilePic, _id }) => {
    
   return (
     <div>
-        <img src={profilePic} alt={username}/> 
+        <img className='memberCardProfilePic' src={profilePic} alt={username}/> 
         <button onClick={() => followOrNotFollow()}>{isFollowing ? "-" : "+"}</button>
         <Link to={`/members/${_id}`}>{username}</Link>
     </div>

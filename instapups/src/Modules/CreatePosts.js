@@ -6,6 +6,7 @@ const CreatePosts = () => {
   const [bark, setBark] = useState("");
   const [popup, setPopup] = useState(false);
   const [image, setImage] = useState([]);
+  const [response, setResponse] = useState("");
 
   const postingBarks = async (e) => {
     e.preventDefault();
@@ -13,7 +14,6 @@ const CreatePosts = () => {
     const photos = image;
     var date = new Date();
     var datePosted = date.toISOString().slice(0, 16).replace("T", " ");
-    console.log(datePosted);
     const response = await fetch("http://localhost:5051/posts/create", {
       method: "POST",
       headers: {
@@ -26,9 +26,20 @@ const CreatePosts = () => {
       }),
       credentials: "include",
     });
-    const res = await response.json();
-    console.log(res);
-    // Här behövs det göras saker
+    if (response.status !== 200) {
+
+        if (response.status === 401) {
+            window.location.href = "/";
+        }
+        setResponse("Something went wrong, please try again later");
+        setTimeout(() => {
+            setResponse("");
+        }, 3000);
+    }
+    setResponse("Your bark has been posted!");
+    setTimeout(() => {
+        setResponse("");
+    }, 3000);
   };
 
   return (
@@ -41,9 +52,10 @@ const CreatePosts = () => {
       />
       <div className="Your-bark-icon-Wrapper">
         <img className="imageIcon" src={addimage} alt="icon of an image" onClick={(e) => setPopup(true)}></img>
+        {response}
         <button className="Your-bark-button" onClick={(e) => postingBarks(e)}>
           Bark
-        </button>
+        </button> 
       </div>
 
       {popup && (
