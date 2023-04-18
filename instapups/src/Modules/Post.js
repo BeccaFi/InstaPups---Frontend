@@ -59,6 +59,9 @@ const Post = ({ username, comments, likes, _id, content}) => {
     }
 
     setResponse("Bark posted!")
+    setTimeout(() => {
+        setResponse("")
+    }, 3000)
     setBark("");
 
   };
