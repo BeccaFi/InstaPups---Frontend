@@ -29,7 +29,7 @@ const CreatePosts = () => {
     if (response.status !== 200) {
 
         if (response.status === 401) {
-            window.location.href = "/login";
+            window.location.href = "/";
         }
         setResponse("Something went wrong, please try again later");
     }
