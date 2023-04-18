@@ -15,4 +15,51 @@
       background-color: $nav-background-hover;
     }
   }
-} ;
+}
+
+@mixin wrapper {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(45deg, rgb(29, 184, 163), #f330d6);
+    position: fixed;
+    top: 35%;
+    left: 50%;
+    padding-top: 1rem;
+    transform: translate(-50%, -50%);
+    border-radius: 1rem;
+    border: solid rgba(0, 0, 0, 0.805) 2px;
+
+    input {
+      font-weight: bold;
+      font-size: 15px;
+      height: 3rem;
+      padding: 5px;
+      width: 15rem;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: rgba(0, 0, 0, 0.692);
+      color: white;
+      text-transform: uppercase;
+      font-weight: bolder;
+      font-size: 15px;
+      height: auto;
+      width: 15rem;
+      padding: 15px;
+      border-radius: 8px;
+      transition: all 0.3s;
+
+      &:hover {
+        cursor: pointer;
+        background: linear-gradient(45deg, lime, #094909);
+        text-shadow: 0px 0px 3px black;
+      }
+    }
+  }
+}
