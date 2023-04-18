@@ -1,11 +1,9 @@
 import React from 'react'
 import {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
-import { useParams } from 'react-router-dom'
 import '../sass/Modules/MemberCardForMembersPage.modules.scss'
 
-const MemberCardForMembersPage = ({username, profilePic, _id }) => {
-    const { id } = useParams();    
+const MemberCardForMembersPage = ({username, profilePic, _id }) => { 
     const [isFollowing, setIsFollowing] = useState(false)
     const [follows, setFollows] = useState(0);
 
