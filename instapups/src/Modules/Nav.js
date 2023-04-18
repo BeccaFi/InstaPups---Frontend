@@ -6,7 +6,6 @@ import Logout from "./Logout";
 const Nav = () => {
   return (
     <div className="navbar">
-      <h1>Nav</h1>
       <Link to="/home">
         <button>Home</button>
       </Link>

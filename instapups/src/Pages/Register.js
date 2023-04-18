@@ -44,7 +44,7 @@ const Register = () => {
   }
 
   return (
-    <div className="register-wrapper">
+    <div className="register-wrapper wrapper">
       <input
         type="text"
         placeholder="Username"
