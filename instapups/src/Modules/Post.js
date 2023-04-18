@@ -54,7 +54,7 @@ const Post = ({ username, comments, likes, _id, content}) => {
       if (response.status === 401) {
         window.location.href = "/";
       }
-      // Need an answer to this error here
+      console.log(res)
       return;
     }
 
