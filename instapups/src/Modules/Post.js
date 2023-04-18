@@ -21,7 +21,10 @@ const Post = ({ username, comments, likes, _id, content}) => {
     
         const res = await response.json();
         if (response.status !== 200) {
-            console.log(res);
+            if (response.status === 401) {
+                window.location.href = "/";
+            }
+            // Need an answer to this error here
             return;
         }
         setMember(res);
