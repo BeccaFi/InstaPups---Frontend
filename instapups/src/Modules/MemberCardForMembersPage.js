@@ -64,7 +64,6 @@ const MemberCardForMembersPage = ({username, profilePic, _id }) => {
             console.log(res);
             return;
         }
-        console.log(res)
         if (res === "followed") {
             setIsFollowing(true)
             setFollows(+1)
