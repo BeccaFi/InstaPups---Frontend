@@ -26,7 +26,6 @@ const CreatePosts = () => {
       }),
       credentials: "include",
     });
-    const res = await response.json();
     if (response.status !== 200) {
 
         if (response.status === 401) {
