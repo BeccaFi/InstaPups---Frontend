@@ -9,6 +9,7 @@ const Post = ({ username, comments, likes, _id, content}) => {
     const [member, setMember] = useState([]);
     const [loaded, setLoaded] = useState(false);
     const [response, setResponse] = useState("");
+    const [comments2, setComments2] = useState(comments);
 
   useEffect (() => {
     const getMember = async () => {
@@ -32,7 +33,7 @@ const Post = ({ username, comments, likes, _id, content}) => {
         setLoaded(true);
     }
     getMember();
-    }, [comments])
+    }, [comments2])
 
   const postYourBark = async (e) => {
     e.preventDefault();
@@ -57,7 +58,8 @@ const Post = ({ username, comments, likes, _id, content}) => {
       console.log(res)
       return;
     }
-
+    setComments2([...comments, res.comment]);
+    console.log(res.comment)
     setResponse("Bark posted!")
     setTimeout(() => {
         setResponse("")
@@ -107,7 +109,7 @@ const Post = ({ username, comments, likes, _id, content}) => {
       </div>
       {showComments && (
         <div>
-          {comments.map((comment, index) => (
+          {comments2.map((comment, index) => (
             <div key={index}>
               <p>
                 {comment.username}: {comment.comment}
