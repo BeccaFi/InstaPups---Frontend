@@ -59,12 +59,12 @@ const Post = ({ username, comments, likes, _id, content}) => {
       return;
     }
     setComments2([...comments, res.comment]);
-    console.log(res.comment)
     setResponse("Bark posted!")
     setTimeout(() => {
         setResponse("")
     }, 3000)
     setBark("");
+    
 
   };
 
