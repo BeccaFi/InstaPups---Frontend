@@ -8,6 +8,7 @@ const Post = ({ username, comments, likes, _id, content}) => {
   const [bark, setBark] = useState("");
     const [member, setMember] = useState([]);
     const [loaded, setLoaded] = useState(false);
+    const [response, setResponse] = useState("");
 
   useEffect (() => {
     const getMember = async () => {
@@ -49,6 +50,17 @@ const Post = ({ username, comments, likes, _id, content}) => {
       credentials: "include",
     });
     const res = await response.json();
+    if (response.status !== 200) {
+      if (response.status === 401) {
+        window.location.href = "/";
+      }
+      // Need an answer to this error here
+      return;
+    }
+
+    setResponse("Bark posted!")
+    setBark("");
+
   };
 
   const likePost = async (_id) => {
@@ -103,6 +115,7 @@ const Post = ({ username, comments, likes, _id, content}) => {
             <input type="text" placeholder="Bark here..." onChange={(e) => setBark(e.target.value)} />
             <button onClick={(e) => postYourBark(e)}>Bark</button>
           </div>
+            <p>{response}</p>
         </div>
       )}
     </div>
