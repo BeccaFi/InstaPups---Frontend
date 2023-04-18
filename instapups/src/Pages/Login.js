@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../sass/Pages/Login.modules.scss";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -14,7 +15,12 @@ const Login = () => {
 
   async function goToProfile() {
     try {
-      if (username.length > 36 || username.length < 3 || password.length > 30 || password.length < 6) {
+      if (
+        username.length > 36 ||
+        username.length < 3 ||
+        password.length > 30 ||
+        password.length < 6
+      ) {
         alert(
           "Username must be between 3 and 36 characters long\nPassword must be between 6 and 30 characters long\nTry again"
         );
@@ -45,7 +51,7 @@ const Login = () => {
   }
 
   return (
-    <div>
+    <div className="login-wrapper wrapper">
       <input
         type="text"
         placeholder="Username"
