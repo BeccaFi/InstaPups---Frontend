@@ -32,8 +32,14 @@ const CreatePosts = () => {
             window.location.href = "/";
         }
         setResponse("Something went wrong, please try again later");
+        setTimeout(() => {
+            setResponse("");
+        }, 3000);
     }
     setResponse("Your bark has been posted!");
+    setTimeout(() => {
+        setResponse("");
+    }, 3000);
   };
 
   return (
