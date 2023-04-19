@@ -8,6 +8,17 @@
   display: flex;
   justify-content: center;
   background-color: $nav-background;
+  position:relative;
 
   @include nav-button;
+}
+
+.ProfilePicture {
+  position:absolute;
+  bottom: -150%;
+  right: 10px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 10px;
 }
