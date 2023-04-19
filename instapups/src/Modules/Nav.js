@@ -31,9 +31,8 @@ const Nav = () => {
       setUserinfo(res);
     };
     checkAuth();
-
   }, []);
-  
+
   return (
     <div className="navbar">
       <Link to="/home">
@@ -49,8 +48,10 @@ const Nav = () => {
         <button>Members</button>
       </Link>
       {isAuthenticated ? <Logout /> : <Login />}
-      {isAuthenticated ? <p>{userinfo.username}</p> : null}
-      {isAuthenticated ? <img className="ProfilePicture" src={userinfo.profilePic} alt={userinfo.username} /> : null}
+      <div className="loggedInUser-container">
+        {isAuthenticated ? <img className="ProfilePicture" src={userinfo.profilePic} alt={userinfo.username} /> : null}
+        {isAuthenticated ? <p className="loggedInUserName">{userinfo.username}</p> : null}
+      </div>
     </div>
   );
 };
