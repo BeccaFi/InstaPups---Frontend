@@ -1,14 +1,17 @@
 @import "../abstracts/colors";
 @import "../abstracts/mixins";
 
+
 .profileWrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  background-image: url("../../Media/Background/Background2.png");
 
   .bark-wrapper {
     border-radius: 5px;
+    width: 900px;
     padding: 15px;
     color: #fff;
     background-color: $nav-background-hover;
