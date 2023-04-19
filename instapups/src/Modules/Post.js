@@ -10,6 +10,7 @@ const Post = ({ username, comments, likes, _id, content}) => {
     const [loaded, setLoaded] = useState(false);
     const [response, setResponse] = useState("");
     const [comments2, setComments2] = useState(comments);
+  const [likes2, setLikes2] = useState(likes);
 
   useEffect (() => {
     const getMember = async () => {
@@ -33,7 +34,7 @@ const Post = ({ username, comments, likes, _id, content}) => {
         setLoaded(true);
     }
     getMember();
-    }, [comments2])
+    }, [comments2, likes2])
 
   const postYourBark = async (e) => {
     e.preventDefault();
@@ -67,20 +68,27 @@ const Post = ({ username, comments, likes, _id, content}) => {
     
 
   };
-
   const likePost = async (_id) => {
     const response = await fetch(`http://localhost:5051/posts/${_id}/like`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
+      body: JSON.stringify({
+        likes: likes2,
+      }),
       credentials: "include",
     });
     const res = await response.json();
-    console.log(res);
-
-    window.location.reload();
-    // Ingen snygg lösning men....
+    if (response.status !== 200) {
+      if (response.status === 401) {
+        window.location.href = "/";
+      }
+    }
+    console.log(res)
+      setLikes2(res.likes);
+      return;
+    
   };
 
   const toggleBarkButton = () => {
@@ -103,7 +111,7 @@ const Post = ({ username, comments, likes, _id, content}) => {
       </div>
       <div>
         <div>
-          <img className="likeButton" src={bone} alt="likes" onClick={(e) => likePost(_id)} /> {likes.length}
+          <img className="likeButton" src={bone} alt="likes" onClick={(e) => likePost(_id)} /> {likes2.length}
         </div>
         <button onClick={() => toggleBarkButton()}>Barks ({comments.length})</button>
       </div>
