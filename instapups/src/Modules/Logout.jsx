@@ -12,7 +12,7 @@ const Logout = () => {
       if (response.status !== 200) {
         console.log(response.statusText);
       }
-      window.location = "http://localhost:3000/";
+      window.location.href = "/";
     } catch (error) {
       console.log(error);
     }
