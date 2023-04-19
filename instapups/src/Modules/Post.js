@@ -13,7 +13,7 @@ const Post = ({ username, comments, likes, _id, content}) => {
 
   useEffect (() => {
     const getMember = async () => {
-        const response = await fetch(`http://localhost:5051/members/memberinfo?username=${username}`, {
+        const response = await fetch(`http://localhost:5051/members/userinfo?username=${username}`, {
             method: "GET",
             headers: {
             "Content-Type": "application/json",
