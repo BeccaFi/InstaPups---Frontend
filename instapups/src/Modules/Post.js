@@ -39,7 +39,7 @@ const Post = ({ username, comments, likes, _id, content}) => {
     e.preventDefault();
     const id = _id;
     const comment = bark;
-    const response = await fetch(`http://localhost:5051/posts/comment/${_id}`, {
+    const response = await fetch(`http://localhost:5051/posts/${_id}/comment`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -69,7 +69,7 @@ const Post = ({ username, comments, likes, _id, content}) => {
   };
 
   const likePost = async (_id) => {
-    const response = await fetch(`http://localhost:5051/posts/like/${_id}`, {
+    const response = await fetch(`http://localhost:5051/posts/${_id}/like`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
