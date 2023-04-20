@@ -21,6 +21,11 @@
         position: relative;
         top: 0;
         left: 0;
+
+        &:hover {
+            cursor: pointer;
+            color:rgb(230, 211, 119);
+        }
     }
     .content-Text {
         text-align:center
@@ -59,9 +64,13 @@
                 border: none;
                 color:white;
                 font-size: 15px;
+                width: 75px;
+                height: 30px;
+                border-radius: 5px;
 
                 &:hover {
                     cursor: pointer;
+                    background-color: #190743;
                 }
             }
 
