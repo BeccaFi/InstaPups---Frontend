@@ -2,35 +2,47 @@
 @import "../abstracts/mixins";
 
 .navbar {
-  margin: 15px;
-  border-radius: 5px;
+  margin: 0;
   padding: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   background-color: $nav-background;
-  position: relative;
+  position: fixed;
+  width: 100%;
 
   @include nav-button;
+
+  .Logo {
+    width: 100px;
+    height: 75px;
+    margin: 10px;
+    padding: 10px;
+    position: relative;
+    top: 0;
+    left: 0;
+  }
 
   .loggedInUser-container {
     .loggedInUserName {
       position: absolute;
       color: white;
       text-shadow: 2px 2px 2px black;
-      right: 65px;
-      top: 175px;
+      right: 200px;
+      top: 30px;
       font-weight: bold;
     }
 
     .ProfilePicture {
       border: 3px solid black;
       position: absolute;
-      bottom: -150%;
+      bottom: -75%;
       right: 10px;
       width: 150px;
       height: 150px;
       border-radius: 50%;
       margin: 10px;
     }
-  }
+
+  
+}
 }

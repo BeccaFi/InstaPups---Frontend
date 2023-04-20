@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
   background-image: url("../../Media/Background/Background2.png");
 
   .bark-wrapper {
@@ -28,8 +28,7 @@
       justify-content: center;
       height: 150px;
       margin-bottom: 20px;
-      background-color: rgb(255, 255, 255);
-      border: 2px solid rgb(0, 0, 0);
+      
 
       .Your-bark-input,
       .Your-bark-popup-input {

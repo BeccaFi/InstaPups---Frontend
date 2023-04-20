@@ -96,27 +96,27 @@ const Post = ({ username, comments, likes, _id, content}) => {
   };
 
   return (
-    <div>
+    <div className="post-Wrapper">
         {loaded ?
             <div key={member._id}>
                 <img className="MembersProfilePic" src={member.profilePic} alt={username} />
-        <Link to={`/members/${member._id}`}>{username}</Link>
+        <Link className="link-to-Member" to={`/members/${member._id}`}>{username}</Link>
             </div>
          : null}
       <div>
         
-        {content.photos.length > 0 ? <img src={content.photos.map(photo => photo)} alt={username} /> : null}
-        <p>{content.text}</p>
+        {content.photos.length > 0 ? <img className="content-Photo" src={content.photos.map(photo => photo)} alt={username} /> : null}
+        <p className="content-Text">{content.text}</p>
         
       </div>
-      <div>
+      <div className="like-And-Barks-Wrapper">
         <div>
           <img className="likeButton" src={bone} alt="likes" onClick={(e) => likePost(_id)} /> {likes2.length}
         </div>
-        <button onClick={() => toggleBarkButton()}>Barks ({comments.length})</button>
+        <button className="barkButton" onClick={() => toggleBarkButton()}>Barks ({comments.length})</button>
       </div>
       {showComments && (
-        <div>
+        <div className= "bark-Field-Wrapper">
           {comments2.map((comment, index) => (
             <div key={index}>
               <p>

@@ -5,14 +5,15 @@
     font-weight: bold;
     font-size: 18px;
     color: white;
-    background-color: $transparent;
+    background-color: #2e2e44;
     padding: 15px;
     border-radius: 5px;
     border: none;
+    margin-right: 300px;
 
     &:hover {
       cursor: pointer;
-      background-color: $nav-background-hover;
+      background-color: antiquewhite;
     }
   }
 }

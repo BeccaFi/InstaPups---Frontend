@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "../sass/Modules/Nav.modules.scss";
 import Logout from "./Logout";
 import Login from "./Login";
+import Logo from "../Media/Background/Logo.png";
 
 const Nav = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -35,22 +36,17 @@ const Nav = () => {
 
   return (
     <div className="navbar">
-      <Link to="/home">
-        <button>Home</button>
-      </Link>
-      <Link to="/register">
+      <img className="Logo" src= {Logo} alt= "Logo"/>
+      <div>
+      {isAuthenticated ? null : <Link to="/register">
         <button>Register</button>
-      </Link>
-      <Link to="/profile">
-        <button>Profile</button>
-      </Link>
-      <Link to="/members">
-        <button>Members</button>
-      </Link>
+      </Link>}
+   
       {isAuthenticated ? <Logout /> : <Login />}
       <div className="loggedInUser-container">
         {isAuthenticated ? <img className="ProfilePicture" src={userinfo.profilePic} alt={userinfo.username} /> : null}
         {isAuthenticated ? <p className="loggedInUserName">{userinfo.username}</p> : null}
+      </div>
       </div>
     </div>
   );

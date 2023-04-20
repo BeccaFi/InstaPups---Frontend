@@ -1,7 +1,37 @@
+@import "../abstracts/colors";
 .membersWrapper 
-{
+{   padding-top: 130px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    background-image: url('../../Media/Background/Background2.png');
+    
+    
+
+    .Wrap-for-Membercards
+    {   display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 20px;
+        background-color: $nav-background;
+    }
+
+    .members-SelectField {
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 20px;
+        background-color: $nav-background;
+        border: none;
+        outline: none;
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+        height: 50px;
+        text-align: center;
+    }
 }

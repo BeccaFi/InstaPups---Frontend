@@ -73,13 +73,14 @@ const Members = () => {
   return (
     <div className='membersWrapper'>
       <Sidemenu />
+      <div></div>
       <div>
-        <select onChange={(e) => filterMembers(e)}>
+        <select className='members-SelectField' onChange={(e) => filterMembers(e)}>
           <option value='all'>All</option>
           <option value='following'>Following</option>
           <option value='nonfollowing'>Not following</option>
         </select>
-        <div>
+        <div className='Wrap-for-Membercards'>
           {fetched ? (
             filteredMembers.map((member) => (
               <MemberCardForMembersPage key={member._id} {...member} />

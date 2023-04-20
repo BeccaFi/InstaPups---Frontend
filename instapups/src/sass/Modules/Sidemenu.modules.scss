@@ -2,14 +2,14 @@
 @import "../abstracts/mixins";
 
 .sideMenuWrapper {
+  position:fixed;
+  margin-top: 115px;
   width: 150px;
-  margin-left: 15px;
-  border-radius: 5px;
+  height: 100vh;
   background-color: $nav-background;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  
 
   @include nav-button;
 

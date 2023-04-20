@@ -40,6 +40,7 @@ const Feed = () => {
 
   return (
     <div className="profileWrapper">
+      <div></div>
       <Sidemenu />
       <div className="bark-wrapper">
         <CreatePosts />
