@@ -100,13 +100,13 @@ const Post = ({ username, comments, likes, _id, content}) => {
         {loaded ?
             <div key={member._id}>
                 <img className="MembersProfilePic" src={member.profilePic} alt={username} />
-        <Link to={`/members/${member._id}`}>{username}</Link>
+        <Link className="link-to-Member" to={`/members/${member._id}`}>{username}</Link>
             </div>
          : null}
       <div>
         
         {content.photos.length > 0 ? <img src={content.photos.map(photo => photo)} alt={username} /> : null}
-        <p>{content.text}</p>
+        <p className="content-Text">{content.text}</p>
         
       </div>
       <div className="like-And-Barks-Wrapper">
