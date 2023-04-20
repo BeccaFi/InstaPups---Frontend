@@ -1,7 +1,27 @@
-.memberPageWrapper 
-{
+@import "../abstracts/_colors";
+
+.memberPageWrapper {
+    
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
+    
+
+    .memberPage{
+        width: 600px;
+        border-radius: 5px;
+        width: 900px;
+        padding: 130px 15px 15px 15px;
+        color: #fff;
+        background-color: $nav-background-hover;
+    }
+}
+
+.memberPage-filler
+{
+    img {
+        width: 100px;
+        height: 100px;
+    }
 }
