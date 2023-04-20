@@ -1,7 +1,18 @@
 .membersWrapper 
-{   padding-top: 125px;
+{   padding-top: 250px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
+    .Wrap-for-Membercards
+    {   display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
 }
