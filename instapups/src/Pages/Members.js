@@ -75,7 +75,7 @@ const Members = () => {
       <Sidemenu />
       <div></div>
       <div>
-        <select onChange={(e) => filterMembers(e)}>
+        <select className='members-SelectField' onChange={(e) => filterMembers(e)}>
           <option value='all'>All</option>
           <option value='following'>Following</option>
           <option value='nonfollowing'>Not following</option>
