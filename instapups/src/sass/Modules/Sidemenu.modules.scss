@@ -3,13 +3,9 @@
 
 .sideMenuWrapper {
   width: 150px;
-  margin-left: 15px;
-  border-radius: 5px;
   background-color: $nav-background;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
 
   @include nav-button;
 
