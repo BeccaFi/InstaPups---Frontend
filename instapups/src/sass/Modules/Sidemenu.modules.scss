@@ -2,10 +2,14 @@
 @import "../abstracts/mixins";
 
 .sideMenuWrapper {
+  position:fixed;
+  margin-top: 50px;
   width: 150px;
+  height: 100vh;
   background-color: $nav-background;
   display: flex;
   flex-direction: column;
+  
 
   @include nav-button;
 
