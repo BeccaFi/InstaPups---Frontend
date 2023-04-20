@@ -75,7 +75,7 @@ const MemberCardForMembersPage = ({username, profilePic, _id }) => {
 
    
   return (
-    <div>
+    <div className='memberCard-Wrapper'>
         <img className='memberCardProfilePic' src={profilePic} alt={username}/> 
         <button onClick={() => followOrNotFollow()}>{isFollowing ? "-" : "+"}</button>
         <Link to={`/members/${_id}`}>{username}</Link>
