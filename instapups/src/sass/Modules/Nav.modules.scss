@@ -35,10 +35,15 @@
     .loggedInUserName {
       position: absolute;
       color: white;
-      text-shadow: 2px 2px 2px black;
       right: 200px;
       top: 30px;
       font-weight: bold;
+      text-decoration: none;
+
+      &:hover {
+        cursor: pointer;
+        color:rgb(230, 211, 119);
+      }
     }
 
     .ProfilePicture {
