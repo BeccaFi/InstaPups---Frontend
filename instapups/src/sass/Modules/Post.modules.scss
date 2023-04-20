@@ -1,11 +1,48 @@
-.likeButton {
-    width: 20px;
-    height: 20px;
-}
+.post-Wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
+    position: relative;
+    overflow: hidden;
 
+    .like-And-Barks-Wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    
+            .likeButton {
+            width: 20px;
+            height: 20px;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+            .barkButton {
+                background-color: transparent;
+                border: none;
+                color:white;
+                font-size: 15px;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            .bark-Field-Wrapper {
+               margin: 10px;
+            }
+            
+
+
+}
 .MembersProfilePic {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     margin: 10px;
+}
 }
