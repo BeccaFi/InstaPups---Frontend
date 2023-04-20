@@ -96,7 +96,7 @@ const Post = ({ username, comments, likes, _id, content}) => {
   };
 
   return (
-    <div>
+    <div className="post-Wrapper">
         {loaded ?
             <div key={member._id}>
                 <img className="MembersProfilePic" src={member.profilePic} alt={username} />
@@ -109,14 +109,14 @@ const Post = ({ username, comments, likes, _id, content}) => {
         <p>{content.text}</p>
         
       </div>
-      <div>
+      <div className="like-And-Barks-Wrapper">
         <div>
           <img className="likeButton" src={bone} alt="likes" onClick={(e) => likePost(_id)} /> {likes2.length}
         </div>
-        <button onClick={() => toggleBarkButton()}>Barks ({comments.length})</button>
+        <button className="barkButton" onClick={() => toggleBarkButton()}>Barks ({comments.length})</button>
       </div>
       {showComments && (
-        <div>
+        <div className= "bark-Field-Wrapper">
           {comments2.map((comment, index) => (
             <div key={index}>
               <p>
