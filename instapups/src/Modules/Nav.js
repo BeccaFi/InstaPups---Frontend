@@ -49,7 +49,7 @@ const Nav = () => {
       {isAuthenticated ? <Logout /> : <Login />}
       <div className="loggedInUser-container">
         {isAuthenticated ? <img className="ProfilePicture" src={userinfo.profilePic} alt={userinfo.username} /> : null}
-        {isAuthenticated ? <p className="loggedInUserName">{userinfo.username}</p> : null}
+        {isAuthenticated ? <Link to={`/members/${userinfo._id}`} className="loggedInUserName">{userinfo.username}</Link> : null}
       </div>
       </div>
     </div>
