@@ -7,7 +7,8 @@
   display: flex;
   justify-content: center;
   background-color: $nav-background;
-  position: relative;
+  position: fixed;
+  width: 100%;
 
   @include nav-button;
 
