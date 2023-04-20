@@ -4,6 +4,7 @@ import "../sass/Modules/Nav.modules.scss";
 import Logout from "./Logout";
 import Login from "./Login";
 import Logo from "../Media/Background/Logo.png";
+import LogoText from "../Media/Background/LogoText.png";
 
 const Nav = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -38,14 +39,17 @@ const Nav = () => {
     <div className="navbar">
       <img className="Logo" src= {Logo} alt= "Logo"/>
       <div>
+      <img className='LogoText' src={LogoText} />
       {isAuthenticated ? null : <Link to="/register">
         <button>Register</button>
       </Link>}
+    
+    
    
       {isAuthenticated ? <Logout /> : <Login />}
       <div className="loggedInUser-container">
         {isAuthenticated ? <img className="ProfilePicture" src={userinfo.profilePic} alt={userinfo.username} /> : null}
-        {isAuthenticated ? <p className="loggedInUserName">{userinfo.username}</p> : null}
+        {isAuthenticated ? <Link to={`/members/${userinfo._id}`} className="loggedInUserName">{userinfo.username}</Link> : null}
       </div>
       </div>
     </div>

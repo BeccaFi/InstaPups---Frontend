@@ -45,15 +45,19 @@ const Member = () => {
 
   return (
     <div className='memberPageWrapper'>
-      <Sidemenu />
+        <div></div>
+        <Sidemenu />
+      
       <div className='memberPage'>
       {loaded ? ( posts.map((post) => (
           <Post key={post._id} {...post} />
       ))) : ( "Loading...")}
       </div>
       <div className='memberPage-filler'>
+        <div className='memberPage-filler__profile'>
         <img src= {member.profilePic} alt='profilePicture' />
         <h1>{member.username}</h1>
+        </div>
         </div>
     </div>
   )
