@@ -73,6 +73,7 @@ const Members = () => {
   return (
     <div className='membersWrapper'>
       <Sidemenu />
+      <div></div>
       <div>
         <select onChange={(e) => filterMembers(e)}>
           <option value='all'>All</option>
