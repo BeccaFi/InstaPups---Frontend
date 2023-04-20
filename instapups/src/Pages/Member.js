@@ -45,7 +45,9 @@ const Member = () => {
 
   return (
     <div className='memberPageWrapper'>
-      <Sidemenu />
+        <div></div>
+        <Sidemenu />
+      
       <div className='memberPage'>
       {loaded ? ( posts.map((post) => (
           <Post key={post._id} {...post} />
