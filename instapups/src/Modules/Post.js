@@ -118,14 +118,14 @@ const Post = ({ username, comments, likes, _id, content}) => {
       {showComments && (
         <div className= "bark-Field-Wrapper">
           {comments2.map((comment, index) => (
-            <div key={index}>
+            <div className='bark-Field'key={index}>
               <p>
                 {comment.username}: {comment.comment}
               </p>
             </div>
           ))}
-          <div>
-            <input type="text" placeholder="Bark here..." onChange={(e) => setBark(e.target.value)} />
+          <div className="bark-Field-Input-Wrapper">
+            <input type="text" placeholder="Bark back..." onChange={(e) => setBark(e.target.value)} />
             <button onClick={(e) => postYourBark(e)}>Bark</button>
           </div>
             <p>{response}</p>
