@@ -35,18 +35,10 @@ const Nav = () => {
 
   return (
     <div className="navbar">
-      <Link to="/home">
-        <button>Home</button>
-      </Link>
       <Link to="/register">
         <button>Register</button>
       </Link>
-      <Link to="/profile">
-        <button>Profile</button>
-      </Link>
-      <Link to="/members">
-        <button>Members</button>
-      </Link>
+   
       {isAuthenticated ? <Logout /> : <Login />}
       <div className="loggedInUser-container">
         {isAuthenticated ? <img className="ProfilePicture" src={userinfo.profilePic} alt={userinfo.username} /> : null}
