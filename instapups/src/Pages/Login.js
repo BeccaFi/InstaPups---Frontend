@@ -13,19 +13,10 @@ const Login = () => {
     setPassword(event.target.value);
   };
 
-  async function goToProfile() {
+  async function goToProfile(e) {
+    e.preventDefault();
+
     try {
-      if (
-        username.length > 36 ||
-        username.length < 3 ||
-        password.length > 30 ||
-        password.length < 6
-      ) {
-        alert(
-          "Username must be between 3 and 36 characters long\nPassword must be between 6 and 30 characters long\nTry again"
-        );
-        return;
-      } else {
         const response = await fetch("http://localhost:5051/auth/login", {
           method: "POST",
           credentials: "include",
@@ -36,22 +27,18 @@ const Login = () => {
         });
         const data = await response.text();
 
-        if (response.status !== 200) {
-          alert(data);
-          return;
-        }
+        if (response.status === 200) return window.location = "/home";
 
-        if (response.status === 200) {
-          window.location = "/home";
-        }
-      }
+        return alert(data); //Create nicer popup
+   
     } catch (error) {
       console.log(error);
+      alert(error); //Create nicer popup, for example "There seems to be an error with the server. Please try again later"
     }
   }
 
   return (
-    <div className="login-wrapper wrapper">
+    <form className="login-wrapper wrapper" onSubmit={goToProfile}>
       <input
         type="text"
         placeholder="Username"
@@ -69,7 +56,7 @@ const Login = () => {
       <button className="login-button" onClick={goToProfile}>
         Login
       </button>
-    </div>
+    </form>
   );
 };
 
