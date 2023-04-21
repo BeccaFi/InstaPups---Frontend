@@ -42,7 +42,7 @@ const Nav = () => {
 
   return (
     <div className="navbar">
-      <img className="Logo" src= {Logo} alt= "Logo"/>
+      <Link to="/home"> <img className="Logo" src= {Logo} alt= "Logo"/> </Link>
       <div>
       <img className='LogoText' src={LogoText} />
       {!isAuthenticated && location.pathname === "/" && <Link to="/register">
