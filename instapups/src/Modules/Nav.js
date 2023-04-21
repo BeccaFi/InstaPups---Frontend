@@ -13,7 +13,9 @@ const Nav = () => {
   const location = useLocation();
 
   useEffect(() => {
+    
     const checkAuth = async () => {
+      if (location.pathname !== "/" && location.pathname !== "/register") {
       const response = await fetch("http://localhost:5051/auth/navauth", {
         method: "GET",
         headers: {
@@ -33,26 +35,25 @@ const Nav = () => {
       }
       setIsAuthenticated(true);
       setUserinfo(res);
-    };
+    }};
     checkAuth();
     
   }, []);
 
-  console.log(location.pathname)
 
   return (
     <div className="navbar">
       {isAuthenticated ? <Link to="/home"> <img className="Logo" src= {Logo} alt= "Logo"/> </Link> : <img className="Logo" src= {Logo} alt= "Logo"/>}
       <div>
       <img className='LogoText' src={LogoText} />
-      {!isAuthenticated && location.pathname === "/" && <Link to="/register">
+      {location.pathname === "/" && <Link to="/register">
         <button>Register</button>
       </Link>}
     
     
    
       {isAuthenticated && <Logout />}
-      {!isAuthenticated && location.pathname === "/register" && <Login />}
+      {location.pathname === "/register" && <Login />}
       <div className="loggedInUser-container">
         {isAuthenticated ? <img className="ProfilePicture" src={userinfo.profilePic} alt={userinfo.username} /> : null}
         {isAuthenticated ? <Link to={`/members/${userinfo._id}`} className="loggedInUserName">{userinfo.username}</Link> : null}
