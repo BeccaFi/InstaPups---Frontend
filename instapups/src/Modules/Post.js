@@ -125,7 +125,7 @@ const Post = ({ username, comments, likes, _id, content}) => {
             </div>
           ))}
           <div className="bark-Field-Input-Wrapper">
-            <input type="text" placeholder="Bark back..." onChange={(e) => setBark(e.target.value)} />
+            <input type="text" placeholder="Bark back..." onChange={(e) => setBark(e.target.value)} value={bark} />
             <button onClick={(e) => postYourBark(e)}>Bark</button>
           </div>
             <p>{response}</p>
