@@ -36,7 +36,7 @@ const Feed = () => {
       }
     };
     getPosts();
-  }, []);
+  }, [posts]);
 
   return (
     <div className="profileWrapper">
