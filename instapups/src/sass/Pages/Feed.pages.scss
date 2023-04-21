@@ -28,12 +28,32 @@
       height: 150px;
       margin-bottom: 20px;
       
+      .Your-bark-popup {
+        display: flex;
+        flex-direction: row;
+        align-items: space-between;
+        justify-content: center;
+        height: 150px;
+        margin-bottom: 20px;
+      }
 
-      .Your-bark-input,
-      .Your-bark-popup-input {
+      .Your-bark-input
+       {
         font-size: large;
         width: 100%;
         height: 130px;
+        padding: 5px;
+        margin: auto 0;
+        margin-left: 5px;
+        margin-right: 5px;
+        border: none;
+        outline: none;
+      }
+
+      .Your-bark-popup-input{
+        font-size: large;
+        width: 100%;
+        height: 40px;
         padding: 5px;
         margin: auto 0;
         margin-left: 5px;
