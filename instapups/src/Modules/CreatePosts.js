@@ -39,13 +39,15 @@ const CreatePosts = () => {
     setTimeout(() => {
       setResponse("");
     }, 3000);
+
+    setBark("");
   };
 
   return (
     <div className="Your-bark">
       <div className="Your-bark-icon-Wrapper">
         <img className="imageIcon" src={addimage} alt="icon of an image" onClick={(e) => setPopup(true)}></img>
-        <input className="Your-bark-input" onChange={(e) => setBark(e.target.value)} type="text" placeholder="Bark here..." />
+        <input className="Your-bark-input" onChange={(e) => setBark(e.target.value)} type="text" placeholder="Bark here..." value={bark}/>
         <p className="Your-bark-response">{response}</p>
         <button className="Your-bark-button" onClick={(e) => postingBarks(e)}>
           Bark

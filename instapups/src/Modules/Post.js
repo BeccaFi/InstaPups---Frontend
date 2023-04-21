@@ -113,7 +113,7 @@ const Post = ({ username, comments, likes, _id, content}) => {
         <div>
           <img className="likeButton" src={bone} alt="likes" onClick={(e) => likePost(_id)} /> {likes2.length}
         </div>
-        <button className="barkButton" onClick={() => toggleBarkButton()}>Barks ({comments.length})</button>
+        <button className="barkButton" onClick={() => toggleBarkButton()}>Barks ({comments2.length})</button>
       </div>
       {showComments && (
         <div className= "bark-Field-Wrapper">
@@ -125,7 +125,7 @@ const Post = ({ username, comments, likes, _id, content}) => {
             </div>
           ))}
           <div className="bark-Field-Input-Wrapper">
-            <input type="text" placeholder="Bark back..." onChange={(e) => setBark(e.target.value)} />
+            <input type="text" placeholder="Bark back..." onChange={(e) => setBark(e.target.value)} value={bark} />
             <button onClick={(e) => postYourBark(e)}>Bark</button>
           </div>
             <p>{response}</p>
