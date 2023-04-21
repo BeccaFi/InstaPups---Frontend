@@ -18,7 +18,8 @@ const Register = () => {
     setConfirmPassword(event.target.value);
   };
 
-  async function goToLogin() {
+  async function registerUser(e) {
+    e.preventDefault();
     try {
       const response = await fetch("http://127.0.0.1:5051/auth/register", {
         method: "POST",
@@ -30,21 +31,18 @@ const Register = () => {
 
       const data = await response.text();
 
-      if (response.status !== 201) {
-        console.log(data);
-        return;
-      }
+      if (response.status === 201) return window.location = "/";
 
-      if (response.status === 201) {
-        window.location = "/";
-      }
+      return alert(data); //Create nicer looking popup
+    
     } catch (error) {
+      alert(error); //Create nicer looking popup?
       console.log(error);
     }
   }
 
   return (
-    <div className="register-wrapper wrapper">
+    <form className="register-wrapper wrapper" onSubmit={registerUser}>
       <input
         type="text"
         placeholder="Username"
@@ -66,11 +64,11 @@ const Register = () => {
         onChange={onChangeConfirmPassword}
         value={confirmPassword}
       />
-      <button className="register-button" onClick={goToLogin}>
+      <button className="register-button" onClick={registerUser}>
         Register
       </button>
       <p className="register-error-message"></p>
-    </div>
+    </form>
   );
 };
 
