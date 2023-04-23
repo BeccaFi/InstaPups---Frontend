@@ -1,147 +1,135 @@
 @import "../abstracts/colors";
+@import "../abstracts/mixins";
 
 .post-Wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid #190743;
+
+  .link-to-Member {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
+    padding-left: 20px;
+    position: relative;
+    top: 0;
+    left: 0;
+
+    &:hover {
+      cursor: pointer;
+      color: #e6d377;
+    }
+  }
+  .content-Text {
+    text-align: center;
+  }
+
+  .content-Photo {
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
     margin: 10px;
-    padding: 30px;
+    border-radius: 10px;
     position: relative;
-    overflow: hidden;
-    border-top: 1px solid #190743;
+    top: 0;
+    left: 0;
+    aspect-ratio: 1920/1080;
+    scale: 0.9;
+    object-fit: cover;
+    filter: blur(4px);
+    transition: all 0.1s ease-in-out;
 
-    .link-to-Member {
-        text-decoration: none;
-        color: white;
-        font-size: 20px;
-        font-weight: bold;
-        margin: 10px;
-        padding-left: 20px;
-        position: relative;
-        top: 0;
-        left: 0;
-
-        &:hover {
-            cursor: pointer;
-            color:rgb(230, 211, 119);
-        }
+    &:hover {
+      border: 2px solid grey;
+      filter: blur(0px);
+      overflow: visible;
+      cursor: pointer;
+      scale: 1;
+      z-index: 9999;
     }
-    .content-Text {
-        text-align:center
-    }
+  }
 
-    .content-Photo {
-        width: 100%;
-        height: 100%;
-        margin: 10px;
-        padding: 10px;
-        border: 1px solid #190743;
-        border-radius: 10px;
+  .like-And-Barks-Wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .likeButton {
+      width: 20px;
+      height: 20px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .barkButton {
+      background-color: transparent;
+      border: none;
+      color: white;
+      font-size: 15px;
+      width: 100px;
+      height: 30px;
+      border-radius: 5px;
+
+      &:hover {
+        cursor: pointer;
         background-color: #190743;
-        position: relative;
-        top: 0;
-        left: 0;
+      }
     }
-
-
-
-    .like-And-Barks-Wrapper {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    
-            .likeButton {
-            width: 20px;
-            height: 20px;
-
-            &:hover {
-                cursor: pointer;
-            }
-        }
-            .barkButton {
-                background-color: transparent;
-                border: none;
-                color:white;
-                font-size: 15px;
-                width: 75px;
-                height: 30px;
-                border-radius: 5px;
-
-                &:hover {
-                    cursor: pointer;
-                    background-color: #190743;
-                }
-            }
-
-}
-.bark-Field-Wrapper {
-    
+  }
+  .bark-Field-Wrapper {
     border: 2px solid #190743;
     border-radius: 5px;
-    margin-top:  20px;
+    margin-top: 20px;
     padding: 10px;
+    background-color: rgb(68, 140, 171);
+    color: white;
 
     .bark-Field {
+      margin: 10px;
+      width: 100%;
+      border-bottom: 1px solid #190743;
+
+      p {
+        color: white;
         margin: 10px;
-        width: 100%;
-        border-bottom: 1px solid #190743;
-        
-     
-        p {
-            color: white;
-            margin: 10px;
-        }
+      }
     }
 
     .bark-Field-Input-Wrapper {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        
-    
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
 
-    input {
+      input {
         width: 100%;
         border: none;
         outline: none;
         background-color: transparent;
         color: white;
-        font-size: 20px;
-        font-weight: bold;
+        font-size: 1rem;
         padding: 10px;
-    }
-
-    button {
-
-        color: black;
-        background-color: rgb(230, 211, 119);
-        padding: 5px;
-        margin: 5px;
-        border-radius: 50%;
-        width: 45px;
-        height: 45px;
-        border: solid 3px $transparent;
-        font-weight: bold;
-
-        &:hover {
-          cursor: pointer;
-          background-color: $nav-background-hover;
-          border: solid 3px $outline-blue;
+        &::placeholder {
           color: white;
-    }
+        }
+      }
 
+      @include bark-button;
     }
-    }
- }
-.MembersProfilePic {
+  }
+  .MembersProfilePic {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     position: absolute;
     top: 5px;
     left: 0;
+  }
 }
-}
-
-
