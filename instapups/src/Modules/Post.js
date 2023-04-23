@@ -3,38 +3,38 @@ import { useState, useEffect } from "react";
 import "../sass/Modules/Post.modules.scss";
 import { Link } from "react-router-dom";
 
-const Post = ({ username, comments, likes, _id, content }) => {
+const Post = ({ username, comments, likes, _id, content}) => {
   const [showComments, setShowComments] = useState(false);
   const [bark, setBark] = useState("");
-  const [member, setMember] = useState([]);
-  const [loaded, setLoaded] = useState(false);
-  const [response, setResponse] = useState("");
-  const [comments2, setComments2] = useState(comments);
+    const [member, setMember] = useState([]);
+    const [loaded, setLoaded] = useState(false);
+    const [response, setResponse] = useState("");
+    const [comments2, setComments2] = useState(comments);
   const [likes2, setLikes2] = useState(likes);
 
-  useEffect(() => {
+  useEffect (() => {
     const getMember = async () => {
-      const response = await fetch(`http://localhost:5051/members/userinfo?username=${username}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      });
-
-      const res = await response.json();
-      if (response.status !== 200) {
-        if (response.status === 401) {
-          window.location.href = "/";
+        const response = await fetch(`http://localhost:5051/members/userinfo?username=${username}`, {
+            method: "GET",
+            headers: {
+            "Content-Type": "application/json",
+            },
+            credentials: "include",
+        });
+    
+        const res = await response.json();
+        if (response.status !== 200) {
+            if (response.status === 401) {
+                window.location.href = "/";
+            }
+            console.log(res)
+            return;
         }
-        console.log(res);
-        return;
-      }
-      setMember(res);
-      setLoaded(true);
-    };
+        setMember(res);
+        setLoaded(true);
+    }
     getMember();
-  }, [comments2, likes2]);
+    }, [comments2, likes2])
 
   const postYourBark = async (e) => {
     e.preventDefault();
@@ -47,7 +47,7 @@ const Post = ({ username, comments, likes, _id, content }) => {
       },
       body: JSON.stringify({
         comment,
-        id,
+        id
       }),
       credentials: "include",
     });
@@ -56,15 +56,17 @@ const Post = ({ username, comments, likes, _id, content }) => {
       if (response.status === 401) {
         window.location.href = "/";
       }
-      console.log(res);
+      console.log(res)
       return;
     }
     setComments2([...comments, res.comment]);
-    setResponse("Bark posted!");
+    setResponse("Bark posted!")
     setTimeout(() => {
-      setResponse("");
-    }, 3000);
+        setResponse("")
+    }, 3000)
     setBark("");
+    
+
   };
   const likePost = async (_id) => {
     const response = await fetch(`http://localhost:5051/posts/${_id}/like`, {
@@ -83,9 +85,10 @@ const Post = ({ username, comments, likes, _id, content }) => {
         window.location.href = "/";
       }
     }
-    console.log(res);
-    setLikes2(res.likes);
-    return;
+    console.log(res)
+      setLikes2(res.likes);
+      return;
+    
   };
 
   const toggleBarkButton = () => {
@@ -94,40 +97,38 @@ const Post = ({ username, comments, likes, _id, content }) => {
 
   return (
     <div className="post-Wrapper">
-      {loaded ? (
-        <div key={member._id}>
-          <img className="MembersProfilePic" src={member.profilePic} alt={username} />
-          <Link className="link-to-Member" to={`/members/${member._id}`}>
-            {username}
-          </Link>
-        </div>
-      ) : null}
+        {loaded ?
+            <div key={member._id}>
+                <img className="MembersProfilePic" src={member.profilePic} alt={username} />
+        <Link className="link-to-Member" to={`/members/${member._id}`}>{username}</Link>
+            </div>
+         : null}
       <div>
-        {content.photos.length > 0 ? <img className="content-Photo" src={content.photos.map((photo) => photo)} alt={username} /> : null}
+        
+        {content.photos.length > 0 ? <img className="content-Photo" src={content.photos.map(photo => photo)} alt={username} /> : null}
         <p className="content-Text">{content.text}</p>
+        
       </div>
       <div className="like-And-Barks-Wrapper">
         <div>
           <img className="likeButton" src={bone} alt="likes" onClick={(e) => likePost(_id)} /> {likes2.length}
         </div>
-        <button className="barkButton" onClick={() => toggleBarkButton()}>
-          Barks🐕 ({comments2.length})
-        </button>
+        <button className="barkButton" onClick={() => toggleBarkButton()}>Barks ({comments2.length})</button>
       </div>
       {showComments && (
-        <div className="bark-Field-Wrapper">
+        <div className= "bark-Field-Wrapper">
           {comments2.map((comment, index) => (
-            <div className="bark-Field" key={index}>
+            <div className='bark-Field'key={index}>
               <p>
                 {comment.username}: {comment.comment}
               </p>
             </div>
           ))}
           <div className="bark-Field-Input-Wrapper">
-            <input type="text" placeholder="Bark back..." className="bark-field-input" onChange={(e) => setBark(e.target.value)} value={bark} />
+            <input type="text" placeholder="Bark back..." onChange={(e) => setBark(e.target.value)} value={bark} />
             <button onClick={(e) => postYourBark(e)}>Bark</button>
           </div>
-          <p>{response}</p>
+            <p>{response}</p>
         </div>
       )}
     </div>
