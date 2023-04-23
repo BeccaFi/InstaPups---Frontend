@@ -2,18 +2,27 @@
 @import "../abstracts/mixins";
 
 .sideMenuWrapper {
-  position:fixed;
+  position: fixed;
   margin-top: 100px;
   width: 150px;
-  height: 100vh;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  top: -0.6rem;
   background-color: $nav-background;
   display: flex;
   flex-direction: column;
-  
 
   @include nav-button;
 
   button {
+    color: rgb(255, 255, 255);
     width: 150px;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    z-index: 6000;
+
+    &:hover {
+      color: black;
+    }
   }
 }
