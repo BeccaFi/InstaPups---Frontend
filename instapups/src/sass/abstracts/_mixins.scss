@@ -12,9 +12,28 @@
     margin-right: 300px;
 
     &:hover {
+      color: black;
       cursor: pointer;
-      background-color: antiquewhite;
+      background-color: rgb(255, 255, 255);
     }
+  }
+}
+
+@mixin bark-button {
+  button {
+    background-color: $nav-background-hover;
+    color: white;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-weight: bold;
+
+    &:hover {
+      color: black;
+      background-color: antiquewhite;
+      cursor: pointer;
   }
 }
 
