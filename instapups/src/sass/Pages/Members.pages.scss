@@ -1,44 +1,42 @@
 @import "../abstracts/colors";
-.membersWrapper 
-{   padding-top: 120px;
+.membersWrapper {
+  padding-top: 120px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  .Wrap-for-Membercards {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    
-    
+    align-items: start;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    background-color: $nav-background;
+    width: 600px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    min-height: 490px;
+    max-height: 490px;
+    overflow: scroll;
+  }
 
-    .Wrap-for-Membercards
-    {   display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: start;
-        flex-wrap: wrap;
-        width: 100%;
-        margin: 0 auto;
-        padding: 0 20px;
-        background-color: $nav-background;
-        width: 600px;
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
-        min-height: 490px;
-        max-height: 490px;
-        overflow: scroll;
-    }
-
-    .members-SelectField {
-        width: 100%;
-        margin: 0 auto;
-        padding: 0 20px;
-        background-color: $nav-background;
-        border: none;
-        outline: none;
-        font-size: 20px;
-        font-weight: bold;
-        color: white;
-        height: 50px;
-        text-align: center;
-        border-top-right-radius: 5px;
-        border-top-left-radius: 5px;
-    }
+  .members-SelectField {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    background-color: $nav-background;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    height: 50px;
+    text-align: center;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+  }
 }
