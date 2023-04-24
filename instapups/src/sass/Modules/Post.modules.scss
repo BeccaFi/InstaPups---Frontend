@@ -43,13 +43,10 @@
     aspect-ratio: 1920/1080;
     scale: 0.9;
     object-fit: cover;
-    filter: blur(4px);
     transition: all 0.1s ease-in-out;
+    border: 2px solid grey;
 
     &:hover {
-      border: 2px solid grey;
-      filter: blur(0px);
-      overflow: visible;
       cursor: pointer;
       scale: 1;
       z-index: 9999;
@@ -80,7 +77,9 @@
 
       &:hover {
         cursor: pointer;
-        background-color: #190743;
+        color: antiquewhite;
+        border-radius: 0;
+        text-decoration: underline 1px solid antiquewhite;
       }
     }
   }
@@ -89,16 +88,16 @@
     border-radius: 5px;
     margin-top: 20px;
     padding: 10px;
-    background-color: rgb(68, 140, 171);
-    color: white;
+    background-color: #fff7f5;
+    color: rgb(0, 0, 0);
 
     .bark-Field {
       margin: 10px;
-      width: 100%;
+      width: 97%;
       border-bottom: 1px solid #190743;
 
       p {
-        color: white;
+        color: rgb(0, 0, 0);
         margin: 10px;
       }
     }
@@ -113,11 +112,11 @@
         border: none;
         outline: none;
         background-color: transparent;
-        color: white;
+        color: rgb(0, 0, 0);
         font-size: 1rem;
         padding: 10px;
         &::placeholder {
-          color: white;
+          color: rgb(0, 0, 0);
         }
       }
 
