@@ -23,20 +23,17 @@
 @mixin bark-button {
   button {
     background-color: $nav-background-hover;
-    border: solid 3px $outline-blue;
     color: white;
-    filter: hue-rotate(45deg);
     padding: 5px;
     margin: 5px;
     border-radius: 50%;
     width: 45px;
     height: 45px;
     font-weight: bold;
-    box-shadow: 0px 0px 5px rgb(255, 255, 255);
 
     &:hover {
-      filter: hue-rotate(0deg);
-      box-shadow: 0px 0px 10px $bright;
+      color: black;
+      background-color: antiquewhite;
       cursor: pointer;
     }
   }
