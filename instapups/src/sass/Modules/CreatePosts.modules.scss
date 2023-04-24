@@ -1,7 +1,5 @@
-@import "../abstracts/mixins";
-
 .Your-bark {
-  margin-top: 115px;
+margin-top: 115px;
 
   @include bark-button;
   .Your-bark-popup-button {
@@ -43,4 +41,3 @@
     border: 2px solid black !important;
     color: rgb(0, 0, 0) !important;
   }
-}

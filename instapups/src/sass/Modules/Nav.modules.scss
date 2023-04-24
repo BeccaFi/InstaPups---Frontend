@@ -2,6 +2,7 @@
 @import "../abstracts/mixins";
 
 .navbar {
+  margin: 0;
   padding: 10px;
   display: flex;
   justify-content: end;
@@ -37,17 +38,16 @@
   }
 
   .LogoText {
-    scale: 1.1;
-    height: 80px;
     width: 200px;
     position: absolute;
-    top: 5px;
+    top: 10px;
     left: 45%;
   }
 
   .loggedInUser-container {
     .loggedInUserName {
       position: absolute;
+
       right: 150px;
       top: 30px;
       font-weight: bold;
@@ -67,11 +67,6 @@
       }
     }
 
-    .loggedInUserName {
-      padding: 3px;
-      font-weight: normal;
-    }
-
     .ProfilePicture {
       background-color: white;
       border: 3px solid black;
@@ -84,5 +79,7 @@
       margin: 10px;
       padding: 5px;
     }
-  }
+
+  
+}
 }
