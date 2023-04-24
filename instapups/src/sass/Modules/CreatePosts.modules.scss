@@ -6,14 +6,18 @@
   @include bark-button;
   .Your-bark-popup-button {
     color: white !important;
-    border: 3px solid $outline-blue !important;
-    background-color: $nav-background !important;
   }
 }
 
 .imageIcon {
   width: 20px;
   height: 20px;
+  border: none;
+
+  &:hover {
+    scale: 1.1;
+    border: none !important;
+  }
 }
 
 .Your-bark-icon-Wrapper {
@@ -21,29 +25,22 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(33, 127, 153);
-  border: solid 3px $outline-blue;
-  filter: hue-rotate(45deg);
+  background-color: #f0d5cc;
+  margin: 5px;
 
   .Your-bark-input {
-    color: white;
-    background-color: rgb(65, 184, 235);
+    color: rgb(0, 0, 0);
+    background-color: #fff7f5;
     @include bark-button;
     ::placeholder {
-      color: white;
+      color: rgb(0, 0, 0);
     }
   }
 
   .Your-bark-button {
-    filter: hue-rotate(0deg) !important;
-    border: solid 3px $bright !important;
-
-    background-color: $nav-background !important;
-    color: white !important;
-
-    &:hover {
-      border: solid 3px $outline-green !important;
-      color: rgb(31, 143, 102) !important;
-    }
+    color: rgb(255, 255, 255) !important;
+    background-color: transparent;
+    border: 2px solid black !important;
+    color: rgb(0, 0, 0) !important;
   }
 }
