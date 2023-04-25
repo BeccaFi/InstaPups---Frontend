@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import MemberCardForMembersPage from '../Modules/MemberCardForMembersPage';
 import Sidemenu from '../Modules/Sidemenu';
 import '../sass/Pages/Members.pages.scss';
+import Footer from '../Modules/Footer';
 
 const Members = () => {
   const [members, setMembers] = useState([]);
@@ -71,6 +72,7 @@ const Members = () => {
   };
 
   return (
+    <>
     <div className='membersWrapper'>
       <Sidemenu />
       <div></div>
@@ -92,6 +94,8 @@ const Members = () => {
       </div>
       <div></div>
     </div>
+    <Footer />
+    </>
   );
 };
 
