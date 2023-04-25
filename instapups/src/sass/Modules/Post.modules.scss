@@ -11,6 +11,7 @@
     overflow: hidden;
     border-top: 1px solid #190743;
 
+
     .link-to-Member {
         text-decoration: none;
         color: white;
@@ -26,6 +27,13 @@
             cursor: pointer;
             color:rgb(230, 211, 119);
         }
+    }
+
+    .post-date {
+        text-align: center;
+        margin-top: -30px;
+        margin-bottom: 40px;
+        color: #5e5e6e;
     }
     .content-Text {
         text-align:center
