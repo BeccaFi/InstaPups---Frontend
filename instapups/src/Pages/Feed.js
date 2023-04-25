@@ -41,7 +41,7 @@ const Feed = () => {
       }
     };
     getPosts();
-  }, []); //Used to say "posts" in the array but that made an infinite feedloop in the console. Please correct me if there's a better way.
+  }, [posts]); //Used to say "posts" in the array but that made an infinite feedloop in the console. Please correct me if there's a better way.
 
   const closePopup = () => {
     setPopup(false);
