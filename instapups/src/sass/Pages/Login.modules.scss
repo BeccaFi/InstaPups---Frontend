@@ -1,3 +1,7 @@
 @import "../abstracts/mixins";
 
 @include wrapper;
+
+.login-response {
+    color: white;
+}
