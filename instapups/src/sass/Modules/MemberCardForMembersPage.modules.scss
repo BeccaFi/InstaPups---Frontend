@@ -1,20 +1,19 @@
 @import "../abstracts/colors";
-
-
+// merge issues
 .memberCard-Wrapper {
-    position: relative;
-    background-color: $nav-background;
-    width: 45%;
-    margin: 10px;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-    border: 3px solid #190743;
+  position: relative;
+  background-color: $nav-background;
+  width: 45%;
+  margin: 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  border: 3px solid #190743;
 
-.memberCardProfilePic {
+  .memberCardProfilePic {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -22,10 +21,9 @@
     position: absolute;
     top: 5px;
     left: 0;
+  }
 
-}
-
-.memberCard-Link {
+  .memberCard-Link {
     text-decoration: none;
     color: white;
     font-size: 20px;
@@ -33,11 +31,11 @@
     padding: 20px;
 
     &:hover {
-        cursor: pointer;
+      cursor: pointer;
     }
-}
+  }
 
-.button-For-Follow {
+  .button-For-Follow {
     width: 20px;
     height: 20px;
     border: 1px solid #190743;
@@ -50,8 +48,7 @@
     font-size: large;
 
     &:hover {
-        cursor: pointer;
+      cursor: pointer;
     }
-}
-
+  }
 }

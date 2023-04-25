@@ -1,17 +1,49 @@
-.Your-bark {
+@import "../abstracts/mixins";
 
-    margin-top: 115px;
+@import "../abstracts/_mixins.scss";
+
+.Your-bark {
+margin-top: 115px;
+
+  @include bark-button;
+  .Your-bark-popup-button {
+    background-color: #2e2e44 !important;
+    color: white !important;
+  }
 }
 
 .imageIcon {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
+  border: none;
+
+  &:hover {
+    scale: 1.1;
+    border: none !important;
+  }
 }
 
 .Your-bark-icon-Wrapper {
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    background-color: antiquewhite;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f0d5cc;
+  margin: 5px;
+
+  .Your-bark-input {
+    color: rgb(0, 0, 0);
+    background-color: #fff7f5;
+    @include bark-button;
+    ::placeholder {
+      color: rgb(0, 0, 0);
+    }
+  }
 }
+
+  .Your-bark-button {
+    color: rgb(255, 255, 255) !important;
+    background-color: #f0d5cc;
+    border: 2px solid black !important;
+    color: rgb(0, 0, 0) !important;
+  }

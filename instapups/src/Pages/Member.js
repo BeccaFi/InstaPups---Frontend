@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Post from '../Modules/Post'
 import '../sass/Pages/Member.pages.scss'
 import Sidemenu from '../Modules/Sidemenu'
+import Footer from '../Modules/Footer'
 
 const Member = () => {
     const { id } = useParams();
@@ -24,6 +25,9 @@ const Member = () => {
             const res = await response.json();
             if (response.status !== 200) {
                 console.log(res);
+                if (response.status === 401) {
+                    window.location.href = '/';
+                }
                 return;
             }
             const valuesArray = Object.values(res)
@@ -44,6 +48,7 @@ const Member = () => {
     console.log(posts)
 
   return (
+    <>
     <div className='memberPageWrapper'>
         <div></div>
         <Sidemenu />
@@ -60,6 +65,8 @@ const Member = () => {
         </div>
         </div>
     </div>
+    <Footer />
+    </>
   )
 }
 
