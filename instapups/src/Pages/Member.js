@@ -25,6 +25,9 @@ const Member = () => {
             const res = await response.json();
             if (response.status !== 200) {
                 console.log(res);
+                if (response.status === 401) {
+                    window.location.href = '/';
+                }
                 return;
             }
             const valuesArray = Object.values(res)

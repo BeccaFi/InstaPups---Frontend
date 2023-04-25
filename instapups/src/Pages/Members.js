@@ -23,6 +23,9 @@ const Members = () => {
       const res = await response.json();
       if (response.status !== 200) {
         console.log(res);
+        if (response.status === 401) {
+          return (window.location.href = '/');
+        }
         return;
       }
       setMembers(res);
