@@ -92,9 +92,9 @@ const Post = ({ username, datePosted, comments, likes, _id, content }) => {
         window.location.href = "/";
       }
     }
-    console.log(res);
-    setLikes2(res.likes);
-    return;
+
+      setLikes2(res.likes);
+      return;
   };
 
   const toggleBarkButton = () => {

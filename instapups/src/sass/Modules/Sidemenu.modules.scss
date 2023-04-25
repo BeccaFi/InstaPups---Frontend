@@ -1,18 +1,41 @@
 @import "../abstracts/colors";
 @import "../abstracts/mixins";
-// merge issues
+
 .sideMenuWrapper {
   position:fixed;
-  margin-top: 100px;
+  top: 100px;
+  left: 0;
   width: 150px;
   background-color: $nav-background;
   display: flex;
   flex-direction: column;
-  
+
+  @media screen and (max-width: 1217px) {
+    width: 50px;
+    height: 100%;
+  }
 
   @include nav-button;
 
   button {
     width: 150px;
+
+    
+    @media screen and (max-width: 1217px) {
+      width: 50px;
+      height: 100%;
+        
+      
   }
 }
+  .icons {
+    width: 20px;
+    height: 20px;
+  }
+
+
+    
+  }
+  
+
+ 

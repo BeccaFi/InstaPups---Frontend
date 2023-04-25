@@ -25,6 +25,19 @@
     right: -15px;
     top: 30px;
     font-weight: bold;
+    margin-right: 300px;
+     @media screen and (max-width: 1217px) {
+        font-size: 10px;
+        height: 40px;
+
+      @media screen and (max-width: 1000px) {
+       left: 30%;
+        
+      }
+      
+     }
+      
+    }
   }
 
   .Logo {
@@ -35,6 +48,8 @@
     position: absolute;
     top: 0;
     left: 0;
+
+    
   }
 
   .LogoText {
@@ -42,12 +57,15 @@
     position: absolute;
     top: 10px;
     left: 45%;
+
+    @media screen and (max-width: 627px) {
+      display:none;
+    }
   }
 
   .loggedInUser-container {
     .loggedInUserName {
       position: absolute;
-
       right: 150px;
       top: 30px;
       font-weight: bold;
@@ -65,6 +83,10 @@
         text-shadow: 0px 0px 10px $outline-blue;
         filter: brightness(200%);
       }
+
+      @media screen and (max-width: 1000px) {
+        display:none;
+      }
     }
 
     .ProfilePicture {
@@ -78,8 +100,15 @@
       border-radius: 50%;
       margin: 10px;
       padding: 5px;
+
+      @media screen and (max-width: 1217px) {
+        top: 0;
+        
+      }
+        
+      }
     }
 
   
-}
-}
+
+

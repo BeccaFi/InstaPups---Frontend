@@ -2,7 +2,7 @@ import { useState } from "react";
 import addimage from "../Media/Icons/add-image.png";
 import "../sass/Modules/CreatePosts.modules.scss";
 
-const CreatePosts = () => {
+const CreatePosts = ({ updateFeed }) => {
   const [bark, setBark] = useState("");
   const [popup, setPopup] = useState(false);
   const [image, setImage] = useState([]);
@@ -26,21 +26,36 @@ const CreatePosts = () => {
       }),
       credentials: "include",
     });
-    if (response.status !== 200) {
+
+    const res = await response.json();
+
+    if (response.status !== 201) {
       if (response.status === 401) {
         window.location.href = "/";
       }
+
+      if(response.status === 400) {
+        setResponse(res);
+        return;
+      }
+
       setResponse("Something went wrong, please try again later");
       setTimeout(() => {
         setResponse("");
       }, 3000);
+
+
+      return;
     }
+    
     setResponse("Your bark has been posted!");
     setTimeout(() => {
       setResponse("");
     }, 3000);
 
     setBark("");
+    setImage([]);
+    updateFeed();
   };
 
   return (
@@ -59,7 +74,7 @@ const CreatePosts = () => {
           <button className="Your-bark-popup-button" onClick={(e) => setPopup(false)}>
           ❌
           </button>
-          <input className="Your-bark-popup-input" type="text" placeholder="Add an image url" onChange={(e) => setImage([e.target.value])} />
+          <input className="Your-bark-popup-input" type="text" placeholder="Add an image url" value={image} onChange={(e) => setImage([e.target.value])} />
         </div>
       )}
     </div>
