@@ -11,7 +11,8 @@
   justify-content: center;
   align-items: center;
   height: 100px;
-  border: 3px solid #190743;
+
+  
 
   .memberCardProfilePic {
     width: 50px;
@@ -33,7 +34,16 @@
     &:hover {
       cursor: pointer;
     }
+
+    @media screen and (max-width: 650px) {
+    font-size: 12px;
+    }
+
+    @media screen and (max-width: 450px) {
+      padding-left: 100px;
+    }
   }
+
 
   .button-For-Follow {
     width: 20px;
@@ -46,6 +56,9 @@
     top: 10px;
     color: white;
     font-size: large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &:hover {
       cursor: pointer;
