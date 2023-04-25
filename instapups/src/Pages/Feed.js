@@ -3,10 +3,13 @@ import Sidemenu from "../Modules/Sidemenu";
 import "../sass/Pages/Feed.pages.scss";
 import { useState, useEffect } from "react";
 import Post from "../Modules/Post";
+import Footer from "../Modules/Footer";
+import Popup from "../Modules/Popup";
 
 const Feed = () => {
   const [posts, setPosts] = useState([]);
   const [fetched, setFetched] = useState(false);
+  const [popup, setPopup] = useState(false);
 
   useEffect(() => {
     const getPosts = async () => {
@@ -24,21 +27,29 @@ const Feed = () => {
         if (response.status === 401) {
           return (window.location.href = "/");
         }
-        console.log(res);
+        setPopup(true);
         return;
       }
 
       if (res === "You are not following anyone") {
         return;
       } else {
-        setPosts(res);
+        const loggedInUser = res.loggedInUser;
+        setPosts(res.posts);
         setFetched(true);
+
       }
     };
     getPosts();
-  }, [posts]);
+  }, []); //Used to say "posts" in the array but that made an infinite feedloop in the console. Please correct me if there's a better way.
+
+  const closePopup = () => {
+    setPopup(false);
+  }
 
   return (
+    <>
+    {popup ? <Popup onClose={closePopup}/> : null}
     <div className="profileWrapper">
       <div></div>
       <Sidemenu />
@@ -48,6 +59,8 @@ const Feed = () => {
       </div>
       <div className="Profile-filler"></div>
     </div>
+    <Footer />
+    </>
   );
 };
 

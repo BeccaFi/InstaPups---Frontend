@@ -6,6 +6,8 @@ import '../sass/Pages/Member.pages.scss'
 import Sidemenu from '../Modules/Sidemenu'
 import UserCard from '../Modules/OtherUsersProfileCard'
 import LoggedInUserCard from '../Modules/LoggedInUserProfileCard'
+import Footer from '../Modules/Footer'
+import Popup from '../Modules/Popup'
 
 const Member = () => {
     const { id } = useParams();
@@ -17,8 +19,7 @@ const Member = () => {
     const [gotPosts, setGotPosts] = useState(true);
     const [postMessage, setPostMessage] = useState();
     const [loaded, setLoaded] = useState(false);
-
-    console.log(posts);
+    const [popup, setPopup] = useState(false)
 
     useEffect(() => {
         const getMember = async () => {
@@ -32,7 +33,13 @@ const Member = () => {
 
             const res = await response.json();
             if (response.status !== 200) {
-                console.log(res); // Make a popup with an error message for the user
+
+                console.log(res);
+                
+                if (response.status === 401) {
+                    window.location.href = '/';
+                }
+                setPopup(true)
                 return;
             }
         
@@ -61,11 +68,16 @@ const Member = () => {
 
         
     }, [id])
-
   
-    // console.log(posts)
+
+    const closePopup = () => {
+        setPopup(false)
+    }
+    
 
   return (
+    <>
+    {popup ? <Popup onClose={closePopup}/> : null}
     <div className='memberPageWrapper'>
         <div></div>
         <Sidemenu />
@@ -77,6 +89,8 @@ const Member = () => {
         <div></div>
 
     </div>
+    <Footer />
+    </>
   )
 } 
 

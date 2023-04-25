@@ -2,19 +2,23 @@ import bone from "../Media/Icons/bone.png";
 import { useState, useEffect } from "react";
 import "../sass/Modules/Post.modules.scss";
 import { Link } from "react-router-dom";
+import DeletePopup from "./DeletePopup";
 
-const Post = ({ username, comments, likes, _id, content}) => {
-  const [showComments, setShowComments] = useState(false);
-  const [bark, setBark] = useState("");
+const Post = ({ username, datePosted, comments, likes, _id, content}) => {
+    const [showComments, setShowComments] = useState(false);
+    const [bark, setBark] = useState("");
     const [member, setMember] = useState([]);
+    const [loggedInUser, setLoggedInUser] = useState('');
     const [loaded, setLoaded] = useState(false);
     const [response, setResponse] = useState("");
     const [comments2, setComments2] = useState(comments);
-  const [likes2, setLikes2] = useState(likes);
+    const [likes2, setLikes2] = useState(likes);
+    const [clickedDelete, setClickedDelete] = useState(false);
+
 
   useEffect (() => {
     const getMember = async () => {
-        const response = await fetch(`http://localhost:5051/members/userinfo?username=${username}`, {
+        const response = await fetch(`http://localhost:5051/members/userinfo?postUsername=${username}`, {
             method: "GET",
             headers: {
             "Content-Type": "application/json",
@@ -30,7 +34,8 @@ const Post = ({ username, comments, likes, _id, content}) => {
             console.log(res)
             return;
         }
-        setMember(res);
+        setLoggedInUser(res.loggedInUser);
+        setMember(res.postUser);
         setLoaded(true);
     }
     getMember();
@@ -100,11 +105,13 @@ const Post = ({ username, comments, likes, _id, content}) => {
         {loaded ?
             <div key={member._id}>
                 <img className="MembersProfilePic" src={member.profilePic} alt={username} />
-        <Link className="link-to-Member" to={`/members/${member._id}`}>{username}</Link>
+                <Link className="link-to-Member" to={`/members/${member._id}`}>{username}</Link>
+                <p className="post-date">{datePosted}</p>
+                {member.username === loggedInUser ? <button className="delete-post" onClick={() => setClickedDelete(true)}> X </button> : null}
+                {clickedDelete ? <DeletePopup id={_id} wantDelete={clickedDelete}/> : null}
             </div>
          : null}
       <div>
-        
         {content.photos.length > 0 ? <img className="content-Photo" src={content.photos.map(photo => photo)} alt={username} /> : null}
         <p className="content-Text">{content.text}</p>
         
