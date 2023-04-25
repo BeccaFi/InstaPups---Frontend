@@ -19,7 +19,7 @@
     &:hover {
       cursor: pointer;
       scale: 1;
-      z-index: 9999;
+      z-index: 3;
     }
   }
 
@@ -117,7 +117,7 @@
 }
 .bark-Field-Wrapper {
     
-    border: 2px solid #190743;
+    border: 2px solid #2e2e44;
     border-radius: 5px;
     margin-top:  20px;
     padding: 10px;
@@ -127,11 +127,11 @@
     .bark-Field {
         margin: 10px;
         width: 100%;
-        border-bottom: 1px solid #190743;
+        border-bottom: 1px solid #2e2e44;;
         
      
         p {
-            color: white;
+            color: black;
             margin: 10px;
         }
     }
@@ -160,7 +160,6 @@
     button {
 
         color: black;
-        background-color: rgb(230, 211, 119);
         padding: 5px;
         margin: 5px;
         border-radius: 50%;
@@ -168,11 +167,12 @@
         height: 45px;
         border: solid 3px $transparent;
         font-weight: bold;
+        background-color: #f0d5cc;
 
         &:hover {
           cursor: pointer;
           background-color: $nav-background-hover;
-          border: solid 3px $outline-blue;
+          border: solid 3px #2e2e44;
           color: white;
     }
 
