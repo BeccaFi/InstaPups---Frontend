@@ -46,10 +46,14 @@ const Feed = () => {
 
   const closePopup = () => {
     setPopup(false);
+  
   }
 
   const updateFeed = () => {
     setNewPost(true);
+    setInterval(() => {
+      setNewPost(false)
+    }, 1000);
   };
 
   return (
