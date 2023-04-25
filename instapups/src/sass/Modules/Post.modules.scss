@@ -9,17 +9,10 @@
   margin: 10px;
   padding: 30px;
   position: relative;
+  //overflow: hidden;
   top: 0;
   left: 0;
   border-top: 1px solid #bcb4cf;
-}
-
-.like-And-Barks-Wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  overflow: hidden;
-}
 
 .link-to-Member {
   text-decoration: none;
@@ -34,25 +27,9 @@
 
   &:hover {
     cursor: pointer;
-    color: rgb(230, 211, 119);
+    color: #e6d377;
   }
 }
-
-.barkButton {
-  background-color: transparent;
-  border: none;
-  color: white;
-  font-size: 15px;
-  width: 100px;
-  height: 30px;
-  border-radius: 5px;
-
-  &:hover {
-    cursor: pointer;
-    color: antiquewhite;
-    border-radius: 0;
-    text-decoration: underline 1px solid antiquewhite;
-  }
 }
 
 .content-Text {
@@ -79,91 +56,83 @@
   }
 }
 
+    .post-date {
+        text-align: center;
+        margin-top: -30px;
+        margin-bottom: 40px;
+        color: #5e5e6e;
+    }
+
 .like-And-Barks-Wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 20px;
-
-  .likeButton {
-    width: 20px;
-    height: 20px;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
-  .barkButton {
-    background-color: transparent;
-    border: none;
-    color: white;
-    font-size: 15px;
-    width: 75px;
-    height: 30px;
-    border-radius: 5px;
-
-    &:hover {
-      cursor: pointer;
-      text-decoration: underline 1px solid antiquewhite;
-    }
-  }
-}
-.bark-Field-Wrapper {
-  border: 2px solid #190743;
-  border-radius: 5px;
-  margin-top: 20px;
-  padding: 10px;
-  background-color: #fff7f5;
-  color: rgb(0, 0, 0);
-
-  .bark-Field {
-    margin: 10px;
-    width: 100%;
-    border-bottom: 1px solid #190743;
-
-    p {
-      color: rgb(0, 0, 0);
-      margin: 10px;
-    }
-  }
-
-  .bark-Field-Input-Wrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 
-    input {
-      width: 100%;
-      border: none;
-      outline: none;
-      background-color: transparent;
-      color: rgb(0, 0, 0);
-      font-size: 1rem;
-      padding: 10px;
-      &::placeholder {
-        color: rgb(0, 0, 0);
-      }
-    }
-
-    button {
-      color: black;
-      background-color: rgb(230, 211, 119);
-      padding: 5px;
-      margin: 5px;
-      border-radius: 50%;
-      width: 45px;
-      height: 45px;
-      border: solid 3px $transparent;
-      font-weight: bold;
+    .likeButton {
+      width: 20px;
+      height: 20px;
 
       &:hover {
         cursor: pointer;
-        background-color: $nav-background-hover;
-        border: solid 3px $outline-blue;
-        color: white;
+      }
+    }
+    .barkButton {
+      background-color: transparent;
+      border: none;
+      color: white;
+      font-size: 15px;
+      width: 100px;
+      height: 30px;
+      border-radius: 5px;
+
+      &:hover {
+        cursor: pointer;
+        color: antiquewhite;
+        border-radius: 0;
+        text-decoration: underline 1px solid antiquewhite;
       }
     }
   }
+  
+.bark-Field-Wrapper {
+    border: 2px solid #190743;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #fff7f5;
+    color: rgb(0, 0, 0);
+
+    .bark-Field {
+      margin: 10px;
+      width: 97%;
+      border-bottom: 1px solid #190743;
+
+      p {
+        color: rgb(0, 0, 0);
+        margin: 10px;
+      }
+    }
+
+    .bark-Field-Input-Wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      input {
+        width: 100%;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        color: rgb(0, 0, 0);
+        font-size: 1rem;
+        padding: 10px;
+        &::placeholder {
+          color: rgb(0, 0, 0);
+        }
+        }
+        @include bark-button;
+      
+      }
 }
 .MembersProfilePic {
   margin-top: 8px;

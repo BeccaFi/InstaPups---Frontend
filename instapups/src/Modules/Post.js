@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import "../sass/Modules/Post.modules.scss";
 import { Link } from "react-router-dom";
 
-const Post = ({ username, comments, likes, _id, content}) => {
+const Post = ({ username, datePosted, comments, likes, _id, content}) => {
   const [showComments, setShowComments] = useState(false);
   const [bark, setBark] = useState("");
     const [member, setMember] = useState([]);
@@ -100,11 +100,11 @@ const Post = ({ username, comments, likes, _id, content}) => {
         {loaded ?
             <div key={member._id}>
                 <img className="MembersProfilePic" src={member.profilePic} alt={username} />
-        <Link className="link-to-Member" to={`/members/${member._id}`}>{username}</Link>
+                <Link className="link-to-Member" to={`/members/${member._id}`}>{username}</Link>
+                <p className="post-date">{datePosted}</p>
             </div>
          : null}
       <div>
-        
         {content.photos.length > 0 ? <img className="content-Photo" src={content.photos.map(photo => photo)} alt={username} /> : null}
         <p className="content-Text">{content.text}</p>
         
