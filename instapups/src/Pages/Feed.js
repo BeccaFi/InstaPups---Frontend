@@ -51,7 +51,7 @@ const Feed = () => {
     <>
     {popup ? <Popup onClose={closePopup}/> : null}
     <div className="profileWrapper">
-      <div></div>
+      <div className="filler-div"></div>
       <Sidemenu />
       <div className="bark-wrapper">
         <CreatePosts />

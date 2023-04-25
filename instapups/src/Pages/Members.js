@@ -88,7 +88,7 @@ const Members = () => {
     {popup ? <Popup onClose={closePopup}/> : null}
     <div className='membersWrapper'>
       <Sidemenu />
-      <div></div>
+      <div className='filler-div'></div>
       <div>
         <select className='members-SelectField' onChange={(e) => filterMembers(e)}>
           <option value='all'>All</option>

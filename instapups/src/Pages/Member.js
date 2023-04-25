@@ -79,7 +79,7 @@ const Member = () => {
     <>
     {popup ? <Popup onClose={closePopup}/> : null}
     <div className='memberPageWrapper'>
-        <div></div>
+        <div className="filler-div"></div>
         <Sidemenu />
 
         <div className='memberPage'>
