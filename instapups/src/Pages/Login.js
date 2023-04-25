@@ -4,6 +4,7 @@ import "../sass/Pages/Login.modules.scss";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [response, setResponse] = useState("");
 
   const onChangeUsername = (event) => {
     setUsername(event.target.value);
@@ -29,11 +30,10 @@ const Login = () => {
 
         if (response.status === 200) return window.location = "/home";
 
-        return alert(data); //Create nicer popup
+        setResponse(data); //Create nicer popup
    
     } catch (error) {
-      console.log(error);
-      alert(error); //Create nicer popup, for example "There seems to be an error with the server. Please try again later"
+      setResponse(error) //Create nicer popup, for example "There seems to be an error with the server. Please try again later"
     }
   }
 
@@ -53,6 +53,8 @@ const Login = () => {
         onChange={onChangePassword}
         value={password}
       />
+
+      <p className="login-response">{response}</p>
       <button className="login-button" onClick={goToProfile}>
         Login
       </button>
