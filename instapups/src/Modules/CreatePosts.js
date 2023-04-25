@@ -26,15 +26,28 @@ const CreatePosts = () => {
       }),
       credentials: "include",
     });
-    if (response.status !== 200) {
+
+    const res = await response.json();
+
+    if (response.status !== 201) {
       if (response.status === 401) {
         window.location.href = "/";
       }
+
+      if(response.status === 400) {
+        setResponse(res);
+        return;
+      }
+
       setResponse("Something went wrong, please try again later");
       setTimeout(() => {
         setResponse("");
       }, 3000);
+
+
+      return;
     }
+    
     setResponse("Your bark has been posted!");
     setTimeout(() => {
       setResponse("");
