@@ -10,6 +10,7 @@ const Feed = () => {
   const [posts, setPosts] = useState([]);
   const [fetched, setFetched] = useState(false);
   const [popup, setPopup] = useState(false);
+  const [newPost, setNewPost] = useState(false);
 
   useEffect(() => {
     const getPosts = async () => {
@@ -41,11 +42,15 @@ const Feed = () => {
       }
     };
     getPosts();
-  }, [posts]); //Used to say "posts" in the array but that made an infinite feedloop in the console. Please correct me if there's a better way.
+  }, [newPost]);
 
   const closePopup = () => {
     setPopup(false);
   }
+
+  const updateFeed = () => {
+    setNewPost(true);
+  };
 
   return (
     <>
@@ -54,7 +59,7 @@ const Feed = () => {
       <div className="filler-div"></div>
       <Sidemenu />
       <div className="bark-wrapper">
-        <CreatePosts />
+        <CreatePosts updateFeed={updateFeed} />
         {fetched ? posts.map((post) => <Post key={post._id} {...post} />) : <p>You are not following anyone...yet</p>}
       </div>
       <div className="Profile-filler"></div>
