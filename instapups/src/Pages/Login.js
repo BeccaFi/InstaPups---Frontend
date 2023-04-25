@@ -30,10 +30,10 @@ const Login = () => {
 
         if (response.status === 200) return window.location = "/home";
 
-        setResponse(data); //Create nicer popup
+        setResponse(data);
    
     } catch (error) {
-      setResponse(error) //Create nicer popup, for example "There seems to be an error with the server. Please try again later"
+      setResponse(error) 
     }
   }
 
