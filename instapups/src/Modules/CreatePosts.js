@@ -2,7 +2,7 @@ import { useState } from "react";
 import addimage from "../Media/Icons/add-image.png";
 import "../sass/Modules/CreatePosts.modules.scss";
 
-const CreatePosts = () => {
+const CreatePosts = ({ updateFeed }) => {
   const [bark, setBark] = useState("");
   const [popup, setPopup] = useState(false);
   const [image, setImage] = useState([]);
@@ -42,6 +42,7 @@ const CreatePosts = () => {
 
     setBark("");
     setImage([]);
+    updateFeed();
   };
 
   return (
