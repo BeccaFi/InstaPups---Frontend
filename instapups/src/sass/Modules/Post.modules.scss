@@ -63,6 +63,74 @@
         color: #5e5e6e;
     }
 
+    .delete-post {
+        // position: relative;
+        margin-left: 800px;
+        padding: 2px;
+        background-color: transparent;
+        border: none;
+        color: #5e5e6e;
+        font-size: 18px;
+
+        &:hover {
+            cursor: pointer;
+            // filter: brightness(150%);
+            color: #9595a1;
+        }
+    }
+
+    .delete-popup {
+        background-color: antiquewhite;
+        width: 330px;
+        height: 100px;
+        padding: 10px;
+        border: 2px solid black;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px -4px #000000;
+        margin: auto auto;
+
+
+        p {
+            color: black;
+            margin-top: 6px;
+        }
+
+        .popup-btns {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 20px;
+        }
+
+
+        #delete-btn {
+
+            border-radius: 6px;
+            padding: 4px;
+            border: 1px solid black;
+
+            &:hover {
+                background-color: rgb(170, 237, 170);
+                cursor: pointer;
+            }
+        }
+
+        #cancel-btn {
+
+            border-radius: 6px;
+            padding: 4px;
+            border: 1px solid black;
+
+            &:hover {
+                background-color: rgb(170, 170, 170);
+                cursor: pointer;
+            }
+
+        }
+        
+       
+    }
+
 .like-And-Barks-Wrapper {
     display: flex;
     flex-direction: row;
