@@ -1,5 +1,5 @@
 @import "../abstracts/colors";
-// merge issues
+
 @mixin nav-button {
   button {
     font-weight: bold;
@@ -9,7 +9,6 @@
     padding: 15px;
     border-radius: 5px;
     border: none;
-    margin-right: 300px;
 
     &:hover {
       color: black;
@@ -86,8 +85,6 @@
       &:hover {
         cursor: pointer;
         filter: brightness(150%);
-        // background: linear-gradient(45deg, lime, #094909);
-        // text-shadow: 0px 0px 3px black;
       }
     }
   }

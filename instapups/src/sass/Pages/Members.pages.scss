@@ -23,7 +23,15 @@
     min-height: 490px;
     max-height: 490px;
     overflow: scroll;
-  }
+
+    @media screen and (max-width: 650px) {
+        width: 100%;
+        justify-content: center;
+
+    }
+        
+    }
+  
 
   .members-SelectField {
     width: 100%;
@@ -40,4 +48,9 @@
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
   }
+}
+.filler-div {
+    @media screen and (max-width: 1217px) {
+        width: 50px;
+    }
 }

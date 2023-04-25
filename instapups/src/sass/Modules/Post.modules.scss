@@ -12,7 +12,7 @@
   //overflow: hidden;
   top: 0;
   left: 0;
-  border-top: 1px solid #bcb4cf;
+  border-bottom: 1px solid #bcb4cf;
 
 .link-to-Member {
   text-decoration: none;
@@ -61,7 +61,14 @@
         margin-top: -30px;
         margin-bottom: 40px;
         color: #5e5e6e;
-    }
+
+        @media screen and (max-width: 500px) {
+            font-size: 10px;
+            text-align: end;
+        }
+            
+        }
+    
 
     .delete-post {
         // position: relative;
@@ -71,6 +78,9 @@
         border: none;
         color: #5e5e6e;
         font-size: 18px;
+        position: absolute;
+        right: 2px;
+        top: 2px;
 
         &:hover {
             cursor: pointer;
