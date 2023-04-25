@@ -1,7 +1,9 @@
 @import "../abstracts/mixins";
-// merge issues
+
+@import "../abstracts/_mixins.scss";
+
 .Your-bark {
-  margin-top: 115px;
+margin-top: 115px;
 
   @include bark-button;
   .Your-bark-popup-button {
@@ -36,11 +38,11 @@
       color: rgb(0, 0, 0);
     }
   }
+}
 
   .Your-bark-button {
     color: rgb(255, 255, 255) !important;
-    background-color: transparent;
+    background-color: #f0d5cc;
     border: 2px solid black !important;
     color: rgb(0, 0, 0) !important;
   }
-}

@@ -83,10 +83,12 @@
         height: 45px;
         border: solid 3px $transparent;
         font-weight: bold;
+        background-color: #f0d5cc;
 
         &:hover {
           cursor: pointer;
           color: white;
+          background-color: antiquewhite;
         }
       }
     }

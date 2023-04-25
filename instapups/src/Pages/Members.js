@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import MemberCardForMembersPage from '../Modules/MemberCardForMembersPage';
 import Sidemenu from '../Modules/Sidemenu';
 import '../sass/Pages/Members.pages.scss';
+import Footer from '../Modules/Footer';
 
 const Members = () => {
   const [members, setMembers] = useState([]);
@@ -22,6 +23,9 @@ const Members = () => {
       const res = await response.json();
       if (response.status !== 200) {
         console.log(res);
+        if (response.status === 401) {
+          return (window.location.href = '/');
+        }
         return;
       }
       setMembers(res);
@@ -71,6 +75,7 @@ const Members = () => {
   };
 
   return (
+    <>
     <div className='membersWrapper'>
       <Sidemenu />
       <div></div>
@@ -92,6 +97,8 @@ const Members = () => {
       </div>
       <div></div>
     </div>
+    <Footer />
+    </>
   );
 };
 
