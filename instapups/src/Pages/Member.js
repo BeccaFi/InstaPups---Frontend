@@ -4,12 +4,15 @@ import { useEffect, useState } from 'react'
 import Post from '../Modules/Post'
 import '../sass/Pages/Member.pages.scss'
 import Sidemenu from '../Modules/Sidemenu'
+import Footer from '../Modules/Footer'
+import Popup from '../Modules/Popup'
 
 const Member = () => {
     const { id } = useParams();
     const [member, setMember] = useState([])
     const [posts, setPosts] = useState([])
     const [loaded, setLoaded] = useState(false)
+    const [popup, setPopup] = useState(false)
 
     useEffect(() => {
         const getMember = async () => {
@@ -24,6 +27,10 @@ const Member = () => {
             const res = await response.json();
             if (response.status !== 200) {
                 console.log(res);
+                if (response.status === 401) {
+                    window.location.href = '/';
+                }
+                setPopup(true)
                 return;
             }
             const valuesArray = Object.values(res)
@@ -40,10 +47,15 @@ const Member = () => {
         
     }, [id])
 
-    console.log("Members:" + member)
-    console.log(posts)
+    const closePopup = () => {
+        setPopup(false)
+    }
+
+
 
   return (
+    <>
+    {popup ? <Popup onClose={closePopup}/> : null}
     <div className='memberPageWrapper'>
         <div></div>
         <Sidemenu />
@@ -60,6 +72,8 @@ const Member = () => {
         </div>
         </div>
     </div>
+    <Footer />
+    </>
   )
 }
 

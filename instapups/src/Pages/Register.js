@@ -5,6 +5,7 @@ const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [response, setResponse] = useState("");
 
   const onChangeUsername = (event) => {
     setUsername(event.target.value);
@@ -33,11 +34,10 @@ const Register = () => {
 
       if (response.status === 201) return window.location = "/";
 
-      return alert(data); //Create nicer looking popup
+      setResponse(data); 
     
     } catch (error) {
-      alert(error); //Create nicer looking popup?
-      console.log(error);
+      setResponse(error) 
     }
   }
 
@@ -64,10 +64,11 @@ const Register = () => {
         onChange={onChangeConfirmPassword}
         value={confirmPassword}
       />
+
+      <p className="register-response">{response}</p>
       <button className="register-button" onClick={registerUser}>
         Register
       </button>
-      <p className="register-error-message"></p>
     </form>
   );
 };

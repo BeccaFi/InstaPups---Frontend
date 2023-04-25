@@ -28,6 +28,7 @@ const Nav = () => {
       if (response.status !== 200) {
         if (response.status === 401) {
           setIsAuthenticated(false);
+          window.location.href = "/";
           return;
         }
         console.log(res);

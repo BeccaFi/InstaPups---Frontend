@@ -1,11 +1,10 @@
 @import "../abstracts/colors";
 @import "../abstracts/mixins";
-
+// merge issues
 .sideMenuWrapper {
   position:fixed;
   margin-top: 100px;
   width: 150px;
-  height: 100vh;
   background-color: $nav-background;
   display: flex;
   flex-direction: column;
