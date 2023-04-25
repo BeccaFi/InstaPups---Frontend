@@ -1,3 +1,8 @@
 @import "../abstracts/mixins";
 
 @include wrapper;
+
+.register-response {
+    text-align: center;
+    color: white;
+}
