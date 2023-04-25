@@ -1,0 +1,51 @@
+.Popup-background {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  opacity: 0.5;
+  background-color: white;
+  z-index: 1000;
+}
+
+.Error-Message-Popup {
+  position: fixed;
+  top: 40%;
+  left: 30%;
+  width: 600px;
+  height: 300px;
+  padding-top: 50px;
+  background-color: #252536;
+  border-radius: 5px;
+  text-align: center;
+  z-index: 1000;
+  color: white;
+  border: 2px solid red;
+}
+.Error-Message-Popup .close-Error-Message {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.Error-Message-Popup .OK-Error-Message-Button {
+  width: 100px;
+  height: 50px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #252536;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.Error-Message-Popup .OK-Error-Message-Button:hover {
+  background-color: #252536;
+  color: #252536;
+}
+
+/*# sourceMappingURL=Popup.modules.css.map */

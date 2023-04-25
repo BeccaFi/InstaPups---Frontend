@@ -1,0 +1,72 @@
+.Your-bark {
+  margin-top: 115px;
+}
+.Your-bark button {
+  background-color: #252536;
+  color: white;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-weight: bold;
+}
+.Your-bark button:hover {
+  color: black;
+  background-color: antiquewhite;
+  cursor: pointer;
+}
+.Your-bark .Your-bark-popup-button {
+  background-color: #2e2e44 !important;
+  color: white !important;
+}
+
+.imageIcon {
+  width: 20px;
+  height: 20px;
+  border: none;
+}
+.imageIcon:hover {
+  scale: 1.1;
+  border: none !important;
+}
+
+.Your-bark-icon-Wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f0d5cc;
+  margin: 5px;
+}
+.Your-bark-icon-Wrapper .Your-bark-input {
+  color: rgb(0, 0, 0);
+  background-color: #fff7f5;
+}
+.Your-bark-icon-Wrapper .Your-bark-input button {
+  background-color: #252536;
+  color: white;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-weight: bold;
+}
+.Your-bark-icon-Wrapper .Your-bark-input button:hover {
+  color: black;
+  background-color: antiquewhite;
+  cursor: pointer;
+}
+.Your-bark-icon-Wrapper .Your-bark-input ::placeholder {
+  color: rgb(0, 0, 0);
+}
+
+.Your-bark-button {
+  color: rgb(255, 255, 255) !important;
+  background-color: #f0d5cc;
+  border: 2px solid black !important;
+  color: rgb(0, 0, 0) !important;
+}
+
+/*# sourceMappingURL=CreatePosts.modules.css.map */

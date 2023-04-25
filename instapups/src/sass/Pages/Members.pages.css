@@ -1,0 +1,41 @@
+.membersWrapper {
+  padding-top: 120px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.membersWrapper .Wrap-for-Membercards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  background-color: #252536;
+  width: 600px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  min-height: 490px;
+  max-height: 490px;
+  overflow: scroll;
+}
+.membersWrapper .members-SelectField {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  background-color: #252536;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  height: 50px;
+  text-align: center;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+/*# sourceMappingURL=Members.pages.css.map */

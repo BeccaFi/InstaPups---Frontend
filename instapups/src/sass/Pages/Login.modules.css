@@ -1,0 +1,53 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+  background-color: #252536;
+  margin-top: 100px;
+  position: fixed;
+  top: 35%;
+  left: 50%;
+  padding-top: 1rem;
+  transform: translate(-50%, -50%);
+  border-radius: 1rem;
+  border: solid rgba(0, 0, 0, 0.805) 2px;
+}
+.wrapper input {
+  font-weight: bold;
+  font-size: 15px;
+  height: 3rem;
+  padding: 5px;
+  width: 15rem;
+  border-radius: 5px;
+  outline: none;
+}
+.wrapper input:focus {
+  outline: 1px solid #9595d1;
+}
+.wrapper button {
+  background-color: #2e2f40;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-size: 15px;
+  height: auto;
+  width: 15rem;
+  padding: 15px;
+  border-radius: 8px;
+  transition: all 0.3s;
+  border: 1px solid black;
+}
+.wrapper button:hover {
+  cursor: pointer;
+  filter: brightness(150%);
+}
+
+.login-response {
+  color: white;
+  text-align: center;
+}
+
+/*# sourceMappingURL=Login.modules.css.map */

@@ -1,0 +1,29 @@
+.foot-wrapper {
+  width: 100%;
+  background-color: #252536;
+  color: white;
+  margin-top: 30px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.foot-wrapper h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.foot-wrapper li {
+  list-style: none;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.foot-wrapper li a {
+  text-decoration: none;
+  color: white;
+}
+.foot-wrapper li a:hover {
+  color: #252536;
+}
+
+/*# sourceMappingURL=Footer.modules.css.map */
