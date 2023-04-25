@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Post from '../Modules/Post'
 import '../sass/Pages/Member.pages.scss'
 import Sidemenu from '../Modules/Sidemenu'
+import Footer from '../Modules/Footer'
 
 const Member = () => {
     const { id } = useParams();
@@ -44,6 +45,7 @@ const Member = () => {
     console.log(posts)
 
   return (
+    <>
     <div className='memberPageWrapper'>
         <div></div>
         <Sidemenu />
@@ -60,6 +62,8 @@ const Member = () => {
         </div>
         </div>
     </div>
+    <Footer />
+    </>
   )
 }
 

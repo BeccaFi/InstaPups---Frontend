@@ -3,6 +3,7 @@ import Sidemenu from "../Modules/Sidemenu";
 import "../sass/Pages/Feed.pages.scss";
 import { useState, useEffect } from "react";
 import Post from "../Modules/Post";
+import Footer from "../Modules/Footer";
 
 const Feed = () => {
   const [posts, setPosts] = useState([]);
@@ -39,6 +40,7 @@ const Feed = () => {
   }, [posts]);
 
   return (
+    <>
     <div className="profileWrapper">
       <div></div>
       <Sidemenu />
@@ -48,6 +50,8 @@ const Feed = () => {
       </div>
       <div className="Profile-filler"></div>
     </div>
+    <Footer />
+    </>
   );
 };
 
