@@ -10,10 +10,19 @@
     flex-direction: row;
     justify-content: space-between;
 
+    #attributes-div {
+        border-left: 1px solid #5e5e6e;
+        padding-left: 2rem;
+    }
     h3 {
         font-size: 18px;
         font-weight: bold;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
+    }
+
+    #cred-list {
+        column-count: 2;
+
     }
     li {
         list-style: none;
