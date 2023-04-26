@@ -7,10 +7,10 @@ const Footer = () => {
         <div>
         <h3>Made by:</h3>
         <ul>
-            <li><a href="https://github.com/BeccaFi/">Rebecca</a></li>
+            <li><a href="https://github.com/BeccaFi/">Rebecca Fischer</a></li>
             <li><a href="https://github.com/Darkshiira">Hanna Arefiardakani</a></li>
-            <li><a href="https://github.com/Shinyn">Mattias </a></li>
-            <li><a href="https://github.com/danjeljansson">Daniel</a></li>
+            <li><a href="https://github.com/Shinyn">Mattias Alm</a></li>
+            <li><a href="https://github.com/danjeljansson">Daniel Jansson</a></li>
         </ul>
         </div>
 
