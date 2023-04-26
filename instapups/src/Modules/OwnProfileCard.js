@@ -6,7 +6,7 @@ import ChangePicInput from "./ChangeProfilePic";
 const OwnProfileCard = (props) => {
 
     const member = props.loggedInUser;
-    // const followCount = member.following.length;
+    // const followCount = member.following.length; //gotta make these work, getting error for some reason
     // const postCount = props.posts.length;
     const [changePic, setChangePic] = useState(false);
 
