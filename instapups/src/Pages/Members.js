@@ -91,7 +91,7 @@ const Members = () => {
       <div className='filler-div'></div>
       <div>
         <select className='members-SelectField' onChange={(e) => filterMembers(e)}>
-          <option value='all'>All</option>
+          <option value='all'>Filter: All</option>
           <option value='following'>Following</option>
           <option value='nonfollowing'>Not following</option>
         </select>

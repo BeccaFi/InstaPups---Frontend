@@ -44,7 +44,7 @@ const Nav = () => {
 
   return (
     <div className="navbar">
-      {isAuthenticated ? <Link to="/home"> <img className="Logo" src= {Logo} alt= "Logo"/> </Link> : <img className="Logo" src= {Logo} alt= "Logo"/>}
+      {isAuthenticated ? (location.pathname === "/home" ? <img className="Logo" src={Logo} alt="Logo" onClick= {()=> window.location.reload()}/> : <Link to="/home"> <img className="Logo" src= {Logo} alt= "Logo"/> </Link>) : <img className="Logo" src= {Logo} alt= "Logo"/>}
       <div>
       <img className='LogoText' src={LogoText} />
       {location.pathname === "/" && <Link to="/register">

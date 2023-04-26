@@ -11,6 +11,7 @@ function updatePost(id, updatedPost) {
     .then((response) => response.json())
     .then((data) => {
       console.log("data", data);
+      window.location.reload();
       return data;
     })
     .catch((error) => {
