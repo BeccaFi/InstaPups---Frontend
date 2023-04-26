@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom"
-import '../sass/Modules/Sidemenu.modules.scss'
+import { Link } from "react-router-dom";
+import "../sass/Modules/Sidemenu.modules.scss";
 import { useEffect, useState } from "react";
-import  home  from "../Media/Icons/pet-bed.png";
+import home from "../Media/Icons/pet-bed.png";
 import profile from "../Media/Icons/kennel.png";
 import members from "../Media/Icons/dog (1).png";
 
@@ -22,9 +22,8 @@ const Sidemenu = () => {
       const res = await response.json();
       if (response.status !== 200) {
         if (response.status === 401) {
-          return (window.location.href = '/');
+          return (window.location.href = "/");
         }
-        console.log(res);
         return;
       }
       setUserinfo(res);
@@ -44,11 +43,7 @@ const Sidemenu = () => {
 
   const homeButton = (
     <>
-      {isSmallScreen ? (
-        <img className="icons" src={home} alt="Home" />
-      ) : (
-        "Home"
-      )}
+      {isSmallScreen ? <img className="icons" src={home} alt="Home" /> : "Home"}
     </>
   );
 
@@ -88,8 +83,3 @@ const Sidemenu = () => {
 };
 
 export default Sidemenu;
-
-
-
-
-
