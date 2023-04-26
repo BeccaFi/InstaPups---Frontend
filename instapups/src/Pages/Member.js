@@ -4,10 +4,10 @@ import { useEffect, useState } from 'react'
 import Post from '../Modules/Post'
 import '../sass/Pages/Member.pages.scss'
 import Sidemenu from '../Modules/Sidemenu'
-import UserCard from '../Modules/OtherUsersProfileCard'
-import LoggedInUserCard from '../Modules/LoggedInUserProfileCard'
+import UserCard from '../Modules/OthersProfileCard'
 import Footer from '../Modules/Footer'
 import Popup from '../Modules/Popup'
+import OwnProfileCard from '../Modules/OwnProfileCard'
 
 const Member = () => {
     const { id } = useParams();
@@ -83,7 +83,7 @@ const Member = () => {
         <Sidemenu />
 
         <div className='memberPage'>
-        { member.username === loggedInUser.username ? <LoggedInUserCard loggedInUser={loggedInUser} /> : <UserCard member={member} following={isFollowing} posts={posts} />}
+        { member.username === loggedInUser.username ? <OwnProfileCard loggedInUser={loggedInUser} following={isFollowing} posts={posts} /> : <UserCard member={member} following={isFollowing} posts={posts} />}
         { loaded ? (!isFollowing ? <p> {followMessage} </p> : (!gotPosts ? <p> {postMessage} </p> :  ( posts.map((post) => (<Post key={post._id} {...post} />))))) : ( "Loading..." ) }
         </div>
         <div></div>
