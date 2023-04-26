@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import MemberCardForMembersPage from '../Modules/MemberCardForMembersPage';
-import Sidemenu from '../Modules/Sidemenu';
-import '../sass/Pages/Members.pages.scss';
-import Footer from '../Modules/Footer';
-import Popup from '../Modules/Popup';
+import { useEffect, useState } from "react";
+import MemberCardForMembersPage from "../Modules/MemberCardForMembersPage";
+import Sidemenu from "../Modules/Sidemenu";
+import "../sass/Pages/Members.pages.scss";
+import Footer from "../Modules/Footer";
+import Popup from "../Modules/Popup";
 
 const Members = () => {
   const [members, setMembers] = useState([]);
@@ -14,19 +14,18 @@ const Members = () => {
 
   useEffect(() => {
     const getMembers = async () => {
-      const response = await fetch('http://localhost:5051/members', {
-        method: 'GET',
+      const response = await fetch("http://localhost:5051/members", {
+        method: "GET",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        credentials: 'include',
+        credentials: "include",
       });
 
       const res = await response.json();
       if (response.status !== 200) {
-        console.log(res);
         if (response.status === 401) {
-          return (window.location.href = '/');
+          return (window.location.href = "/");
         }
         setPopup(true);
         return;
@@ -37,20 +36,20 @@ const Members = () => {
     };
 
     const getFollows = async () => {
-      const response = await fetch('http://localhost:5051/members/follows', {
-        method: 'GET',
+      const response = await fetch("http://localhost:5051/members/follows", {
+        method: "GET",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        credentials: 'include',
+        credentials: "include",
       });
 
       const res = await response.json();
       if (response.status !== 200) {
         if (response.status === 401) {
-          return (window.location.href = '/');
+          return (window.location.href = "/");
         }
-        setPopup(true)
+        setPopup(true);
         return;
       }
 
@@ -62,14 +61,14 @@ const Members = () => {
 
   const filterMembers = (e) => {
     const filter = e.target.value;
-    if (filter === 'all') {
+    if (filter === "all") {
       setFilteredMembers(members);
-    } else if (filter === 'following') {
+    } else if (filter === "following") {
       const filteredMembers = members.filter((member) =>
         follows.map((follow) => follow).includes(member.username)
       );
       setFilteredMembers(filteredMembers);
-    } else if (filter === 'nonfollowing') {
+    } else if (filter === "nonfollowing") {
       const filteredMembers = members.filter(
         (member) => !follows.map((follow) => follow).includes(member.username)
       );
@@ -81,33 +80,34 @@ const Members = () => {
     setPopup(false);
   };
 
-
-
   return (
     <>
-    {popup ? <Popup onClose={closePopup}/> : null}
-    <div className='membersWrapper'>
-      <Sidemenu />
-      <div className='filler-div'></div>
-      <div>
-        <select className='members-SelectField' onChange={(e) => filterMembers(e)}>
-          <option value='all'>Filter: All</option>
-          <option value='following'>Following</option>
-          <option value='nonfollowing'>Not following</option>
-        </select>
-        <div className='Wrap-for-Membercards'>
-          {fetched ? (
-            filteredMembers.map((member) => (
-              <MemberCardForMembersPage key={member._id} {...member} />
-            ))
-          ) : (
-            <p>Loading</p>
-          )}
+      {popup ? <Popup onClose={closePopup} /> : null}
+      <div className="membersWrapper">
+        <Sidemenu />
+        <div className="filler-div"></div>
+        <div>
+          <select
+            className="members-SelectField"
+            onChange={(e) => filterMembers(e)}
+          >
+            <option value="all">Filter: All</option>
+            <option value="following">Following</option>
+            <option value="nonfollowing">Not following</option>
+          </select>
+          <div className="Wrap-for-Membercards">
+            {fetched ? (
+              filteredMembers.map((member) => (
+                <MemberCardForMembersPage key={member._id} {...member} />
+              ))
+            ) : (
+              <p>Loading</p>
+            )}
+          </div>
         </div>
+        <div></div>
       </div>
-      <div></div>
-    </div>
-    <Footer />
+      <Footer />
     </>
   );
 };
