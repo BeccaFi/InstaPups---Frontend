@@ -1,0 +1,91 @@
+.member-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0;
+        margin-bottom: 20px;
+        border-bottom: 1px solid antiquewhite;
+        border-width: 100%;
+        background-color: #252536;
+        
+
+       .member-card-main-info {
+            display: flex;
+            flex-direction: row;
+            gap: 13rem;
+            align-items: flex-start;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            padding: 15px;
+            color: #fff;
+
+            img {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                border: 2px solid black;
+            }
+
+            .member-card-left {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+
+                .follow-button {
+                    padding: 6px;
+                    border-radius: 6px;
+                    border: 1px solid black;
+                    background-color: #F0D7C9;
+                    font-size: 16px;
+    
+                    &:hover {
+                        cursor: pointer;
+                        filter: brightness(110%);
+                    }
+                }
+            }
+            
+         .member-card-middle {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            .follows-posts-count {
+                display: flex;
+                justify-content: flex-start;
+                flex-direction: row;
+                gap: 1rem;
+                color: grey;
+            }
+
+            h1 {
+                color: antiquewhite;
+                top: 0;
+                text-align: center;
+            }
+         }
+
+         .member-card-right {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: center;
+
+
+            h1 {
+                color: antiquewhite;
+                top: 0;
+            }
+
+            li {
+                margin-bottom: 1rem;
+            }
+         }
+        }
+        
+        li {
+            list-style-type: none;
+        }
+    }    
