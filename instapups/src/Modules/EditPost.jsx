@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import updatePost from "./updatePost";
 import "../sass/Modules/EditPost.modules.scss";
 
-function EditPost({ post: { username, datePosted, comments, likes, _id, content, photos, onEdit }, updatefeed }) {
+function EditPost({ post: { username, datePosted, comments, likes, _id, content, photos}, onEdit, onEditSubmit } ) {
   const [editText, setEditText] = useState(content.text);
   const [editPhotos, setEditPhotos] = useState(content.photos);
   const [post, setPost] = useState({
@@ -24,6 +24,14 @@ function EditPost({ post: { username, datePosted, comments, likes, _id, content,
     onEdit && onEdit({ editText, editPhotos });
   };
 
+  const handleEdit = (editText, editPhotos) => {
+    updatePost(_id, {
+      text: editText,
+      photos: editPhotos,
+    });
+    onEditSubmit();
+  };
+
   return (
     <form onSubmit={handleSubmit} className="edit-form">
       <div className="text-edit">
@@ -35,11 +43,7 @@ function EditPost({ post: { username, datePosted, comments, likes, _id, content,
       <button
         type="submit"
         id="save-btn"
-        onClick={() =>
-          updatePost(_id, {
-            text: editText,
-            photos: editPhotos,
-          }, updatefeed())
+        onClick={() => handleEdit(editText, editPhotos)
         }
       >
         Save
