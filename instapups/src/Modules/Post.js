@@ -6,7 +6,7 @@ import DeletePopup from "./DeletePopup";
 import EditPost from "./EditPost";
 import editbutton from "../Media/Icons/ikon.png";
 
-const Post = ({ username, datePosted, comments, likes, _id, content }) => {
+const Post = ({ username, datePosted, comments, likes, _id, content } ) => {
   const [showComments, setShowComments] = useState(false);
   const [bark, setBark] = useState("");
   const [member, setMember] = useState([]);
@@ -17,6 +17,8 @@ const Post = ({ username, datePosted, comments, likes, _id, content }) => {
   const [likes2, setLikes2] = useState(likes);
   const [clickedDelete, setClickedDelete] = useState(false);
   const [clickedEdit, setClickedEdit] = useState(false);
+  const [editactive, setEditActive] = useState(false);
+  const [active, setActive] = useState(false);
 
   useEffect(() => {
     const getMember = async () => {
@@ -41,7 +43,7 @@ const Post = ({ username, datePosted, comments, likes, _id, content }) => {
       setLoaded(true);
     };
     getMember();
-  }, [comments2, likes2]);
+  }, [comments2, likes2, active]);
 
   const postYourBark = async (e) => {
     e.preventDefault();
@@ -99,8 +101,20 @@ const Post = ({ username, datePosted, comments, likes, _id, content }) => {
     showComments ? setShowComments(false) : setShowComments(true);
   };
 
+  const toggleEditButton = () => {
+    clickedEdit ? setClickedEdit(false) : setClickedEdit(true);
+    editactive ? setEditActive(false) : setEditActive(true);
+  };
+
+  const updatefeed = () => {
+    setActive(true)
+    setInterval (() => {
+      setActive(false)
+      }, 1000);
+  };
+
   return (
-    <div className="post-Wrapper">
+    <div className={editactive ? "post-Wrapper redborder" : "post-Wrapper"} >
       {loaded ? (
         <div key={member._id}>
           <img className="MembersProfilePic" src={member.profilePic} alt={username} />
@@ -110,7 +124,7 @@ const Post = ({ username, datePosted, comments, likes, _id, content }) => {
           <p className="post-date">{datePosted}</p>
           {member.username === loggedInUser ? (
             <div className="edit-delete-container">
-              <button className="edit-post" onClick={() => setClickedEdit(true)}>
+              <button className="edit-post" onClick={() => toggleEditButton()}>
                 {" "}
                 <img src={editbutton} alt="" className="edit-image" />
               </button>
@@ -123,7 +137,7 @@ const Post = ({ username, datePosted, comments, likes, _id, content }) => {
           ) : null}
           {clickedDelete ? <DeletePopup id={_id} wantDelete={clickedDelete} /> : null}
 
-          {clickedEdit ? <EditPost post={{ username, datePosted, comments, likes, _id, content }} /> : null}
+          {clickedEdit ? <EditPost post={{ username, datePosted, comments, likes, _id, content }} updatefeed={updatefeed} /> : null}
         </div>
       ) : null}
 
