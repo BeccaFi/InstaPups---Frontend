@@ -1,5 +1,5 @@
 @import "../abstracts/colors";
-// merge issues
+
 .memberCard-Wrapper {
   position: relative;
   background-color: $nav-background;
@@ -12,7 +12,9 @@
   align-items: center;
   height: 100px;
 
-  
+  &:hover {
+    filter: brightness(130%);
+  }
 
   .memberCardProfilePic {
     width: 50px;
@@ -36,14 +38,13 @@
     }
 
     @media screen and (max-width: 650px) {
-    font-size: 12px;
+      font-size: 12px;
     }
 
     @media screen and (max-width: 450px) {
       padding-left: 100px;
     }
   }
-
 
   .button-For-Follow {
     width: 20px;
