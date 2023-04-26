@@ -7,10 +7,10 @@ const Footer = () => {
         <div>
         <h3>Made by:</h3>
         <ul>
-            <li><a href="https://github.com/BeccaFi/">Rebecca</a></li>
+            <li><a href="https://github.com/BeccaFi/">Rebecca Fischer</a></li>
             <li><a href="https://github.com/Darkshiira">Hanna Arefiardakani</a></li>
-            <li><a href="https://github.com/Shinyn">Mattias </a></li>
-            <li><a href="https://github.com/danjeljansson">Daniel</a></li>
+            <li><a href="https://github.com/Shinyn">Mattias Alm</a></li>
+            <li><a href="https://github.com/danjeljansson">Daniel Jansson</a></li>
         </ul>
         </div>
 
@@ -24,7 +24,7 @@ const Footer = () => {
                 <li><a href="https://www.flaticon.com/free-icons/kennel" title="kennel icons">Kennel icons created by Chanut-is-Industries - Flaticon</a></li>
                 <li><a href="https://www.flaticon.com/free-icons/bark" title="bark icons">Bark icons created by HadKicon - Flaticon</a></li>
                 <li><a href="https://www.flaticon.com/free-icons/settings" title="settings icons">Settings icons created by Freepik - Flaticon</a></li>
-            
+                <li><a href="https://www.flaticon.com/free-icons/editing" title="editing icons">Editing icons created by Freepik - Flaticon</a></li>
             </ul>
 
         </div>

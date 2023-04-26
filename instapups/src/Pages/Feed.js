@@ -11,6 +11,7 @@ const Feed = () => {
   const [fetched, setFetched] = useState(false);
   const [popup, setPopup] = useState(false);
   const [newPost, setNewPost] = useState(false);
+  const [newEdit, setNewEdit] = useState(false);
 
   useEffect(() => {
     const getPosts = async () => {
@@ -42,7 +43,7 @@ const Feed = () => {
       }
     };
     getPosts();
-  }, [newPost]);
+  }, [newPost, newEdit]);
 
   const closePopup = () => {
     setPopup(false);
@@ -56,6 +57,13 @@ const Feed = () => {
     }, 1000);
   };
 
+  const handleEditPost = () => {
+    setNewEdit(true);
+    setInterval(() => {
+      setNewEdit(false)
+    }, 1000);
+  };
+
   return (
     <>
     {popup ? <Popup onClose={closePopup}/> : null}
@@ -64,7 +72,7 @@ const Feed = () => {
       <Sidemenu />
       <div className="bark-wrapper">
         <CreatePosts updateFeed={updateFeed} />
-        {fetched ? posts.map((post) => <Post key={post._id} {...post} />) : <p>You are not following anyone...yet</p>}
+        {fetched ? posts.map((post) => <Post key={post._id} {...post} onEditSubmit={handleEditPost} />) : <p>You are not following anyone...yet</p>}
       </div>
       <div className="Profile-filler"></div>
     </div>

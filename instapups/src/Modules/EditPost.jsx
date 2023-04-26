@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import updatePost from "./updatePost";
+import "../sass/Modules/EditPost.modules.scss";
 
-function EditPost({
-  post: { username, datePosted, comments, likes, _id, content, photos, onEdit },
-}) {
+function EditPost({ post: { username, datePosted, comments, likes, _id, content, photos}, onEdit, onEditSubmit } ) {
   const [editText, setEditText] = useState(content.text);
   const [editPhotos, setEditPhotos] = useState(content.photos);
   const [post, setPost] = useState({
@@ -20,48 +19,31 @@ function EditPost({
     setEditText(event.target.value);
   };
 
-  const handleImageChange = (event) => {
-    setEditPhotos(event.target.value);
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     onEdit && onEdit({ editText, editPhotos });
   };
 
-  const handlePostEdit = (updatedPost) => {
-    updatePost(post.id, updatedPost).then(() => {
-      setPost(updatedPost);
+  const handleEdit = (editText, editPhotos) => {
+    updatePost(_id, {
+      text: editText,
+      photos: editPhotos,
     });
+    onEditSubmit();
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
+    <form onSubmit={handleSubmit} className="edit-form">
+      <div className="text-edit">
         <label htmlFor="post-text"></label>
-        <input
-          type="text"
-          id="edit-text-input"
-          value={editText}
-          onChange={handlePostTextChange}
-        />
-      </div>
-      <div>
+        <textarea type="text" id="edit-text-input" value={editText} onChange={handlePostTextChange} />
         <label htmlFor="image"></label>
-        <input
-          type="text"
-          placeholder="Add an image URL"
-          onChange={(e) => setEditPhotos([e.target.value])}
-        />
+        <input type="text" id="edit-image-url" placeholder="Add an image URL" onChange={(e) => setEditPhotos([e.target.value])} />
       </div>
       <button
         type="submit"
         id="save-btn"
-        onClick={() =>
-          updatePost(_id, {
-            text: editText,
-            photos: editPhotos,
-          })
+        onClick={() => handleEdit(editText, editPhotos)
         }
       >
         Save

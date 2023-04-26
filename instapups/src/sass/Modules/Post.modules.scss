@@ -1,35 +1,40 @@
 @import "../abstracts/colors";
 @import "../abstracts/mixins";
 
+.redborder {
+    background-color: #393a50; 
+}
+
 .post-Wrapper {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  margin: 10px;
+  margin-top: 10px;
   padding: 30px;
   position: relative;
-  //overflow: hidden;
   top: 0;
   left: 0;
   border-bottom: 1px solid #bcb4cf;
 
-.link-to-Member {
-  text-decoration: none;
-  color: white;
-  font-size: 20px;
-  font-weight: bold;
-  margin: 10px;
-  padding-left: 20px;
-  position: relative;
-  top: 0;
-  left: 0;
+  
 
-  &:hover {
-    cursor: pointer;
-    color: #e6d377;
+  .link-to-Member {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
+    padding-left: 20px;
+    position: relative;
+    top: 0;
+    left: 0;
+
+    &:hover {
+      cursor: pointer;
+      color: #e6d377;
+    }
   }
-}
 }
 
 .content-Text {
@@ -56,161 +61,177 @@
   }
 }
 
-    .post-date {
-        text-align: center;
-        margin-top: -30px;
-        margin-bottom: 40px;
-        color: #5e5e6e;
+.post-date {
+  text-align: center;
+  margin-top: -30px;
+  margin-bottom: 40px;
+  color: #5e5e6e;
 
-        @media screen and (max-width: 500px) {
-            font-size: 10px;
-            text-align: end;
-        }
-            
-        }
-    
+  @media screen and (max-width: 500px) {
+    font-size: 10px;
+    text-align: end;
+  }
+}
 
-    .delete-post {
-        // position: relative;
-        margin-left: 800px;
-        padding: 2px;
-        background-color: transparent;
-        border: none;
-        color: #5e5e6e;
-        font-size: 18px;
-        position: absolute;
-        right: 2px;
-        top: 2px;
+.edit-delete-container {
+  display: flex;
+  position: absolute;
+  right: 10px;
+  top: 2px;
+  gap: 0.7rem;
 
-        &:hover {
-            cursor: pointer;
-            // filter: brightness(150%);
-            color: #9595a1;
-        }
+  .edit-post {
+    background-color: transparent;
+    border: none;
+    padding: 5px;
+
+    img {
+      width: 20px;
+      height: 20px;
     }
 
-    .delete-popup {
-        background-color: antiquewhite;
-        width: 330px;
-        height: 100px;
-        padding: 10px;
-        border: 2px solid black;
-        border-radius: 15px;
-        box-shadow: 0 5px 20px -4px #000000;
-        margin: auto auto;
-
-
-        p {
-            color: black;
-            margin-top: 6px;
-        }
-
-        .popup-btns {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 20px;
-        }
-
-
-        #delete-btn {
-
-            border-radius: 6px;
-            padding: 4px;
-            border: 1px solid black;
-
-            &:hover {
-                background-color: rgb(170, 237, 170);
-                cursor: pointer;
-            }
-        }
-
-        #cancel-btn {
-
-            border-radius: 6px;
-            padding: 4px;
-            border: 1px solid black;
-
-            &:hover {
-                background-color: rgb(170, 170, 170);
-                cursor: pointer;
-            }
-
-        }
-        
-       
+    &:hover {
+      scale: 1.1;
+      cursor: pointer;
+      filter: brightness(130%);
     }
+  }
+
+  .delete-post {
+    padding: 2px;
+    background-color: transparent;
+    border: none;
+    color: #5e5e6e;
+    font-size: 20px;
+
+    &:hover {
+      cursor: pointer;
+      color: #9595a1;
+      scale: 1.1;
+    }
+  }
+}
+  .delete-popup {
+    background-color: #393a50;
+    width: 330px;
+    height: 100px;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px -4px #000000;
+    margin: 20px auto;
+
+    p {
+      color: white;
+      margin-top: 6px;
+    }
+
+    .popup-btns {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 20px;
+    }
+
+    #delete-btn {
+      border-radius: 6px;
+      padding: 4px;
+      border: 1px solid black;
+      background-color: $nav-background;
+      color:white;
+
+      &:hover {
+        background-color: white;
+        cursor: pointer;
+        color: black;
+      }
+    }
+
+    #cancel-btn {
+      border-radius: 6px;
+      padding: 4px;
+      border: 1px solid black;
+      background-color: $nav-background;
+      color:white;
+
+      &:hover {
+        cursor: pointer;
+        color:black;
+        background-color: white;
+      }
+    }
+  }
+
 
 .like-And-Barks-Wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .likeButton {
+    width: 20px;
+    height: 20px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .barkButton {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 15px;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+
+    &:hover {
+      cursor: pointer;
+      color: antiquewhite;
+      border-radius: 0;
+      text-decoration: underline 1px solid antiquewhite;
+    }
+  }
+}
+
+.bark-Field-Wrapper {
+  border: 2px solid #190743;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #fff7f5;
+  color: rgb(0, 0, 0);
+
+  .bark-Field {
+    margin: 10px;
+    width: 97%;
+    border-bottom: 1px solid #190743;
+
+    p {
+      color: rgb(0, 0, 0);
+      margin: 10px;
+    }
+  }
+
+  .bark-Field-Input-Wrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 
-    .likeButton {
-      width: 20px;
-      height: 20px;
-
-      &:hover {
-        cursor: pointer;
-      }
-    }
-    .barkButton {
-      background-color: transparent;
+    input {
+      width: 100%;
       border: none;
-      color: white;
-      font-size: 15px;
-      width: 100px;
-      height: 30px;
-      border-radius: 5px;
-
-      &:hover {
-        cursor: pointer;
-        color: antiquewhite;
-        border-radius: 0;
-        text-decoration: underline 1px solid antiquewhite;
+      outline: none;
+      background-color: transparent;
+      color: rgb(0, 0, 0);
+      font-size: 1rem;
+      padding: 10px;
+      &::placeholder {
+        color: rgb(0, 0, 0);
       }
     }
+    @include bark-button;
   }
-  
-.bark-Field-Wrapper {
-    border: 2px solid #190743;
-    border-radius: 5px;
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #fff7f5;
-    color: rgb(0, 0, 0);
-
-    .bark-Field {
-      margin: 10px;
-      width: 97%;
-      border-bottom: 1px solid #190743;
-
-      p {
-        color: rgb(0, 0, 0);
-        margin: 10px;
-      }
-    }
-
-    .bark-Field-Input-Wrapper {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-
-      input {
-        width: 100%;
-        border: none;
-        outline: none;
-        background-color: transparent;
-        color: rgb(0, 0, 0);
-        font-size: 1rem;
-        padding: 10px;
-        &::placeholder {
-          color: rgb(0, 0, 0);
-        }
-        }
-        @include bark-button;
-      
-      }
 }
 .MembersProfilePic {
   margin-top: 8px;

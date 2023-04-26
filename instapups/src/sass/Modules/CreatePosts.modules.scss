@@ -3,7 +3,7 @@
 @import "../abstracts/_mixins.scss";
 
 .Your-bark {
-margin-top: 115px;
+  margin-top: 115px;
 
   @include bark-button;
   .Your-bark-popup-button {
@@ -32,18 +32,21 @@ margin-top: 115px;
   margin: 5px;
 
   .Your-bark-input {
+    resize: none;
     color: rgb(0, 0, 0);
     background-color: #fff7f5;
     @include bark-button;
-    ::placeholder {
-      color: rgb(0, 0, 0);
+
+    &::-webkit-input-placeholder {
+      padding-top: 50px;
+      align-items: center;
     }
   }
 }
 
-  .Your-bark-button {
-    background-color: #f0d5cc;
-    border: 2px solid black !important;
-    color: rgb(0, 0, 0) !important;
-    font-size: 15px;
-  }
+.Your-bark-button {
+  background-color: #f0d5cc;
+  border: 2px solid black !important;
+  color: rgb(0, 0, 0) !important;
+  font-size: 15px;
+}

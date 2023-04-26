@@ -4,8 +4,17 @@ import "../sass/Modules/Post.modules.scss";
 import { Link } from "react-router-dom";
 import DeletePopup from "./DeletePopup";
 import EditPost from "./EditPost";
+import editbutton from "../Media/Icons/ikon.png";
 
-const Post = ({ username, datePosted, comments, likes, _id, content }) => {
+const Post = ({
+  username,
+  datePosted,
+  comments,
+  likes,
+  _id,
+  content,
+  onEditSubmit,
+}) => {
   const [showComments, setShowComments] = useState(false);
   const [bark, setBark] = useState("");
   const [member, setMember] = useState([]);
@@ -16,6 +25,7 @@ const Post = ({ username, datePosted, comments, likes, _id, content }) => {
   const [likes2, setLikes2] = useState(likes);
   const [clickedDelete, setClickedDelete] = useState(false);
   const [clickedEdit, setClickedEdit] = useState(false);
+  const [editactive, setEditActive] = useState(false);
 
   useEffect(() => {
     const getMember = async () => {
@@ -35,7 +45,6 @@ const Post = ({ username, datePosted, comments, likes, _id, content }) => {
         if (response.status === 401) {
           window.location.href = "/";
         }
-        console.log(res);
         return;
       }
       setLoggedInUser(res.loggedInUser);
@@ -65,7 +74,6 @@ const Post = ({ username, datePosted, comments, likes, _id, content }) => {
       if (response.status === 401) {
         window.location.href = "/";
       }
-      console.log(res);
       return;
     }
     setComments2([...comments, res.comment]);
@@ -93,16 +101,21 @@ const Post = ({ username, datePosted, comments, likes, _id, content }) => {
       }
     }
 
-      setLikes2(res.likes);
-      return;
+    setLikes2(res.likes);
+    return;
   };
 
   const toggleBarkButton = () => {
     showComments ? setShowComments(false) : setShowComments(true);
   };
 
+  const toggleEditButton = () => {
+    clickedEdit ? setClickedEdit(false) : setClickedEdit(true);
+    editactive ? setEditActive(false) : setEditActive(true);
+  };
+
   return (
-    <div className="post-Wrapper">
+    <div className={editactive ? "post-Wrapper redborder" : "post-Wrapper"}>
       {loaded ? (
         <div key={member._id}>
           <img
@@ -115,13 +128,10 @@ const Post = ({ username, datePosted, comments, likes, _id, content }) => {
           </Link>
           <p className="post-date">{datePosted}</p>
           {member.username === loggedInUser ? (
-            <>
-              <button
-                className="edit-post"
-                onClick={() => setClickedEdit(true)}
-              >
+            <div className="edit-delete-container">
+              <button className="edit-post" onClick={() => toggleEditButton()}>
                 {" "}
-                Edit
+                <img src={editbutton} alt="" className="edit-image" />
               </button>
 
               <button
@@ -131,7 +141,7 @@ const Post = ({ username, datePosted, comments, likes, _id, content }) => {
                 {" "}
                 X
               </button>
-            </>
+            </div>
           ) : null}
           {clickedDelete ? (
             <DeletePopup id={_id} wantDelete={clickedDelete} />
@@ -140,6 +150,7 @@ const Post = ({ username, datePosted, comments, likes, _id, content }) => {
           {clickedEdit ? (
             <EditPost
               post={{ username, datePosted, comments, likes, _id, content }}
+              onEditSubmit={onEditSubmit}
             />
           ) : null}
         </div>

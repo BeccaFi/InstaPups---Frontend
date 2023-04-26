@@ -10,12 +10,9 @@ const Logout = () => {
         },
       });
       if (response.status !== 200) {
-        console.log(response.statusText);
       }
       window.location.href = "/";
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   }
 
   return (
