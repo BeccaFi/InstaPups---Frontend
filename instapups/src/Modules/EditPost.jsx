@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import updatePost from "./updatePost";
 import "../sass/Modules/EditPost.modules.scss";
 
-function EditPost({ post: { username, datePosted, comments, likes, _id, content, photos, onEdit } }) {
+function EditPost({ post: { username, datePosted, comments, likes, _id, content, photos, onEdit }, updatefeed }) {
   const [editText, setEditText] = useState(content.text);
   const [editPhotos, setEditPhotos] = useState(content.photos);
   const [post, setPost] = useState({
@@ -19,19 +19,9 @@ function EditPost({ post: { username, datePosted, comments, likes, _id, content,
     setEditText(event.target.value);
   };
 
-  const handleImageChange = (event) => {
-    setEditPhotos(event.target.value);
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     onEdit && onEdit({ editText, editPhotos });
-  };
-
-  const handlePostEdit = (updatedPost) => {
-    updatePost(post.id, updatedPost).then(() => {
-      setPost(updatedPost);
-    });
   };
 
   return (
@@ -49,7 +39,7 @@ function EditPost({ post: { username, datePosted, comments, likes, _id, content,
           updatePost(_id, {
             text: editText,
             photos: editPhotos,
-          })
+          }, updatefeed())
         }
       >
         Save
