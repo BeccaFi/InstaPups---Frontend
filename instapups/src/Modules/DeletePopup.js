@@ -1,8 +1,11 @@
 import { useState } from "react";
+import Popup from "./Popup";
 
 const DeletePopup = (props) => {
   const id = props.id;
   const [wantDelete, setWantDelete] = useState(props.wantDelete);
+  const [popup, setPopup] = useState(false);
+
 
   async function DeletePost() {
     const response = await fetch(`http://localhost:5051/posts/${id}`, {
@@ -15,6 +18,11 @@ const DeletePopup = (props) => {
 
     const res = await response.json();
 
+    if(response.status !== 200){
+      setPopup(true);
+      return;
+    }
+    
     window.location.reload();
   }
 
@@ -23,8 +31,13 @@ const DeletePopup = (props) => {
     window.location.reload();
   }
 
+  const closePopup = () => {
+    setPopup(false);
+  }
+
   return (
     <>
+    {popup ? <Popup onClose={closePopup}/> : null}
       {wantDelete ? (
         <div className="delete-popup">
           <p>Are you sure you want to delete this post?</p>
@@ -38,6 +51,7 @@ const DeletePopup = (props) => {
           </div>
         </div>
       ) : null}
+
     </>
   );
 };
