@@ -15,14 +15,7 @@ const ChangePicInput = (props) => {
         console.log(newPicUrl);
         window.location.reload();
     }
-
-    // const inputChange = async (e) => {
-    //     // setNewPicUrl(inputRef.current.value);
-
-    //         ChangeProfilePic();
-        
-    //  }
-
+    
      async function ChangeProfilePic() {
   
             const response = await fetch('http://localhost:5051/members/settings/profilePicture', {
