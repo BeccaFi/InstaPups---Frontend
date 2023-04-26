@@ -23,7 +23,7 @@ const Footer = () => {
                 <li><a href="https://www.flaticon.com/free-icons/pet-bed" title="pet bed icons">Pet bed icons created by Freepik - Flaticon</a></li>
                 <li><a href="https://www.flaticon.com/free-icons/kennel" title="kennel icons">Kennel icons created by Chanut-is-Industries - Flaticon</a></li>
                 <li><a href="https://www.flaticon.com/free-icons/bark" title="bark icons">Bark icons created by HadKicon - Flaticon</a></li>
-            
+                <li><a href="https://www.flaticon.com/free-icons/editing" title="editing icons">Editing icons created by Freepik - Flaticon</a></li>
             </ul>
 
         </div>
