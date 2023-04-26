@@ -6,7 +6,7 @@ import DeletePopup from "./DeletePopup";
 import EditPost from "./EditPost";
 import editbutton from "../Media/Icons/ikon.png";
 
-const Post = ({ username, datePosted, comments, likes, _id, content } ) => {
+const Post = ({ username, datePosted, comments, likes, _id, content, onEditSubmit }) => {
   const [showComments, setShowComments] = useState(false);
   const [bark, setBark] = useState("");
   const [member, setMember] = useState([]);
@@ -18,7 +18,6 @@ const Post = ({ username, datePosted, comments, likes, _id, content } ) => {
   const [clickedDelete, setClickedDelete] = useState(false);
   const [clickedEdit, setClickedEdit] = useState(false);
   const [editactive, setEditActive] = useState(false);
-  const [active, setActive] = useState(false);
 
   useEffect(() => {
     const getMember = async () => {
@@ -43,7 +42,7 @@ const Post = ({ username, datePosted, comments, likes, _id, content } ) => {
       setLoaded(true);
     };
     getMember();
-  }, [comments2, likes2, active]);
+  }, [comments2, likes2]);
 
   const postYourBark = async (e) => {
     e.preventDefault();
@@ -106,12 +105,6 @@ const Post = ({ username, datePosted, comments, likes, _id, content } ) => {
     editactive ? setEditActive(false) : setEditActive(true);
   };
 
-  const updatefeed = () => {
-    setActive(true)
-    setInterval (() => {
-      setActive(false)
-      }, 1000);
-  };
 
   return (
     <div className={editactive ? "post-Wrapper redborder" : "post-Wrapper"} >
@@ -137,7 +130,7 @@ const Post = ({ username, datePosted, comments, likes, _id, content } ) => {
           ) : null}
           {clickedDelete ? <DeletePopup id={_id} wantDelete={clickedDelete} /> : null}
 
-          {clickedEdit ? <EditPost post={{ username, datePosted, comments, likes, _id, content }} updatefeed={updatefeed} /> : null}
+          {clickedEdit ? <EditPost post={{ username, datePosted, comments, likes, _id, content }} onEditSubmit={onEditSubmit} /> : null}
         </div>
       ) : null}
 
