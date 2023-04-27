@@ -1,5 +1,5 @@
 function updatePost(id, updatedPost) {
-  return fetch(`http://localhost:5051/posts/update/${id}`, {
+  return fetch(`http://localhost:5051/posts/${id}/update`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
