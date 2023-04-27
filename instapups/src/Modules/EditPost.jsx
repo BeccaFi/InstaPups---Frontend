@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import updatePost from "./updatePost";
 import "../sass/Modules/EditPost.modules.scss";
 
-function EditPost({ post: { username, datePosted, comments, likes, _id, content, photos}, onEdit, onEditSubmit } ) {
+function EditPost({ post: { username, datePosted, comments, likes, _id, content, photos}, onEdit, onEditSubmit, toggleEditButton } ) {
   const [editText, setEditText] = useState(content.text);
   const [editPhotos, setEditPhotos] = useState(content.photos);
   const [post, setPost] = useState({
@@ -30,6 +30,7 @@ function EditPost({ post: { username, datePosted, comments, likes, _id, content,
       photos: editPhotos,
     });
     onEditSubmit();
+    toggleEditButton();
   };
 
   return (
