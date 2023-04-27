@@ -72,6 +72,14 @@ const Member = () => {
     }, 1000);
   };
 
+  const handleFollowUnfollow = () => {
+    setNewEdit(true);
+    setIsFollowing(!isFollowing);
+    setInterval(() => {
+      setNewEdit(false);
+    }, 1000);
+  };
+
   return (
     <>
       {errorPopup ? <ErrorPopup onClose={closeErrorPopup} /> : null}
@@ -80,7 +88,7 @@ const Member = () => {
         <Sidemenu />
 
         <div className='memberPage'>
-        { member.username === loggedInUser.username ? <OwnProfileCard loggedInUser={loggedInUser} following={isFollowing} posts={posts} /> : <UserCard member={member} following={isFollowing} posts={posts} />}
+        { member.username === loggedInUser.username ? <OwnProfileCard loggedInUser={loggedInUser} following={isFollowing} posts={posts} /> : <UserCard member={member} following={isFollowing} posts={posts} onFollowUnfollow={handleFollowUnfollow} />}
         { loaded ? (!isFollowing ? <p> {followMessage} </p> : (!gotPosts ? <p> {postMessage} </p> :  ( posts.map((post) => (<Post key={post._id} {...post} onEditSubmit={handleEditPost}/>))))) : ( "Loading..." ) }
         </div>
 
