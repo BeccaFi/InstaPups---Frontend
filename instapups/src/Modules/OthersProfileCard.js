@@ -20,7 +20,7 @@ const UserCard = (props) => {
         });
     
         const res = await response.json();
-        console.log(res)
+        
         if(res === 'Followed') {
             setFollows(true);
             props.onFollowUnfollow();
