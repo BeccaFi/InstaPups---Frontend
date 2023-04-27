@@ -20,6 +20,7 @@ const Member = () => {
   const [postMessage, setPostMessage] = useState();
   const [loaded, setLoaded] = useState(false);
   const [errorPopup, setErrorPopup] = useState(false);
+  const [newEdit, setNewEdit] = useState(false);
 
   useEffect(() => {
     const getMember = async () => {
@@ -58,22 +59,29 @@ const Member = () => {
       setLoaded(true);
     };
     getMember();
-  }, [id]);
+  }, [id, newEdit]);
 
   const closeErrorPopup = () => {
     setErrorPopup(false);
   };
 
+  const handleEditPost = () => {
+    setNewEdit(true);
+    setInterval(() => {
+      setNewEdit(false)
+    }, 1000);
+  };
+
   return (
     <>
-      {ErrorPopup ? <ErrorPopup onClose={closeErrorPopup} /> : null}
+      {errorPopup ? <ErrorPopup onClose={closeErrorPopup} /> : null}
       <div className="memberPageWrapper">
         <div className="filler-div"></div>
         <Sidemenu />
 
         <div className='memberPage'>
         { member.username === loggedInUser.username ? <OwnProfileCard loggedInUser={loggedInUser} following={isFollowing} posts={posts} /> : <UserCard member={member} following={isFollowing} posts={posts} />}
-        { loaded ? (!isFollowing ? <p> {followMessage} </p> : (!gotPosts ? <p> {postMessage} </p> :  ( posts.map((post) => (<Post key={post._id} {...post} />))))) : ( "Loading..." ) }
+        { loaded ? (!isFollowing ? <p> {followMessage} </p> : (!gotPosts ? <p> {postMessage} </p> :  ( posts.map((post) => (<Post key={post._id} {...post} onEditSubmit={handleEditPost}/>))))) : ( "Loading..." ) }
         </div>
 
         <div></div>
