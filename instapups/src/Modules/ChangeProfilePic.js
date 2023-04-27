@@ -14,7 +14,6 @@ const ChangePicInput = (props) => {
     if(newPicUrl){
         ChangeProfilePic();
         setNewPicUrl('');
-        console.log(newPicUrl);
         window.location.reload();
     }
     
@@ -42,11 +41,10 @@ const ChangePicInput = (props) => {
         return;
     }
         }
-            
 
     async function cancelChange() {
         setWantChangePic(false);
-        window.location.reload(); //Without this, the pic is only clickable once atm. How to solve?
+        window.location.reload();
     }
 
     const closeErrorPopup = () => {

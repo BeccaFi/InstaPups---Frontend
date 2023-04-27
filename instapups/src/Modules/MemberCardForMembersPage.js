@@ -52,8 +52,9 @@ const MemberCardForMembersPage = ({ username, profilePic, _id }) => {
       if (response.status === 401) {
         return (window.location.href = "/");
       }
-      console.log(res);
+
       return;
+      
     }
     if (res === "followed") {
       setIsFollowing(true);

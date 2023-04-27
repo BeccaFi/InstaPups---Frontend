@@ -6,7 +6,6 @@ const DeletePopup = (props) => {
   const [wantDelete, setWantDelete] = useState(props.wantDelete);
   const [errorPopup, setErrorPopup] = useState(false);
 
-
   async function DeletePost() {
 
     try{
@@ -31,7 +30,6 @@ const DeletePopup = (props) => {
     return;
   }
 }
-    
 
   async function cancelDelete() {
     setWantDelete(false);
