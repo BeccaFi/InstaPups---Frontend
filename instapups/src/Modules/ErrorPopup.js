@@ -1,7 +1,7 @@
 
-import "../sass/Modules/Popup.modules.scss"
+import "../sass/Modules/ErrorPopup.modules.scss"
 
-const Popup = ({onClose}) => {
+const ErrorPopup = ({onClose}) => {
   return (
   <>
     <div className="Popup-background"></div>
@@ -14,4 +14,4 @@ const Popup = ({onClose}) => {
   )
 }
 
-export default Popup
+export default ErrorPopup

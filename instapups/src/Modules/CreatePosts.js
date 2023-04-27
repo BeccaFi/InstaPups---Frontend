@@ -4,7 +4,7 @@ import "../sass/Modules/CreatePosts.modules.scss";
 
 const CreatePosts = ({ updateFeed }) => {
   const [bark, setBark] = useState("");
-  const [popup, setPopup] = useState(false);
+  const [barkPopup, setBarkPopup] = useState(false);
   const [image, setImage] = useState([]);
   const [response, setResponse] = useState("");
 
@@ -60,7 +60,7 @@ const CreatePosts = ({ updateFeed }) => {
   return (
     <div className="Your-bark">
       <div className="Your-bark-icon-Wrapper">
-        <img className="imageIcon" src={addimage} alt="icon of an image" onClick={(e) => setPopup(true)}></img>
+        <img className="imageIcon" src={addimage} alt="icon of an image" onClick={(e) => setBarkPopup(true)}></img>
         <textarea className="Your-bark-input" onChange={(e) => setBark(e.target.value)} placeholder="Bark here..." value={bark} />
         <p className="Your-bark-response">{response}</p>
         <button className="Your-bark-button" onClick={(e) => postingBarks(e)}>
@@ -68,13 +68,13 @@ const CreatePosts = ({ updateFeed }) => {
         </button>
       </div>
 
-      {popup && (
-        <div className="Your-bark-popup">
-          <button className="Your-bark-popup-button" onClick={(e) => setPopup(false)}>
+      {barkPopup && (
+        <div className="Your-bark-barkPopup">
+          <button className="Your-bark-barkPopup-button" onClick={(e) => setBarkPopup(false)}>
             ❌
           </button>
           <input
-            className="Your-bark-popup-input"
+            className="Your-bark-barkPopup-input"
             type="text"
             placeholder="Add an image url"
             value={image}

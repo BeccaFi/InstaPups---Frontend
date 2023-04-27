@@ -1,10 +1,10 @@
 import { useState } from "react";
-import Popup from "./Popup";
+import ErrorPopup from "./ErrorPopup";
 
 const DeletePopup = (props) => {
   const id = props.id;
   const [wantDelete, setWantDelete] = useState(props.wantDelete);
-  const [popup, setPopup] = useState(false);
+  const [errorPopup, setErrorPopup] = useState(false);
 
 
   async function DeletePost() {
@@ -19,7 +19,7 @@ const DeletePopup = (props) => {
     const res = await response.json();
 
     if(response.status !== 200){
-      setPopup(true);
+      setErrorPopup(true);
       return;
     }
     
@@ -31,13 +31,13 @@ const DeletePopup = (props) => {
     window.location.reload();
   }
 
-  const closePopup = () => {
-    setPopup(false);
+  const closeErrorPopup = () => {
+    setErrorPopup(false);
   }
 
   return (
     <>
-    {popup ? <Popup onClose={closePopup}/> : null}
+    {errorPopup ? <ErrorPopup onClose={closeErrorPopup}/> : null}
       {wantDelete ? (
         <div className="delete-popup">
           <p>Are you sure you want to delete this post?</p>

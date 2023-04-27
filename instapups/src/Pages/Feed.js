@@ -4,12 +4,12 @@ import "../sass/Pages/Feed.pages.scss";
 import { useState, useEffect } from "react";
 import Post from "../Modules/Post";
 import Footer from "../Modules/Footer";
-import Popup from "../Modules/Popup";
+import ErrorPopup from "../Modules/ErrorPopup";
 
 const Feed = () => {
   const [posts, setPosts] = useState([]);
   const [fetched, setFetched] = useState(false);
-  const [popup, setPopup] = useState(false);
+  const [errorPopup, setErrorPopup] = useState(false);
   const [newPost, setNewPost] = useState(false);
   const [newEdit, setNewEdit] = useState(false);
 
@@ -29,7 +29,7 @@ const Feed = () => {
         if (response.status === 401) {
           return (window.location.href = "/");
         }
-        setPopup(true);
+        setErrorPopup(true);
         return;
       }
 
@@ -45,9 +45,8 @@ const Feed = () => {
     getPosts();
   }, [newPost, newEdit]);
 
-  const closePopup = () => {
-    setPopup(false);
-  
+  const closeErrorPopup = () => {
+    setErrorPopup(false);
   }
 
   const updateFeed = () => {
@@ -66,7 +65,7 @@ const Feed = () => {
 
   return (
     <>
-    {popup ? <Popup onClose={closePopup}/> : null}
+    {errorPopup ? <ErrorPopup onClose={closeErrorPopup}/> : null}
     <div className="profileWrapper">
       <div className="filler-div"></div>
       <Sidemenu />
