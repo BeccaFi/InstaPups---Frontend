@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import '../sass/Modules/OthersProfileCard.modules.scss'
-
 
 const UserCard = (props) => {
 
