@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import '../sass/Modules/ChangeProfilePic.modules.scss'
+import ErrorPopup from "./ErrorPopup";
 
 const ChangePicInput = (props) => {
 
@@ -7,6 +8,7 @@ const ChangePicInput = (props) => {
     const [wantChangePic, setWantChangePic] = useState(props.wantChange)
     const [newPicUrl,setNewPicUrl] = useState(``);
     const inputRef = useRef(null);
+    const [errorPopup, setErrorPopup] = useState(false);
     let url = newPicUrl;
 
     if(newPicUrl){
@@ -17,7 +19,7 @@ const ChangePicInput = (props) => {
     }
     
      async function ChangeProfilePic() {
-  
+        try {
             const response = await fetch('http://localhost:5051/members/settings/profilePicture', {
                 method: 'PATCH',
                 body: JSON.stringify({picUrl: newPicUrl}),
@@ -29,16 +31,31 @@ const ChangePicInput = (props) => {
         
             const res = await response.json();
 
+            if (response.status !== 200){
+                setErrorPopup(true);
+                return;
+            }
+
             window.location.reload();
+    }   catch(error){
+        setErrorPopup(true);
+        return;
     }
+        }
+            
 
     async function cancelChange() {
         setWantChangePic(false);
         window.location.reload(); //Without this, the pic is only clickable once atm. How to solve?
     }
 
+    const closeErrorPopup = () => {
+        setErrorPopup(false);
+      }
+
     return (
         <>
+        {errorPopup ? <ErrorPopup onClose={closeErrorPopup}/> : null}
         {wantChangePic ? 
             <div className="change-pic-div">
             <h3>Update profile picture</h3>

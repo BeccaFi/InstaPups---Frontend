@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import "../sass/Pages/Register.modules.scss";
+import ErrorPopup from '../Modules/ErrorPopup'
+
 
 const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [response, setResponse] = useState("");
+  const [errorPopup, setErrorPopup] = useState(false);
 
   const onChangeUsername = (event) => {
     setUsername(event.target.value);
@@ -30,18 +33,25 @@ const Register = () => {
         body: JSON.stringify({ username, password, confirmPassword }),
       });
 
-      const data = await response.text();
+      const data = await response.json();
 
       if (response.status === 201) return window.location = "/";
 
       setResponse(data); 
     
     } catch (error) {
-      setResponse(data);
+      setErrorPopup(true);
+      return;
     }
   }
 
+  const closeErrorPopup = () => {
+    setErrorPopup(false);
+  };
+
   return (
+    <>
+    {errorPopup ? <ErrorPopup onClose={closeErrorPopup} /> : null}
     <form className="register-wrapper wrapper" onSubmit={registerUser}>
       <input
         type="text"
@@ -70,6 +80,7 @@ const Register = () => {
         Register
       </button>
     </form>
+    </>
   );
 };
 
