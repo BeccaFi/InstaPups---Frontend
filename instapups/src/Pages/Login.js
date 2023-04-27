@@ -33,7 +33,7 @@ const Login = () => {
         setResponse(data);
    
     } catch (error) {
-      setResponse(error) 
+      setResponse(data) 
     }
   }
 
