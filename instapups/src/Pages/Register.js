@@ -37,7 +37,7 @@ const Register = () => {
       setResponse(data); 
     
     } catch (error) {
-      setResponse(error) 
+      setResponse(data);
     }
   }
 
