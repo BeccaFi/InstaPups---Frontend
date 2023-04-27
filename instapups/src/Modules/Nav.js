@@ -31,8 +31,9 @@ const Nav = () => {
           window.location.href = "/";
           return;
         }
-        console.log(res);
+
         return;
+
       }
       setIsAuthenticated(true);
       setUserinfo(res);
@@ -50,8 +51,6 @@ const Nav = () => {
       {location.pathname === "/" && <Link to="/register">
         <button>Register</button>
       </Link>}
-    
-    
    
       {isAuthenticated && <Logout />}
       {location.pathname === "/register" && <Login />}
