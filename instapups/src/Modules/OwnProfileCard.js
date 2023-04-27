@@ -16,7 +16,7 @@ const OwnProfileCard = (props) => {
                 <div className="member-card-left">
                         <img src= {member.profilePic} alt='profilePicture' onClick={() => setChangePic(true)}/>
                         <p className="pic-p-tag" onClick={() => setChangePic(true)}>Change picture</p>
-                    <button className="settings-btn"><p>Settings</p><img alt="gear-icon" src={settings}></img> </button>
+                    <button className="settings-btn" onClick={() => alert('Upcoming feature, stay tuned!')}><p>Settings</p><img alt="gear-icon" src={settings}></img> </button>
                     {changePic ? <ChangePicInput user={member.username} wantChange={changePic} /> : null}
                 </div>
                 <div className="member-card-middle">
