@@ -20,12 +20,14 @@ const UserCard = (props) => {
         });
     
         const res = await response.json();
-
-        if(res === 'followed') {
+        
+        if(res === 'Followed') {
             setFollows(true);
+            props.onFollowUnfollow();
         }
         else {
         setFollows(false);
+        props.onFollowUnfollow();
         }
     }
 
@@ -34,7 +36,7 @@ const UserCard = (props) => {
             <div className='member-card-main-info'>
                 <div className="member-card-left">
                     <img src= {member.profilePic} alt='profilePicture' />
-                    <button className="follow-button" onClick={() => {FollowUnfollow(); window.location.reload();}}>{follows ? 'Unfollow' : 'Follow'}</button>
+                    <button className="follow-button" onClick={() => {FollowUnfollow()}}>{follows ? 'Unfollow' : 'Follow'}</button>
                 </div>
                 <div className="member-card-middle">
                     <h1>{member.username}</h1>
