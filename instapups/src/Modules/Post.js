@@ -150,7 +150,7 @@ const Post = ({
           {clickedEdit ? (
             <EditPost
               post={{ username, datePosted, comments, likes, _id, content }}
-              onEditSubmit={onEditSubmit}
+              onEditSubmit={onEditSubmit} toggleEditButton={toggleEditButton}
             />
           ) : null}
         </div>

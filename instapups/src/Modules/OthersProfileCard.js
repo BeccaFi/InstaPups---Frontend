@@ -8,7 +8,6 @@ const UserCard = (props) => {
     const followCount = member.following.length;
     const postCount = props.posts.length;
     const [follows, setFollows] = useState(props.following);
-    console.log(member);
     
     const FollowUnfollow = async () => {
         const response = await fetch('http://localhost:5051/members/follow', {
