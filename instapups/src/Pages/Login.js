@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import "../sass/Pages/Login.modules.scss";
+import ErrorPopup from '../Modules/ErrorPopup'
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [response, setResponse] = useState("");
+  const [errorPopup, setErrorPopup] = useState(false);
 
   const onChangeUsername = (event) => {
     setUsername(event.target.value);
@@ -26,18 +28,24 @@ const Login = () => {
           },
           body: JSON.stringify({ username, password }),
         });
-        const data = await response.text();
+        const data = await response.json();
 
         if (response.status === 200) return window.location = "/home";
 
         setResponse(data);
    
     } catch (error) {
-      setResponse(data) 
+      setErrorPopup(true);
+      return;
     }
   }
+  const closeErrorPopup = () => {
+    setErrorPopup(false);
+  };
 
   return (
+    <>
+    {errorPopup ? <ErrorPopup onClose={closeErrorPopup} /> : null}
     <form className="login-wrapper wrapper" onSubmit={goToProfile}>
       <input
         type="text"
@@ -59,6 +67,7 @@ const Login = () => {
         Login
       </button>
     </form>
+    </>
   );
 };
 
