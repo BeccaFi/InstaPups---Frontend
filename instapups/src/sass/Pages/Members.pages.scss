@@ -1,5 +1,5 @@
 @import "../abstracts/colors";
-// merge issues
+
 .membersWrapper {
   padding-top: 120px;
   display: flex;
@@ -27,10 +27,8 @@
     @media screen and (max-width: 650px) {
         width: 100%;
         justify-content: center;
-
-    }
-        
-    }
+    } 
+  }
   
 
   .members-SelectField {
