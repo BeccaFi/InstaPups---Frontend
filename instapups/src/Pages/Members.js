@@ -3,14 +3,14 @@ import MemberCardForMembersPage from "../Modules/MemberCardForMembersPage";
 import Sidemenu from "../Modules/Sidemenu";
 import "../sass/Pages/Members.pages.scss";
 import Footer from "../Modules/Footer";
-import Popup from "../Modules/Popup";
+import ErrorPopup from "../Modules/ErrorPopup";
 
 const Members = () => {
   const [members, setMembers] = useState([]);
   const [follows, setFollows] = useState([]);
   const [filteredMembers, setFilteredMembers] = useState([]);
   const [fetched, setFetched] = useState(false);
-  const [popup, setPopup] = useState(false);
+  const [ErrorPopup, setErrorPopup] = useState(false);
 
   useEffect(() => {
     const getMembers = async () => {
@@ -27,7 +27,7 @@ const Members = () => {
         if (response.status === 401) {
           return (window.location.href = "/");
         }
-        setPopup(true);
+        setErrorPopup(true);
         return;
       }
       setMembers(res);
@@ -49,7 +49,7 @@ const Members = () => {
         if (response.status === 401) {
           return (window.location.href = "/");
         }
-        setPopup(true);
+        setErrorPopup(true);
         return;
       }
 
@@ -76,13 +76,13 @@ const Members = () => {
     }
   };
 
-  const closePopup = () => {
-    setPopup(false);
+  const closeErrorPopup = () => {
+    setErrorPopup(false);
   };
 
   return (
     <>
-      {popup ? <Popup onClose={closePopup} /> : null}
+      {ErrorPopup ? <ErrorPopup onClose={closeErrorPopup} /> : null}
       <div className="membersWrapper">
         <Sidemenu />
         <div className="filler-div"></div>

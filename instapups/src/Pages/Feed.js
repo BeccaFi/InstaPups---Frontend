@@ -4,14 +4,13 @@ import "../sass/Pages/Feed.pages.scss";
 import { useState, useEffect } from "react";
 import Post from "../Modules/Post";
 import Footer from "../Modules/Footer";
-import Popup from "../Modules/Popup";
+import ErrorPopup from "../Modules/ErrorPopup";
 
 const Feed = () => {
   const [posts, setPosts] = useState([]);
   const [fetched, setFetched] = useState(false);
-  const [popup, setPopup] = useState(false);
+  const [errorPopup, setErrorPopup] = useState(false);
   const [newPost, setNewPost] = useState(false);
-  const [newEdit, setNewEdit] = useState(false);
 
   useEffect(() => {
     const getPosts = async () => {
@@ -29,7 +28,7 @@ const Feed = () => {
         if (response.status === 401) {
           return (window.location.href = "/");
         }
-        setPopup(true);
+        Error(true);
         return;
       }
 
@@ -43,11 +42,10 @@ const Feed = () => {
       }
     };
     getPosts();
-  }, [newPost, newEdit]);
+  }, [newPost]);
 
-  const closePopup = () => {
-    setPopup(false);
-  
+  const closeErrorPopup = () => {
+    setErrorPopup(false);
   }
 
   const updateFeed = () => {
@@ -57,22 +55,15 @@ const Feed = () => {
     }, 1000);
   };
 
-  const handleEditPost = () => {
-    setNewEdit(true);
-    setInterval(() => {
-      setNewEdit(false)
-    }, 1000);
-  };
-
   return (
     <>
-    {popup ? <Popup onClose={closePopup}/> : null}
+    {errorPopup ? <ErrorPopup onClose={closeErrorPopup}/> : null}
     <div className="profileWrapper">
       <div className="filler-div"></div>
       <Sidemenu />
       <div className="bark-wrapper">
         <CreatePosts updateFeed={updateFeed} />
-        {fetched ? posts.map((post) => <Post key={post._id} {...post} onEditSubmit={handleEditPost} />) : <p>You are not following anyone...yet</p>}
+        {fetched ? posts.map((post) => <Post key={post._id} {...post} />) : <p>You are not following anyone...yet</p>}
       </div>
       <div className="Profile-filler"></div>
     </div>

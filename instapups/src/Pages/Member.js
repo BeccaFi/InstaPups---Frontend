@@ -6,7 +6,7 @@ import '../sass/Pages/Member.pages.scss'
 import Sidemenu from '../Modules/Sidemenu'
 import UserCard from '../Modules/OthersProfileCard'
 import Footer from '../Modules/Footer'
-import Popup from '../Modules/Popup'
+import ErrorPopup from '../Modules/ErrorPopup'
 import OwnProfileCard from '../Modules/OwnProfileCard'
 
 const Member = () => {
@@ -19,7 +19,7 @@ const Member = () => {
   const [gotPosts, setGotPosts] = useState(true);
   const [postMessage, setPostMessage] = useState();
   const [loaded, setLoaded] = useState(false);
-  const [popup, setPopup] = useState(false);
+  const [errorPopup, setErrorPopup] = useState(false);
 
   useEffect(() => {
     const getMember = async () => {
@@ -36,7 +36,7 @@ const Member = () => {
         if (response.status === 401) {
           window.location.href = "/";
         }
-        setPopup(true);
+        setErrorPopup(true);
         return;
       }
 
@@ -60,13 +60,13 @@ const Member = () => {
     getMember();
   }, [id]);
 
-  const closePopup = () => {
-    setPopup(false);
+  const closeErrorPopup = () => {
+    setErrorPopup(false);
   };
 
   return (
     <>
-      {popup ? <Popup onClose={closePopup} /> : null}
+      {ErrorPopup ? <ErrorPopup onClose={closeErrorPopup} /> : null}
       <div className="memberPageWrapper">
         <div className="filler-div"></div>
         <Sidemenu />
