@@ -8,7 +8,9 @@ const DeletePopup = (props) => {
 
 
   async function DeletePost() {
-    const response = await fetch(`http://localhost:5051/posts/${id}`, {
+
+    try{
+      const response = await fetch(`http://localhost:5051/posts/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -24,7 +26,12 @@ const DeletePopup = (props) => {
     }
     
     window.location.reload();
+  } catch (error) {
+    setErrorPopup(true);
+    return;
   }
+}
+    
 
   async function cancelDelete() {
     setWantDelete(false);
