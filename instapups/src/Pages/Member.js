@@ -12,7 +12,7 @@ import OwnProfileCard from '../Modules/OwnProfileCard'
 const Member = () => {
   const { id } = useParams();
   const [member, setMember] = useState("");
-  const [loggedInUser, setLoggedInUser] = useState("");
+  const [loggedInUser, setLoggedInUser] = useState({});
   const [posts, setPosts] = useState([]);
   const [isFollowing, setIsFollowing] = useState(true);
   const [followMessage, setFollowMessage] = useState();
@@ -88,7 +88,7 @@ const Member = () => {
         <Sidemenu />
 
         <div className='memberPage'>
-        { member.username === loggedInUser.username ? <OwnProfileCard loggedInUser={loggedInUser} following={isFollowing} posts={posts} /> : <UserCard member={member} following={isFollowing} posts={posts} onFollowUnfollow={handleFollowUnfollow} />}
+        { member.username === loggedInUser.username ? <OwnProfileCard loggedInUser={loggedInUser} posts={posts} /> : <UserCard member={member} following={isFollowing} posts={posts} onFollowUnfollow={handleFollowUnfollow} />}
         { loaded ? (!isFollowing ? <p> {followMessage} </p> : (!gotPosts ? <p> {postMessage} </p> :  ( posts.map((post) => (<Post key={post._id} {...post} onEditSubmit={handleEditPost}/>))))) : ( "Loading..." ) }
         </div>
 
