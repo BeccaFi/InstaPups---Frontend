@@ -89,7 +89,7 @@ const Member = () => {
 
         <div className='memberPage'>
         { member.username === loggedInUser.username ? <OwnProfileCard loggedInUser={loggedInUser} posts={posts} /> : <UserCard member={member} following={isFollowing} posts={posts} onFollowUnfollow={handleFollowUnfollow} />}
-        { loaded ? (!isFollowing ? <p> {followMessage} </p> : (!gotPosts ? <p> {postMessage} </p> :  ( posts.map((post) => (<Post key={post._id} {...post} onEditSubmit={handleEditPost}/>))))) : ( "Loading..." ) }
+        { loaded ? member.username === loggedInUser.username ? posts.map((post) => (<Post key={post._id} {...post} onEditSubmit={handleEditPost}/>)) : (!isFollowing ? <p> {followMessage} </p> : (!gotPosts ? <p> {postMessage} </p> :  ( posts.map((post) => (<Post key={post._id} {...post} onEditSubmit={handleEditPost}/>))))) : ( "Loading..." ) }
         </div>
 
         <div></div>
