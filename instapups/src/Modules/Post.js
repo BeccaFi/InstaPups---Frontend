@@ -114,6 +114,11 @@ const Post = ({
     editactive ? setEditActive(false) : setEditActive(true);
   };
 
+  const toggleDeleteButton = () => {
+    clickedDelete ? setClickedDelete(false) : setClickedDelete(true);
+  };
+  
+
   return (
     <div className={editactive ? "post-Wrapper redborder" : "post-Wrapper"}>
       {loaded ? (
@@ -134,17 +139,14 @@ const Post = ({
                 <img src={editbutton} alt="" className="edit-image" />
               </button>
 
-              <button
-                className="delete-post"
-                onClick={() => setClickedDelete(true)}
-              >
+              <button className="delete-post" onClick={toggleDeleteButton}>
                 {" "}
                 X
               </button>
             </div>
           ) : null}
           {clickedDelete ? (
-            <DeletePopup id={_id} wantDelete={clickedDelete} />
+            <DeletePopup id={_id} toggleDeleteButton={toggleDeleteButton} onEditSubmit={onEditSubmit}/>
           ) : null}
 
           {clickedEdit ? (

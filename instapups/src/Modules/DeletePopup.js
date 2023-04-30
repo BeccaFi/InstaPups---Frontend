@@ -3,7 +3,6 @@ import ErrorPopup from "./ErrorPopup";
 
 const DeletePopup = (props) => {
   const id = props.id;
-  const [wantDelete, setWantDelete] = useState(props.wantDelete);
   const [errorPopup, setErrorPopup] = useState(false);
 
   async function DeletePost() {
@@ -23,8 +22,8 @@ const DeletePopup = (props) => {
       setErrorPopup(true);
       return;
     }
-    
-    window.location.reload();
+    props.toggleDeleteButton();
+    props.onEditSubmit();
   } catch (error) {
     setErrorPopup(true);
     return;
@@ -32,8 +31,7 @@ const DeletePopup = (props) => {
 }
 
   async function cancelDelete() {
-    setWantDelete(false);
-    window.location.reload();
+    props.toggleDeleteButton();
   }
 
   const closeErrorPopup = () => {
@@ -43,7 +41,6 @@ const DeletePopup = (props) => {
   return (
     <>
     {errorPopup ? <ErrorPopup onClose={closeErrorPopup}/> : null}
-      {wantDelete ? (
         <div className="delete-popup">
           <p>Are you sure you want to delete this post?</p>
           <div className="popup-btns">
@@ -55,8 +52,6 @@ const DeletePopup = (props) => {
             </button>
           </div>
         </div>
-      ) : null}
-
     </>
   );
 };

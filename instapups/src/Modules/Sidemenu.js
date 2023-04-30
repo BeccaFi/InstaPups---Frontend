@@ -8,6 +8,8 @@ import members from "../Media/Icons/dog (1).png";
 const Sidemenu = () => {
   const [userinfo, setUserinfo] = useState([]);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
+  const breakpoint = 1217;
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -30,26 +32,21 @@ const Sidemenu = () => {
     };
     checkAuth();
 
-    const handleResize = () => {
-      setIsSmallScreen(window.innerWidth < 1217);
-    };
+    
 
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
   }, []);
+
+  window.addEventListener("resize", () => setWidth(window.innerWidth));
 
   const homeButton = (
     <>
-      {isSmallScreen ? <img className="icons" src={home} alt="Home" /> : "Home"}
+      {width < breakpoint ? <img className="icons" src={home} alt="Home" /> : "Home"}
     </>
   );
 
   const profileButton = (
     <>
-      {isSmallScreen ? (
+      {width < breakpoint ? (
         <img className="icons" src={profile} alt="Profile" />
       ) : (
         "Your profile"
@@ -59,7 +56,7 @@ const Sidemenu = () => {
 
   const membersButton = (
     <>
-      {isSmallScreen ? (
+      {width < breakpoint ? (
         <img className="icons" src={members} alt="Members" />
       ) : (
         "Members"

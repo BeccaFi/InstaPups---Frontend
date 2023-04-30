@@ -4,9 +4,8 @@ import settings from '../Media/Icons/settings.png'
 import ChangePicInput from "./ChangeProfilePic";
 
 const OwnProfileCard = ({loggedInUser, posts}) => {
-    const postCount = posts.length;
+    const postCount = posts?.length;
     const [changePic, setChangePic] = useState(false);
-
     return (
         <div className='member-card'>
             <div className='member-card-main-info'>
@@ -19,7 +18,7 @@ const OwnProfileCard = ({loggedInUser, posts}) => {
                 <div className="member-card-middle">
                     <h1>{loggedInUser.username}</h1>
                     <div className="follows-posts-count">
-                        <p>Following: </p>
+                        <p>Following: {loggedInUser?.following?.length}</p>
                         <p>•</p>
                         <p>Posts: {postCount} </p>
                     </div>
