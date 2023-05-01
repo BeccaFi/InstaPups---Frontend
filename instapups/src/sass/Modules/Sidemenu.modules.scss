@@ -9,6 +9,7 @@
   background-color: $nav-background;
   display: flex;
   flex-direction: column;
+  height: 100%;
 
   @media screen and (max-width: 1217px) {
     width: 50px;
