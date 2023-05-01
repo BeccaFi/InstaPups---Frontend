@@ -9,7 +9,7 @@ const MemberCardForMembersPage = ({ username, profilePic, _id }) => {
 
   useEffect(() => {
     const getFollows = async () => {
-      const response = await fetch("http://localhost:5051/members/follows", {
+      const response = await fetch("https://instapups.onrender.com/members/follows", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -38,7 +38,7 @@ const MemberCardForMembersPage = ({ username, profilePic, _id }) => {
   }, [follows]);
 
   const followOrNotFollow = async () => {
-    const response = await fetch("http://localhost:5051/members/follow", {
+    const response = await fetch("https://instapups.onrender.com/members/follow", {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

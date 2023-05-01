@@ -1,5 +1,5 @@
 function updatePost(id, updatedPost) {
-  return fetch(`http://localhost:5051/posts/${id}/update`, {
+  return fetch(`https://instapups.onrender.com/posts/${id}/update`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",

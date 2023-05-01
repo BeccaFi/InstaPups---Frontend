@@ -30,7 +30,7 @@ const Post = ({
   useEffect(() => {
     const getMember = async () => {
       const response = await fetch(
-        `http://localhost:5051/members/userinfo?postUsername=${username}`,
+        `https://instapups.onrender.com/members/userinfo?postUsername=${username}`,
         {
           method: "GET",
           headers: {
@@ -58,7 +58,7 @@ const Post = ({
     e.preventDefault();
     const id = _id;
     const comment = bark;
-    const response = await fetch(`http://localhost:5051/posts/${_id}/comment`, {
+    const response = await fetch(`https://instapups.onrender.com/posts/${_id}/comment`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -84,7 +84,7 @@ const Post = ({
     setBark("");
   };
   const likePost = async (_id) => {
-    const response = await fetch(`http://localhost:5051/posts/${_id}/like`, {
+    const response = await fetch(`https://instapups.onrender.com/posts/${_id}/like`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

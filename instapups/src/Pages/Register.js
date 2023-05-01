@@ -25,7 +25,7 @@ const Register = () => {
   async function registerUser(e) {
     e.preventDefault();
     try {
-      const response = await fetch("http://127.0.0.1:5051/auth/register", {
+      const response = await fetch("https://instapups.onrender.com/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

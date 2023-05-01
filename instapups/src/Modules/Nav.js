@@ -16,7 +16,7 @@ const Nav = () => {
     
     const checkAuth = async () => {
       if (location.pathname !== "/" && location.pathname !== "/register") {
-      const response = await fetch("http://localhost:5051/auth/navauth", {
+      const response = await fetch("https://instapups.onrender.com/auth/navauth", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

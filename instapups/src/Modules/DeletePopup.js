@@ -8,7 +8,7 @@ const DeletePopup = (props) => {
   async function DeletePost() {
 
     try{
-      const response = await fetch(`http://localhost:5051/posts/${id}`, {
+      const response = await fetch(`https://instapups.onrender.com/posts/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

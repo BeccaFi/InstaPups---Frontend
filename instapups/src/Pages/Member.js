@@ -24,7 +24,7 @@ const Member = () => {
 
   useEffect(() => {
     const getMember = async () => {
-      const response = await fetch(`http://localhost:5051/members/${id}`, {
+      const response = await fetch(`https://instapups.onrender.com/members/${id}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
