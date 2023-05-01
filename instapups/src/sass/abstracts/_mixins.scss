@@ -5,9 +5,8 @@
     font-weight: bold;
     font-size: 18px;
     color: white;
-    background-color: #2e2e44;
+    background-color: $nav-background;
     padding: 15px;
-    border-radius: 5px;
     border: none;
 
     &:hover {
@@ -16,7 +15,7 @@
       background-color: rgb(255, 255, 255);
 
       @media screen and (max-width: 1217px) {
-        background-color: #555581;
+        background-color: $nav-background;
       
       }
     }
