@@ -19,7 +19,7 @@ const ChangePicInput = (props) => {
     
      async function ChangeProfilePic() {
         try {
-            const response = await fetch('https://instapups.onrender.com/members/settings/profilePicture', {
+            const response = await fetch('https://instapups-server.onrender.com/members/settings/profilePicture', {
                 method: 'PATCH',
                 body: JSON.stringify({picUrl: newPicUrl}),
                 headers: {

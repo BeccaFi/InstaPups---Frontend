@@ -14,7 +14,7 @@ const Members = () => {
 
   useEffect(() => {
     const getMembers = async () => {
-      const response = await fetch("https://instapups.onrender.com/members", {
+      const response = await fetch("https://instapups-server.onrender.com/members", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -36,7 +36,7 @@ const Members = () => {
     };
 
     const getFollows = async () => {
-      const response = await fetch("https://instapups.onrender.com/members/follows", {
+      const response = await fetch("https://instapups-server.onrender.com/members/follows", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

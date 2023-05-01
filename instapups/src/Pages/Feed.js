@@ -15,7 +15,7 @@ const Feed = () => {
 
   useEffect(() => {
     const getPosts = async () => {
-      const response = await fetch("https://instapups.onrender.com/feed", {
+      const response = await fetch("https://instapups-server.onrender.com/feed", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

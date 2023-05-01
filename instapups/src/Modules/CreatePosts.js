@@ -14,7 +14,7 @@ const CreatePosts = ({ updateFeed }) => {
     const photos = image;
     var date = new Date();
     var datePosted = date.toISOString().slice(0, 16).replace("T", " ");
-    const response = await fetch("https://instapups.onrender.com/posts/create", {
+    const response = await fetch("https://instapups-server.onrender.com/posts/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

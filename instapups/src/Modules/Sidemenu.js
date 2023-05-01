@@ -13,7 +13,7 @@ const Sidemenu = () => {
 
   useEffect(() => {
     const checkAuth = async () => {
-      const response = await fetch("https://instapups.onrender.com/auth/navauth", {
+      const response = await fetch("https://instapups-server.onrender.com/auth/navauth", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

@@ -9,7 +9,7 @@ const UserCard = (props) => {
     const [follows, setFollows] = useState(props.following);
     
     const FollowUnfollow = async () => {
-        const response = await fetch('https://instapups.onrender.com/members/follow', {
+        const response = await fetch('https://instapups-server.onrender.com/members/follow', {
             method: 'PATCH',
             body: JSON.stringify({ username: member.username }),
             headers: {
