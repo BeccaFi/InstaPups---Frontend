@@ -9,6 +9,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    position: absolute;
+    border-top: 1px solid black;
 
     #attributes-div {
         border-left: 1px solid #5e5e6e;
