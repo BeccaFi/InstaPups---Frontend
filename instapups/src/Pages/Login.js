@@ -20,7 +20,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-        const response = await fetch("https://instapups.onrender.com/auth/login", {
+        const response = await fetch("https://instapups-server.onrender.com/auth/login", {
           method: "POST",
           credentials: "include",
           headers: {
