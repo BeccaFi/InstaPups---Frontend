@@ -72,21 +72,20 @@
     .loggedInUserName {
       position: absolute;
       right: 150px;
-      top: 30px;
+      top: 23px;
       font-weight: bold;
       text-decoration: none;
       scale: 1.1;
-      text-shadow: 2px 2px 4px rgb(0, 0, 0);
       padding: 15px;
       font-size: 20px;
       font-weight: bold;
       color: white;
-      text-decoration: underline antiquewhite 2px;
+      text-decoration: underline 2px;
 
       &:hover {
         cursor: pointer;
-        text-shadow: 0px 0px 10px $outline-blue;
-        filter: brightness(200%);
+        text-shadow: 0px 0px 4px $outline-blue;
+        filter: brightness(160%);
       }
 
       @media screen and (max-width: 1000px) {
